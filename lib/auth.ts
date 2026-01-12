@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import Cookies from 'js-cookie'
-import { apiPost, apiGet, apiLogout, apiTenantRegister, apiForgotPassword, apiResetPassword } from './api'
+import { apiPost, apiGet, apiLogout, apiTenantRegister, apiForgotPassword, apiResetPassword, apiLogin } from './api'
 
 export interface User {
   id: number
@@ -139,16 +139,12 @@ export const useAuth = create<AuthState & AuthActions>()(
     // Tentar login real com API do SaaS
     console.log('🌐 Auth: Tentando login real com API do SaaS...')
     try {
-      const data = await apiPost<{
-        access_token: string
-        token_type: string
-        expires_in: number
-        user: ApiUserResponse
-      }>('/tenant/login', {
-        email,
-        password,
-        // ❌ REMOVED tenant_subdomain from body - now sent via header
-      })
+	const data = await apiLogin(email, password, subdomain) as {
+	  access_token: string
+	  token_type: string
+	  expires_in: number
+	  user: ApiUserResponse
+	}
 
       console.log('✅ Auth: Login real realizado com sucesso!')
       console.log('📦 Auth: Dados recebidos:', {
@@ -675,84 +671,14 @@ export const useAuth = create<AuthState & AuthActions>()(
 )
 
 // Função para obter o token atual
-export const getAuthToken = (): string | null => {
-  if (typeof window === 'undefined') return null;
-  
-  try {
-    // Try direct token
-    const token = localStorage.getItem('auth_token');
-    if (token) return token;
-    
-    // Try auth-storage (zustand)
-    const authStorage = localStorage.getItem('auth-storage');
-    if (authStorage) {
-      const parsed = JSON.parse(authStorage);
-      if (parsed?.state?.token) {
-        return parsed.state.token;
-      }
-    }
-    
-    // Try cookie
-    const cookies = document.cookie.split(';');
-    for (const cookie of cookies) {
-      const [name, value] = cookie.trim().split('=');
-      if (name === 'auth_token') {
-        return value;
-      }
-    }
-  } catch (e) {
-    console.warn('⚠️ getAuthToken: Error:', e);
-  }
-  
-  return null;
-};
+export const getAuthToken = () => {
+  return Cookies.get('auth_token') || null
+}
 
 // Função para obter o subdomain atual
-export const getTenantSubdomain = (): string => {
-  // First, try to extract from URL (works in browser)
-  if (typeof window !== 'undefined') {
-    const hostname = window.location.hostname;
-    const parts = hostname.split('.');
-    
-    // If hostname has 3+ parts (e.g., test.omegaveiculos.com.br)
-    if (parts.length >= 3) {
-      const subdomain = parts[0];
-      
-      // Ignore www, api, admin subdomains
-      if (subdomain !== 'www' && subdomain !== 'api' && subdomain !== 'admin' && subdomain !== 'localhost') {
-        console.log('🌐 getTenantSubdomain: Extracted from URL:', subdomain);
-        return subdomain;
-      }
-    }
-    
-    // Try localStorage fallback
-    try {
-      const storedSubdomain = localStorage.getItem('tenant_subdomain');
-      if (storedSubdomain) {
-        console.log('💾 getTenantSubdomain: From localStorage:', storedSubdomain);
-        return storedSubdomain;
-      }
-      
-      // Try auth-storage
-      const authStorage = localStorage.getItem('auth-storage');
-      if (authStorage) {
-        const parsed = JSON.parse(authStorage);
-        if (parsed?.state?.subdomain) {
-          console.log('💾 getTenantSubdomain: From auth-storage:', parsed.state.subdomain);
-          return parsed.state.subdomain;
-        }
-      }
-    } catch (e) {
-      console.warn('⚠️ getTenantSubdomain: Error reading localStorage:', e);
-    }
-  }
-  
-  // Final fallback to environment variable
-  const envSubdomain = process.env.NEXT_PUBLIC_TENANT_SUBDOMAIN || '';
-  console.log('🔧 getTenantSubdomain: From env:', envSubdomain);
-  return envSubdomain;
-};
-
+export const getTenantSubdomain = () => {
+  return Cookies.get('tenant_subdomain') || null
+}
 
 // Função para inicializar o estado de autenticação a partir dos cookies
 export const initializeAuthFromCookies = () => {

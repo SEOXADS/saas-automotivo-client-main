@@ -235,23 +235,41 @@ export default function ConfigurationPage() {
             updated_at: apiData.theme?.updated_at || new Date().toISOString()
           },
           seo: {
-            id: apiData.seo?.id || 1,
-            meta: {
-              title: apiData.seo?.meta_title || apiData.meta_title || '',
-              description: apiData.seo?.meta_description || apiData.meta_description || '',
-              keywords: apiData.seo?.meta_keywords || apiData.meta_keywords || '',
-              author: apiData.seo?.meta_author || apiData.meta_author || '',
-              robots: apiData.seo?.meta_robots || apiData.meta_robots || 'index, follow',
-              canonical_url: apiData.seo?.canonical_url || apiData.canonical_url || ''
-            },
-            open_graph: {
-              title: apiData.seo?.og_title || apiData.og_title || '',
-              description: apiData.seo?.og_description || apiData.og_description || '',
-              image_url: apiData.seo?.og_image || apiData.og_image || '',
-              site_name: apiData.seo?.og_site_name || apiData.og_site_name || '',
-              type: apiData.seo?.og_type || apiData.og_type || 'website',
-              locale: apiData.seo?.og_locale || apiData.og_locale || 'pt_BR'
-            },
+          id: apiData.seo?.id || 1,
+          meta: {
+            // Prioridade: 1) SEO title específico, 2) OG title, 3) Nome da empresa como último fallback
+            title: apiData.seo?.meta_title 
+              || apiData.meta_title 
+              || apiData.seo?.og_title 
+              || apiData.og_title 
+              || apiData.profile?.company_name  // fallback final
+              || '',
+            description: apiData.seo?.meta_description 
+              || apiData.meta_description 
+              || apiData.profile?.company_description 
+              || '',
+            keywords: apiData.seo?.meta_keywords || apiData.meta_keywords || '',
+            author: apiData.seo?.meta_author || apiData.meta_author || '',
+            robots: apiData.seo?.meta_robots || apiData.meta_robots || 'index, follow',
+            canonical_url: apiData.seo?.canonical_url || apiData.canonical_url || ''
+          },
+          open_graph: {
+            // OG title deve herdar do meta title se não existir
+            title: apiData.seo?.og_title 
+              || apiData.og_title 
+              || apiData.seo?.meta_title  // Herda do SEO title
+              || apiData.meta_title 
+              || '',
+            description: apiData.seo?.og_description || apiData.og_description || '',
+            image_url: apiData.seo?.og_image || apiData.og_image || '',
+            // site_name é diferente de title - é o nome do site/marca
+            site_name: apiData.seo?.og_site_name 
+              || apiData.og_site_name 
+              || apiData.profile?.company_name  // Nome da empresa para site_name
+              || '',
+            type: apiData.seo?.og_type || apiData.og_type || 'website',
+            locale: apiData.seo?.og_locale || apiData.og_locale || 'pt_BR'
+          },
             twitter_card: {
               card_type: apiData.seo?.twitter_card || 'summary',
               title: apiData.seo?.twitter_title || apiData.twitter_title || '',

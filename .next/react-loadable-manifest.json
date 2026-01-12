@@ -1,6 +1,12 @@
 {
-  "app/page.tsx -> @/lib/portal-api": {
-    "id": "app/page.tsx -> @/lib/portal-api",
+  "app/admin/urls/patterns/page.tsx -> @/lib/url-api": {
+    "id": "app/admin/urls/patterns/page.tsx -> @/lib/url-api",
+    "files": [
+      "static/chunks/_app-pages-browser_lib_url-api_ts.js"
+    ]
+  },
+  "app/portal/page.tsx -> @/lib/portal-api": {
+    "id": "app/portal/page.tsx -> @/lib/portal-api",
     "files": []
   }
 }

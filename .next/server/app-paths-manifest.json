@@ -1,6 +1,7 @@
 {
-  "/sobre/page": "app/sobre/page.js",
-  "/contato/page": "app/contato/page.js",
-  "/page": "app/page.js",
-  "/comprar-carro/page": "app/comprar-carro/page.js"
+  "/admin/locations/states/page": "app/admin/locations/states/page.js",
+  "/admin/login/page": "app/admin/login/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js",
+  "/admin/locations/states/create/page": "app/admin/locations/states/create/page.js",
+  "/admin/settings/configuration/page": "app/admin/settings/configuration/page.js"
 }

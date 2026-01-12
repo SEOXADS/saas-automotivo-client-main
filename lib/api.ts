@@ -45,10 +45,16 @@ api.interceptors.request.use(
     const subdomain = getTenantSubdomain()
     console.log('🔐 Interceptor - Subdomain encontrado:', subdomain)
 
-    if (subdomain) {
-      config.headers['X-Tenant-Subdomain'] = subdomain
-      console.log('🔐 Interceptor - Header X-Tenant-Subdomain adicionado')
-    }
+//    if (subdomain) {
+//     config.headers['X-Tenant-Subdomain'] = subdomain
+//      console.log('🔐 Interceptor - Header X-Tenant-Subdomain adicionado')
+//    }
+
+	if (subdomain) {
+	  config.headers['X-Tenant'] = subdomain  // ✅ Change from X-Tenant-Subdomain to X-Tenant
+	  console.log('🔐 Interceptor - Header X-Tenant adicionado:', subdomain)
+	}
+
 
     console.log('🔐 Interceptor - Headers finais:', config.headers)
     return config
@@ -71,6 +77,43 @@ api.interceptors.response.use(
       return Promise.reject(error)
     }
 )
+
+// ✅ DEDICATED LOGIN FUNCTION - Bypasses interceptor, explicitly sets X-Tenant header
+export const apiLogin = async (
+  email: string, 
+  password: string, 
+  subdomain: string
+): Promise<{
+  access_token: string
+  token_type: string
+  expires_in: number
+  user: unknown
+}> => {
+  console.log('🔐 apiLogin: Fazendo login com subdomain explícito:', subdomain)
+  
+  const response = await axios.post(
+    `${process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'}/tenant/login`,
+    { 
+      email, 
+      password,
+      tenant_subdomain: subdomain  // ✅ Include in body as backup
+    },
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'X-Tenant': subdomain,  // ✅ Explicitly set the header
+      },
+      timeout: 30000
+    }
+  )
+  
+  console.log('✅ apiLogin: Resposta recebida:', response.status)
+  return response.data
+}
+
+
+
 
 // Tipos da API
 export interface ApiResponse {

@@ -1,0 +1,118 @@
+/* Importar CSS dos ícones e plugins */
+@import url('/portal/assets/plugins/boxicons/css/boxicons.min.css');
+@import url('/portal/assets/plugins/fontawesome/css/all.min.css');
+@import url('/portal/assets/plugins/slick/slick.css');
+@import url('/portal/assets/plugins/fancybox/fancybox.css');
+
+/* Otimizações de performance para fontes */
+@font-face {
+  font-family: 'FontAwesome';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Boxicons';
+  font-display: swap;
+}
+
+/* Variáveis CSS padrão para o portal */
+:root {
+  /* Cores principais */
+  --primary-color: #000000;
+  --secondary-color: #374151;
+  --accent-color: #F59E0B;
+  --accent-hover-color: #D97706;
+  --accent-light-color: #FEF3C7;
+
+  /* Cores de texto */
+  --text-color: #111827;
+  --text-secondary-color: #6B7280;
+  --text-light-color: #9CA3AF;
+
+  /* Cores de fundo */
+  --background-color: #ffffff;
+  --background-secondary-color: #F9FAFB;
+
+  /* Cores de status */
+  --success-color: #10B981;
+  --warning-color: #F59E0B;
+  --error-color: #EF4444;
+  --info-color: #8B5CF6;
+
+  /* Cores de borda */
+  --border-color: #E5E7EB;
+  --border-dark-color: #374151;
+
+  /* Cores de hover */
+  --hover-color: #F3F4F6;
+  --hover-dark-color: #1F2937;
+
+  /* Tipografia */
+  --font-family: 'Roboto', sans-serif;
+  --font-size-base: 16px;
+  --font-size-small: 14px;
+  --font-size-large: 18px;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+  /* Layout */
+  --border-radius: 0.375rem;
+  --border-radius-large: 0.5rem;
+  --border-radius-small: 0.25rem;
+  --spacing-unit: 1rem;
+  --container-max-width: 1200px;
+
+  /* Componentes */
+  --button-style: rounded;
+  --card-style: shadow;
+  --form-style: modern;
+
+  /* Features */
+  --dark-mode-enabled: false;
+  --animations-enabled: true;
+}
+
+/* Aplicar font-family global */
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+/* Estilos para botões */
+.btn {
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estilos para cards */
+.card {
+  border-radius: var(--border-radius);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Estilos para formulários */
+.form-control {
+  border-radius: var(--border-radius);
+  transition: all 0.2s ease-in-out;
+}
+
+/* Animações quando habilitadas */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-enabled {
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+/* Modo escuro quando habilitado */
+@media (prefers-color-scheme: dark) {
+  :root[data-dark-mode="true"] {
+    --text-color: #ffffff;
+    --background-color: #000000;
+    --background-secondary-color: #1a1a1a;
+    --border-color: #333333;
+  }
+}

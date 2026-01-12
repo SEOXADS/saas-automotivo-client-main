@@ -1,0 +1,200 @@
+/* Correções específicas para o portal */
+
+/* Reset básico para evitar conflitos */
+.portal-container {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+}
+
+/* Fix para imagens responsivas */
+.portal-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Fix para links */
+.portal-container a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.portal-container a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Fix para botões */
+.portal-container .btn {
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.portal-container .btn:hover {
+  transform: translateY(-1px);
+}
+
+/* Fix para cards */
+.portal-container .card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+.portal-container .card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Fix para grid system */
+.portal-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.portal-container .col {
+  flex: 1;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Fix para spacing */
+.portal-container .mb-0 { margin-bottom: 0 !important; }
+.portal-container .mb-1 { margin-bottom: 0.25rem !important; }
+.portal-container .mb-2 { margin-bottom: 0.5rem !important; }
+.portal-container .mb-3 { margin-bottom: 0.75rem !important; }
+.portal-container .mb-4 { margin-bottom: 1rem !important; }
+.portal-container .mb-5 { margin-bottom: 1.25rem !important; }
+
+.portal-container .mt-0 { margin-top: 0 !important; }
+.portal-container .mt-1 { margin-top: 0.25rem !important; }
+.portal-container .mt-2 { margin-top: 0.5rem !important; }
+.portal-container .mt-3 { margin-top: 0.75rem !important; }
+.portal-container .mt-4 { margin-top: 1rem !important; }
+.portal-container .mt-5 { margin-top: 1.25rem !important; }
+
+/* Fix para text alignment */
+.portal-container .text-center { text-align: center !important; }
+.portal-container .text-left { text-align: left !important; }
+.portal-container .text-right { text-align: right !important; }
+
+/* Fix para display */
+.portal-container .d-block { display: block !important; }
+.portal-container .d-inline { display: inline !important; }
+.portal-container .d-inline-block { display: inline-block !important; }
+.portal-container .d-flex { display: flex !important; }
+.portal-container .d-none { display: none !important; }
+
+/* Fix para flexbox */
+.portal-container .flex-row { flex-direction: row !important; }
+.portal-container .flex-column { flex-direction: column !important; }
+.portal-container .justify-content-center { justify-content: center !important; }
+.portal-container .justify-content-between { justify-content: space-between !important; }
+.portal-container .align-items-center { align-items: center !important; }
+
+/* Fix para width/height */
+.portal-container .w-100 { width: 100% !important; }
+.portal-container .h-100 { height: 100% !important; }
+
+/* Fix para overflow */
+.portal-container .overflow-hidden { overflow: hidden !important; }
+
+/* Fix para border radius */
+.portal-container .rounded { border-radius: 0.25rem !important; }
+.portal-container .rounded-lg { border-radius: 0.5rem !important; }
+.portal-container .rounded-xl { border-radius: 0.75rem !important; }
+
+/* Fix para shadows */
+.portal-container .shadow { box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important; }
+.portal-container .shadow-lg { box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important; }
+
+/* Fix para backgrounds */
+.portal-container .bg-white { background-color: #ffffff !important; }
+.portal-container .bg-light { background-color: #f8f9fa !important; }
+.portal-container .bg-primary { background-color: #007bff !important; }
+.portal-container .bg-success { background-color: #28a745 !important; }
+.portal-container .bg-danger { background-color: #dc3545 !important; }
+.portal-container .bg-warning { background-color: #ffc107 !important; }
+
+/* Fix para text colors */
+.portal-container .text-white { color: #ffffff !important; }
+.portal-container .text-dark { color: #343a40 !important; }
+.portal-container .text-primary { color: #007bff !important; }
+.portal-container .text-success { color: #28a745 !important; }
+.portal-container .text-danger { color: #dc3545 !important; }
+.portal-container .text-warning { color: #ffc107 !important; }
+
+/* Fix para font weights */
+.portal-container .font-weight-normal { font-weight: 400 !important; }
+.portal-container .font-weight-bold { font-weight: 700 !important; }
+
+/* Fix para responsive */
+@media (min-width: 768px) {
+  .portal-container .d-md-block { display: block !important; }
+  .portal-container .d-md-flex { display: flex !important; }
+  .portal-container .d-md-none { display: none !important; }
+}
+
+@media (min-width: 992px) {
+  .portal-container .d-lg-block { display: block !important; }
+  .portal-container .d-lg-flex { display: flex !important; }
+  .portal-container .d-lg-none { display: none !important; }
+}
+
+/* Fix para componentes específicos do portal */
+.portal-container .vehicle-card {
+  transition: all 0.3s ease-in-out;
+}
+
+.portal-container .vehicle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.portal-container .btn-orange {
+  background-color: #F59E0B;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.portal-container .btn-orange:hover {
+  background-color: #D97706;
+  transform: translateY(-1px);
+}
+
+/* Fix para header */
+.portal-container .header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Fix para footer */
+.portal-container .footer {
+  background-color: #1f2937;
+  color: white;
+  padding: 3rem 0;
+}
+
+/* Fix para forms */
+.portal-container .form-control {
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.portal-container .form-control:focus {
+  border-color: #F59E0B;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  outline: none;
+}

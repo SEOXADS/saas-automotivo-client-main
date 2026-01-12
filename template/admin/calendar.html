@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Aug 2025 18:18:55 GMT -->
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+	<meta name="description" content="Dreamsrent - Bootstrap Admin Template">
+	<meta name="keywords" content="admin, estimates, bootstrap, business, html5, responsive, Projects">
+	<meta name="author" content="Dreams technologies - Bootstrap Admin Template">
+	<meta name="robots" content="noindex, nofollow">
+	<title>Dreamsrent - Admin Template</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/favicon.png">
+
+	<!-- Apple Touch Icon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/apple-touch-icon.png">
+
+	<!-- Theme Settings Js -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/theme-script.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/css/bootstrap.min.css">
+
+	<!-- Tabler Icon CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/tabler-icons/tabler-icons.min.css">
+
+	<!-- Fontawesome CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/fontawesome/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/fontawesome/css/all.min.css">
+
+	<!-- Daterangepikcer CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/daterangepicker/daterangepicker.css">
+
+	<!-- Datetimepicker CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/css/bootstrap-datetimepicker.min.css">
+
+	<!-- Select2 CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/select2/css/select2.min.css">
+
+	<!-- Main CSS -->
+	<link rel="stylesheet" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/css/style.css">
+
+</head>
+
+<body>
+
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Header -->
+		<div class="header">
+			<div class="main-header">
+			
+				<div class="header-left">
+					<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html" class="logo">
+						<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/logo.svg" alt="Logo">
+					</a>
+					<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html" class="dark-logo">
+						<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/logo-white.svg" alt="Logo">
+					</a>
+				</div>
+
+				<a id="mobile_btn" class="mobile_btn" href="#sidebar">
+					<span class="bar-icon">
+						<span></span>
+						<span></span>
+						<span></span>
+					</span>
+				</a>
+
+				<div class="header-user">
+					<div class="nav user-menu nav-list">
+	
+						<div class="me-auto d-flex align-items-center" id="header-search">					
+							<a id="toggle_btn" href="javascript:void(0);">
+								<i class="ti ti-menu-deep"></i>
+							</a>		
+							<div class="add-dropdown">
+								<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/add-reservation.html" class="btn btn-dark d-inline-flex align-items-center">
+									<i class="ti ti-plus me-1"></i>New Reservation
+								</a>
+							</div>			
+						</div>
+	
+						<div class="d-flex align-items-center header-icons">	
+
+							<!-- Flag -->
+							<div class="nav-item dropdown has-arrow flag-nav nav-item-box">
+								<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="javascript:void(0);"
+									role="button">
+									<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/flags/gb.svg" alt="Language" class="img-fluid">
+								</a>
+								<ul class="dropdown-menu p-2">
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item">
+											<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/flags/gb.svg" alt="" height="16">English
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item">
+											<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/flags/sa.svg" alt="" height="16">Arabic
+										</a>
+									</li>
+									<li>
+										<a href="javascript:void(0);" class="dropdown-item">
+											<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/flags/de.svg" alt="" height="16">German
+										</a>
+									</li>
+								</ul>
+							</div>
+							<!-- /Flag -->
+
+							<div class="theme-item">
+								<a href="javascript:void(0);" id="dark-mode-toggle" class="theme-toggle btn btn-menubar">
+									<i class="ti ti-moon"></i>
+								</a>
+								<a href="javascript:void(0);" id="light-mode-toggle" class="theme-toggle btn btn-menubar">
+									<i class="ti ti-sun-high"></i>
+								</a>
+							</div>
+							
+							<div class="notification_item">
+								<a href="javascript:void(0);" class="btn btn-menubar position-relative" id="notification_popup" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+									<i class="ti ti-bell"></i>
+									<span class="badge bg-violet rounded-pill"></span>
+								</a>
+								<div class="dropdown-menu dropdown-menu-end notification-dropdown">
+									<div class="topnav-dropdown-header pb-0">
+										<h5 class="notification-title">Notifications</h5>
+										<ul class="nav nav-tabs nav-tabs-bottom">
+											<li class="nav-item"><a class="nav-link active" href="#active-notification" data-bs-toggle="tab">Active<span class="badge badge-xs rounded-pill bg-danger ms-2">5</span></a></li>
+											<li class="nav-item"><a class="nav-link" href="#unread-notification" data-bs-toggle="tab">Unread</a></li>
+											<li class="nav-item"><a class="nav-link" href="#archieve-notification" data-bs-toggle="tab">Archieve</a></li>
+										</ul>
+									</div>
+									<div class="noti-content">
+										<div class="tab-content">
+											<div class="tab-pane fade show active" id="active-notification">
+												<div class="notification-list">
+													<div class="d-flex align-items-center">
+														<a href="javascript:void(0);" class="avatar avatar-lg offline me-2 flex-shrink-0">
+															<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-02.jpg" alt="Profile" class="rounded-circle">
+														</a>
+														<div class="flex-grow-1">
+															<p class="mb-1"><a href="javascript:void(0);"><span class="text-gray-9">Jerry Manas</span> Added New Task Creating <span class="text-gray-9">Login Pages</span></a></p>
+															<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>4 Min Ago</span>
+														</div>
+													</div>
+												</div>
+												<div class="notification-list">
+													<div class="d-flex align-items-center">
+														<a href="javascript:void(0);" class="avatar avatar-lg offline me-2 flex-shrink-0">
+															<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-05.jpg" alt="Profile" class="rounded-circle">
+														</a>
+														<div class="flex-grow-1">
+															<p class="mb-1"><a href="javascript:void(0);"><span class="text-gray-9">Robert Fox </span> Was Marked as Late Login <span class="text-danger">09:55 AM</span></a></p>
+															<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>5 Min Ago</span>
+														</div>
+													</div>
+												</div>
+												<div class="notification-list">
+													<div class="d-flex align-items-center">
+														<a href="javascript:void(0);" class="avatar avatar-lg me-2 flex-shrink-0">
+															<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-04.jpg" alt="Profile" class="rounded-circle">
+														</a>
+														<div class="flex-grow-1">
+															<p class="mb-1"><a href="javascript:void(0);"><span class="text-gray-9">Jenny Wilson </span> Completed <span class="text-gray-9">Created New Component</span></a></p>
+															<div class="d-flex align-items-center">
+																<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>15 Min Ago</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="notification-list">
+													<div class="d-flex align-items-center">
+														<a href="javascript:void(0);" class="avatar avatar-lg me-2 flex-shrink-0">
+															<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-02.jpg" alt="Profile" class="rounded-circle">
+														</a>
+														<div class="flex-grow-1">
+															<p class="mb-1"><a href="javascript:void(0);"><span class="text-gray-9">Jacob Johnson </span> Added Manual Time <span class="text-gray-9">2 Hrs</span></a></p>
+															<div class="d-flex align-items-center">
+																<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>20 Min Ago</span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="notification-list">
+													<div class="d-flex align-items-center">
+														<a href="javascript:void(0);" class="avatar avatar-lg me-2 flex-shrink-0">
+															<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-01.jpg" alt="Profile" class="rounded-circle">
+														</a>
+														<div class="flex-grow-1">
+															<p class="mb-1"><a href="javascript:void(0);"><span class="text-gray-9">Annete Black </span> Completed <span class="text-gray-9">Improved Workflow React</span></a></p>
+															<div class="d-flex align-items-center">
+																<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>22 Min Ago</span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="tab-pane fade" id="unread-notification">
+												<div class="notification-list">
+													<a href="javascript:void(0);">
+														<div class="d-flex align-items-center">
+															<span class="avatar avatar-lg offline me-2 flex-shrink-0">
+																<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-02.jpg" alt="Profile" class="rounded-circle">
+															</span>
+															<div class="flex-grow-1">
+																<p class="mb-1"><span class="text-gray-9">Jerry Manas</span> Added New Task Creating <span class="text-gray-9">Login Pages</span></p>
+																<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>4 Min Ago</span>
+															</div>
+														</div>
+													</a>
+												</div>
+												<div class="notification-list">
+													<a href="javascript:void(0);">
+														<div class="d-flex align-items-center">
+															<span class="avatar avatar-lg offline me-2 flex-shrink-0">
+																<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-05.jpg" alt="Profile" class="rounded-circle">
+															</span>
+															<div class="flex-grow-1">
+																<p class="mb-1"><span class="text-gray-9">Robert Fox </span> Was Marked as Late Login <span class="text-danger">09:55 AM</span></p>
+																<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>5 Min Ago</span>
+															</div>
+														</div>
+													</a>
+												</div>
+												<div class="notification-list">
+													<a href="javascript:void(0);">
+														<div class="d-flex align-items-center">
+															<span class="avatar avatar-lg offline me-2 flex-shrink-0">
+																<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-06.jpg" alt="Profile" class="rounded-circle">
+															</span>
+															<div class="flex-grow-1">
+																<p class="mb-1"><span class="text-gray-9">Robert Fox </span> Created New Component</p>
+																<span class="fs-12 noti-time"><i class="ti ti-clock me-1"></i>5 Min Ago</span>
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+											<div class="tab-pane fade" id="archieve-notification">
+												<div class="d-flex justify-content-center align-items-center p-3">
+													<div class="text-center ">
+														<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/icons/nodata.svg" class="mb-2" alt="nodata">
+														<p class="text-gray-5">No Data Available</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="d-flex align-items-center justify-content-between topnav-dropdown-footer">
+										<div class="d-flex align-items-center">
+											<a href="javascript:void(0);" class="link-primary text-decoration-underline me-3">Mark all as Read</a>
+											<a href="javascript:void(0);" class="link-danger text-decoration-underline">Clear All</a>
+										</div>
+										<a href="javascript:void(0);" class="btn btn-primary btn-sm d-inline-flex align-items-center">View All Notifications<i class="ti ti-chevron-right ms-1"></i></a>
+									</div>
+								</div>
+							</div>
+							<div>
+								<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/income-report.html" class="btn btn-menubar">
+									<i class="ti ti-chart-bar"></i>
+								</a>
+							</div>
+							<div class="dropdown">
+								<a href="javascript:void(0);" class="btn btn-menubar" data-bs-toggle="dropdown"  data-bs-auto-close="outside">
+									<i class="ti ti-grid-dots"></i>
+								</a>
+								<div class="dropdown-menu p-3">
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/add-car.html" class="dropdown-item d-inline-flex align-items-center">
+												<i class="ti ti-car me-2"></i>Car
+											</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/add-quotations.html" class="dropdown-item d-inline-flex align-items-center">
+												<i class="ti ti-file-symlink me-2"></i>Quotation
+											</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/pricing.html" class="dropdown-item d-inline-flex align-items-center">
+												<i class="ti ti-file-dollar me-2"></i>Seasonal Pricing
+											</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/extra-services.html" class="dropdown-item d-inline-flex align-items-center">
+												<i class="ti ti-script-plus me-2"></i>Extra Service
+											</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/inspections.html" class="dropdown-item d-inline-flex align-items-center">
+												<i class="ti ti-dice-6 me-2"></i>Inspection
+											</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/maintenance.html" class="dropdown-item d-inline-flex align-items-center">
+												<i class="ti ti-color-filter me-2"></i>Maintenance
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div class="dropdown profile-dropdown">
+								<a href="javascript:void(0);" class="d-flex align-items-center" data-bs-toggle="dropdown"  data-bs-auto-close="outside">
+									<span class="avatar avatar-sm">
+										<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-05.jpg" alt="Img" class="img-fluid rounded-circle">
+									</span>
+								</a>
+								<div class="dropdown-menu">
+									<div class="profileset d-flex align-items-center">
+										<span class="user-img me-2">
+											<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/profiles/avatar-05.jpg" alt="">
+										</span>
+										<div>
+											<h6 class="fw-semibold mb-1">Andrew Simmonds</h6>
+											<p class="fs-13"><a href="https://dreamsrent.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbaaa5afb9aebc8baeb3aaa6bba7aee5a8a4a6">[email&#160;protected]</a></p>
+										</div>
+									</div>
+									<a class="dropdown-item d-flex align-items-center" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/profile-setting.html">
+										<i class="ti ti-user-edit me-2"></i>Edit Profile
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/payments.html">
+										<i class="ti ti-credit-card me-2"></i>Payments
+									</a>
+									<div class="dropdown-divider my-2"></div>
+									<div class="dropdown-item">
+										<div class="form-check form-switch  form-check-reverse  d-flex align-items-center justify-content-between">
+											<label class="form-check-label" for="notify">
+												<i class="ti ti-bell me-2"></i>Notificaions</label>
+											<input class="form-check-input" type="checkbox" role="switch" id="notify" checked>
+										</div>
+									</div>
+									<a class="dropdown-item d-flex align-items-center" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/security-setting.html">
+										<i class="ti ti-exchange me-2"></i>Change Password
+									</a>
+									<a class="dropdown-item d-flex align-items-center" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/profile-setting.html">
+										<i class="ti ti-settings me-2"></i>Settings
+									</a>
+									<div class="dropdown-divider my-2"></div>
+									<a class="dropdown-item logout d-flex align-items-center justify-content-between" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/login.html">
+										<span><i class="ti ti-logout me-2"></i>Logout Account</span> <i class="ti ti-chevron-right"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mobile Menu -->
+				<div class="dropdown mobile-user-menu">
+					<a href="javascript:void(0);" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fa fa-ellipsis-v"></i>
+					</a>
+					<div class="dropdown-menu dropdown-menu-end">
+						<a class="dropdown-item" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/profile.html">My Profile</a>
+						<a class="dropdown-item" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/profile-setting.html">Settings</a>
+						<a class="dropdown-item" href="https://dreamsrent.dreamstechnologies.com/html/template/admin/login.html">Logout</a>
+					</div>
+				</div>
+				<!-- /Mobile Menu -->
+
+			</div>
+
+		</div>
+		<!-- /Header -->
+
+		<!-- Sidebar -->
+		<div class="sidebar" id="sidebar">
+			<!-- Logo -->
+			<div class="sidebar-logo">
+				<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html" class="logo logo-normal">
+					<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/logo.svg" alt="Logo">
+				</a>
+				<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html" class="logo-small">
+					<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/logo-small.svg" alt="Logo">
+				</a>
+				<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html" class="dark-logo">
+					<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/logo-white.svg" alt="Logo">
+				</a>
+			</div>
+			<!-- /Logo -->
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					
+					<div class="form-group">
+						<!-- Search -->
+						<div class="input-group input-group-flat d-inline-flex">
+							<span class="input-icon-addon">
+								<i class="ti ti-search"></i>
+							  </span>
+							<input type="text" class="form-control" placeholder="Search">
+							<span class="group-text">
+								<i class="ti ti-command"></i>
+							</span>
+						</div>
+						<!-- /Search -->
+					</div>
+					<ul>
+						<li class="menu-title"><span>Main</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html">
+										<i class="ti ti-layout-dashboard"></i><span>Dashboard</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>Bookings</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/reservations.html">
+										<i class="ti ti-files"></i><span>Reservations</span><span class="track-icon"></span>
+									</a>
+								</li>
+								<li class="active">
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html">
+										<i class="ti ti-calendar-bolt"></i><span>Calendar</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/quotations.html">
+										<i class="ti ti-file-symlink"></i><span>Quotations</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/enquiries.html">
+										<i class="ti ti-mail"></i><span>Enquiries</span>
+									</a>
+								</li>
+							</ul>							
+						</li>
+						<li class="menu-title"><span>Manage</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/customers.html">
+										<i class="ti ti-users-group"></i><span>Customers</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/drivers.html">
+										<i class="ti ti-user-bolt"></i><span>Drivers</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/locations.html">
+										<i class="ti ti-map-pin"></i><span>Locations</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>RENTALS</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/cars.html">
+										<i class="ti ti-car"></i><span>Cars</span>
+									</a>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-device-camera-phone"></i><span>Car Attributes</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/brands.html">Brands</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/types.html">Types</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/models.html">Models</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/transmissions.html">Transmissions</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/fuel.html">Fuels</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/color.html">Colors</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/steering.html">Steering</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/seats.html">Seats</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/cylinders.html">Cylinders</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/doors.html">Doors</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/features.html">Features</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/safety-features.html">Safty Features</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/extra-services.html">
+										<i class="ti ti-script-plus"></i><span>Extra Service</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/pricing.html">
+										<i class="ti ti-file-dollar"></i><span>Seasonal Pricing</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/inspections.html">
+										<i class="ti ti-dice-6"></i><span>Inspections</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/tracking.html">
+										<i class="ti ti-map-pin-pin"></i><span>Tracking</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/maintenance.html">
+										<i class="ti ti-color-filter"></i><span>Maintenance</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/reviews.html">
+										<i class="ti ti-star"></i><span>Reviews</span>
+									</a>
+								</li>
+							</ul>
+						</li>	
+						<li class="menu-title"><span>FINANCE & ACCOUNTS</span></li>					
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/invoices.html">
+										<i class="ti ti-file-invoice"></i><span>Invoices</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/payments.html">
+										<i class="ti ti-credit-card"></i><span>Payments</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>OTHERS</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chat.html">
+										<i class="ti ti-message"></i><span>Messages</span><span class="count">5</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/coupons.html">
+										<i class="ti ti-discount-2"></i><span>Coupons</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/newsletters.html">
+										<i class="ti ti-file-horizontal"></i><span>Newsletters</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>CMS</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/pages.html" >
+										<i class="ti ti-file-invoice"></i><span>Pages</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/menu-management.html" >
+										<i class="ti ti-menu-2"></i><span>Menu Management</span>
+									</a>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-device-desktop-analytics"></i><span>Blogs</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/blogs.html">All Blogs</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/blog-categories.html">Categories</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/blog-comments.html">Comments</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/blog-tags.html">Blog Tags</a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-map"></i><span>Locations</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/countries.html">Countries</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/state.html">States</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/city.html">Cities</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/testimonials.html">
+										<i class="ti ti-brand-hipchat"></i><span>Testimonials</span>
+									</a>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-question-mark"></i><span>FAQ’s</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/faq.html">FAQ's</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/faq-category.html">FAQ Category</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>SUPPORT</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/contact-messages.html" >
+										<i class="ti ti-messages"></i><span>Contact Messages</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/announcements.html">
+										<i class="ti ti-speakerphone"></i><span>Announcements</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/tickets.html">
+										<i class="ti ti-ticket"></i><span>Tickets</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>USER MANAGEMENT</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/users.html" >
+										<i class="ti ti-user-circle"></i><span>Users</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/roles-permissions.html">
+										<i class="ti ti-user-shield"></i><span>Roles & Permissions</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>REPORTS</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/income-report.html" >
+										<i class="ti ti-chart-histogram"></i><span>Income vs Expense</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/earnings-report.html">
+										<i class="ti ti-chart-line"></i><span>Earnings</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/rental-report.html">
+										<i class="ti ti-chart-infographic"></i><span>Rentals</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>AUTHENTICATION</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/login.html" >
+										<i class="ti ti-login"></i><span>Login</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/forgot-password.html">
+										<i class="ti ti-help-triangle"></i><span>Forgot Password</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/otp.html">
+										<i class="ti ti-mail-exclamation"></i><span>Email Verification</span>
+									</a>
+								</li>
+								<li>
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/reset-password.html">
+										<i class="ti ti-restore"></i><span>Reset Password</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>SETTINGS & CONFIGURATION</span></li>
+						<li>
+							<ul>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-user-cog"></i><span>Account Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/profile-setting.html">Profile</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/security-setting.html">Security</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/notifications-setting.html">Notifications</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/integrations-settings.html">Integrations</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/tracker-setting.html">Tracker</a>
+										</li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-world-cog"></i><span>Website Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/company-setting.html">Company Settings</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/localization-setting.html">Localization</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/prefixes.html">Prefixes</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/seo-setup.html">SEO Setup</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/language-setting.html">Language</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/maintenance-mode.html">Maintenance Mode</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/login-setting.html">Login & Register</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ai-configuration.html">AI Configuration</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/plugin-managers.html">Plugin Managers</a>
+										</li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-clock-cog"></i><span>Rental Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/rental-setting.html">Rental</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/insurance-setting.html">Insurance</a>
+										</li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-device-mobile-cog"></i><span>App Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/invoice-setting.html">Invoice Settings</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/invoice-template.html">Invoice Templates</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/signatures-setting.html">Signatures</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/custom-fields.html">Custom Fields</a>
+										</li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-device-desktop-cog"></i><span>System Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/email-setting.html">Email Settings</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/email-templates.html">Email Templates</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/sms-gateways.html">SMS Gateways</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/gdpr-cookies.html">GDPR Cookies</a>
+										</li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-settings-dollar"></i><span>Finance Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/payment-methods.html">Payment Methods</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/bank-accounts.html">Bank Accounts</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/tax-rates.html">Tax Rates</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/currencies.html">Currencies</a>
+										</li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-settings-2"></i><span>Other Settings</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/sitemap.html">Sitemap</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/clear-cache.html">Clear Cache</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/storage.html">Storage</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/cronjob.html">Cronjob</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/system-backup.html">System Backup</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/database-backup.html">Database Backup</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/system-update.html">System Update</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>UI Interface</span></li>
+						<li>
+							<ul>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-hierarchy"></i><span>Base UI</span><span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-alerts.html">Alerts</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-accordion.html">Accordion</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-avatar.html">Avatar</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-badges.html">Badges</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-borders.html">Border</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-buttons.html">Buttons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-buttons-group.html">Button Group</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-breadcrumb.html">Breadcrumb</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-cards.html">Card</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-carousel.html">Carousel</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-colors.html">Colors</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-dropdowns.html">Dropdowns</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-grid.html">Grid</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-images.html">Images</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-lightbox.html">Lightbox</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-media.html">Media</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-modals.html">Modals</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-offcanvas.html">Offcanvas</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-pagination.html">Pagination</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-popovers.html">Popovers</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-progress.html">Progress</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-placeholders.html">Placeholders</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-spinner.html">Spinner</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-sweetalerts.html">Sweet Alerts</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-nav-tabs.html">Tabs</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-toasts.html">Toasts</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-tooltips.html">Tooltips</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-typography.html">Typography</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-video.html">Video</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-sortable.html">Sortable</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-swiperjs.html">Swiperjs</a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-whirl"></i><span>Advanced UI</span><span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-ribbon.html">Ribbon</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-clipboard.html">Clipboard</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-drag-drop.html">Drag & Drop</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-rangeslider.html">Range Slider</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-rating.html">Rating</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-text-editor.html">Text Editor</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-counter.html">Counter</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-scrollbar.html">Scrollbar</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-stickynote.html">Sticky Note</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/ui-timeline.html">Timeline</a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-forms"></i><span>Forms</span><span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li class="submenu submenu-two">
+											<a href="javascript:void(0);">Form Elements<span class="menu-arrow inside-submenu"></span></a>
+											<ul>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-basic-inputs.html">Basic Inputs</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-checkbox-radios.html">Checkbox & Radios</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-input-groups.html">Input Groups</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-grid-gutters.html">Grid & Gutters</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-select.html">Form Select</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-mask.html">Input Masks</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-fileupload.html">File Uploads</a></li>
+											</ul>
+										</li>
+										<li class="submenu submenu-two">
+											<a href="javascript:void(0);">Layouts<span class="menu-arrow inside-submenu"></span></a>
+											<ul>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-horizontal.html">Horizontal Form</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-vertical.html">Vertical Form</a></li>
+												<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-floating-labels.html">Floating Labels</a></li>
+											</ul>
+										</li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-validation.html">Form Validation</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-select2.html">Select2</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-wizard.html">Form Wizard</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/form-pickers.html">Form Picker</a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-table"></i><span>Tables</span><span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/tables-basic.html">Basic Tables </a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/data-tables.html">Data Table </a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-chart-pie-3"></i>
+										<span>Charts</span><span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chart-apex.html">Apex Charts</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chart-c3.html">Chart C3</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chart-js.html">Chart Js</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chart-morris.html">Morris Charts</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chart-flot.html">Flot Charts</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/chart-peity.html">Peity Charts</a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-icons"></i>
+										<span>Icons</span><span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-fontawesome.html">Fontawesome Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-tabler.html">Tabler Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-bootstrap.html">Bootstrap Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-remix.html">Remix Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-feather.html">Feather Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-ionic.html">Ionic Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-material.html">Material Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-pe7.html">Pe7 Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-simpleline.html">Simpleline Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-themify.html">Themify Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-weather.html">Weather Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-typicon.html">Typicon Icons</a></li>
+										<li><a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/icon-flag.html">Flag Icons</a></li>
+									</ul>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-map-2"></i>
+										<span>Maps</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/maps-vector.html">Vector</a>
+										</li>
+										<li>
+											<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/maps-leaflet.html">Leaflet</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="menu-title"><span>Extras</span></li>
+						<li>
+							<ul>
+								<li>
+									<a href="javascript:void(0);"><i class="ti ti-file-shredder"></i><span>Documentation</span></a>
+								</li>
+								<li>
+									<a href="javascript:void(0);"><i class="ti ti-exchange"></i><span>Changelog</span></a>
+								</li>
+								<li class="submenu">
+									<a href="javascript:void(0);">
+										<i class="ti ti-menu-2"></i><span>Multi Level</span>
+										<span class="menu-arrow"></span>
+									</a>
+									<ul>
+										<li><a href="javascript:void(0);">Multilevel 1</a></li>
+										<li class="submenu submenu-two">
+											<a href="javascript:void(0);">Multilevel 2<span
+													class="menu-arrow inside-submenu"></span></a>
+											<ul>
+												<li><a href="javascript:void(0);">Multilevel 2.1</a></li>
+												<li class="submenu submenu-two submenu-three">
+													<a href="javascript:void(0);">Multilevel 2.2<span
+															class="menu-arrow inside-submenu inside-submenu-two"></span></a>
+													<ul>
+														<li><a href="javascript:void(0);">Multilevel 2.2.1</a></li>
+														<li><a href="javascript:void(0);">Multilevel 2.2.2</a></li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+										<li><a href="javascript:void(0);">Multilevel 3</a></li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Sidebar -->
+
+		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+			<div class="content me-4">
+                
+                <!-- Breadcrumb -->
+				<div class="d-md-flex d-block align-items-center justify-content-between page-breadcrumb mb-3">
+					<div class="my-auto mb-2">
+						<h4 class="mb-1">Calendar</h4>
+						<nav>
+							<ol class="breadcrumb mb-0">
+								<li class="breadcrumb-item">
+									<a href="https://dreamsrent.dreamstechnologies.com/html/template/admin/index.html">Home</a>
+								</li>
+								<li class="breadcrumb-item active" aria-current="page">Calendar</li>
+							</ol>
+						</nav>
+					</div>
+					<div class="d-flex my-xl-auto right-content align-items-center flex-wrap">
+                        <div class="mb-2">
+							<a href="javascript:void(0);" class="btn btn-primary d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#add_booking"><i class="ti ti-plus me-2"></i>Add New Booking</a>
+						</div>
+					</div>
+				</div>
+				<!-- /Breadcrumb -->
+
+                <div class="row">
+					<div class="col-md-10">
+						<ul class="nav nav-tabs nav-tabs-solid custom-nav-tabs bg-transparent mb-3" role="tablist">
+							<li class="nav-item" role="presentation"><a class="nav-link active" href="#">All Bookings</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link" href="#">In Progress</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link" href="#">Confirmed</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link" href="#">Completed</a></li>
+							<li class="nav-item" role="presentation"><a class="nav-link" href="#">Rejected</a></li>
+						</ul>
+					</div>
+					<div class="col-md-2">
+						<div class="text-end mb-3">
+                            <a href="#filtercollapse" class="filtercollapse coloumn d-inline-flex align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="filtercollapse">
+                                <i class="ti ti-filter me-1"></i> Filter<span class="badge badge-xs rounded-pill bg-danger ms-2">0</span>
+                            </a>
+                        </div>
+					</div>
+				</div>
+
+				<div class="collapse" id="filtercollapse">
+					<div class="filterbox mb-3 d-flex align-items-center">
+						<h6 class="me-3">Filters</h6>
+						<div class="dropdown me-2">
+							<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+								Cars
+							</a>
+							<ul class="dropdown-menu dropdown-menu-lg p-2">
+								<li>
+									<div class="top-search m-2">
+										<div class="top-search-group">
+											<span class="input-icon">
+												<i class="ti ti-search"></i>
+											</span>
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Ford Endeavour
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Ferrari 458 MM
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Ford Mustang 
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Toyota Tacoma 4
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Chevrolet Pick Truck
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Etios Carmen
+                                    </label>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown me-2">
+							<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+								Customer
+							</a>
+							<ul class="dropdown-menu dropdown-menu-lg p-2">
+								<li>
+									<div class="top-search m-2">
+										<div class="top-search-group">
+											<span class="input-icon">
+												<i class="ti ti-search"></i>
+											</span>
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">
+										Andrew Simons
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">David Steiger
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Darin Mabry
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">
+										Mark Neiman
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">
+										Jacob Johnson
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">
+										Walter Hartmann
+                                    </label>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown me-2">
+							<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+								Driver
+							</a>
+							<ul class="dropdown-menu dropdown-menu-lg p-2">
+								<li>
+									<div class="top-search m-2">
+										<div class="top-search-group">
+											<span class="input-icon">
+												<i class="ti ti-search"></i>
+											</span>
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Reuben Keen
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">William Jones
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Leonard Jandreau
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Adam Bolden
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Harvey Jimenez
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">William Ward
+                                    </label>
+								</li>
+							</ul>
+						</div>
+						<div class="dropdown me-2">
+							<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+								Rental Type
+							</a>
+							<ul class="dropdown-menu dropdown-menu-lg p-2">
+								<li>
+									<div class="top-search m-2">
+										<div class="top-search-group">
+											<span class="input-icon">
+												<i class="ti ti-search"></i>
+											</span>
+											<input type="text" class="form-control" placeholder="Search">
+										</div>
+									</div>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Sedan
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Hatchback
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">SUV
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Coupes
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Convertible
+                                    </label>
+								</li>
+								<li>
+									<label class="dropdown-item d-flex align-items-center rounded-1">
+                                        <input class="form-check-input m-0 me-2" type="checkbox">Pickup Truck
+                                    </label>
+								</li>
+							</ul>
+						</div>
+						<a href="javascript:void(0);" class="me-2 text-purple links">Apply</a>
+						<a href="javascript:void(0);" class="text-danger links">Clear All</a>
+					</div>
+				</div>
+				<div>
+					<div class="card mb-0">
+						<div class="card-body">			
+							<div class="calendar"></div>
+						</div>
+					</div>
+				</div>
+				
+            </div>			
+            <!-- Footer-->
+			<div class="footer d-sm-flex align-items-center justify-content-between bg-white p-3">
+				<p class="mb-0">
+                    <a href="javascript:void(0);">Privacy Policy</a>
+                    <a href="javascript:void(0);" class="ms-4">Terms of Use</a>
+                </p>
+				<p>&copy; 2025 Dreamsrent, Made with <span class="text-danger">❤</span> by <a href="javascript:void(0);" class="text-secondary">Dreams</a></p>
+			</div>
+			<!-- /Footer-->
+		</div>
+		<!-- /Page Wrapper -->
+
+		<!-- Event -->
+		<div class="modal fade" id="add_booking">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="d-inline-flex align-items-center">Create Booking</h4>
+						<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+							<i class="ti ti-x"></i>
+						</button>
+					</div>
+					<div class="wizard-form">
+						<fieldset id="first-field">
+							<div class="row">
+								<div class="col-lg-12">
+									<form action="https://dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html">
+										<div>
+											<div class="modal-body pb-0">
+												<div class="reservation-wizard mb-4">
+													<ul class="d-flex align-items-center flex-wrap row-gap-2">
+														<li class="d-flex align-items-center active me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-calendar"></i></span>
+															<h6>Car & Dates Info</h6>
+														</li>
+														<li class="d-flex align-items-center me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-user-check"></i></span>
+															<h6>Customer</h6>
+														</li>
+														<li class="d-flex align-items-center me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-float-center"></i></span>
+															<h6>Extra Services</h6>
+														</li>
+														<li class="d-flex align-items-center me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-file-invoice"></i></span>
+															<h6>Billing Details</h6>
+														</li>
+													</ul>
+												</div>
+												<div class="card card-bg">
+													<div class="card-body">
+														<h4 class="d-flex align-items-center"><i class="ti ti-info-circle me-2 text-secondary fs-24"></i>Basic Info</h4>
+													</div>
+												</div>
+												<div>
+													<div class="mb-3">
+														<h5 class="mb-1">Date & Time Of Travel</h5>
+														<p>Add Information on Date of Travel</p>
+													</div>
+													<div class="border-bottom mb-3 pb-3">
+														<div class="row gx-3">
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label class="form-label">Tarrif</label>
+																	<select class="select">
+																		<option>Weekly</option>
+																		<option>Daily</option>
+																		<option>Monthly</option>
+																		<option>Yearly</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label class="form-label">Rental Type</label>
+																	<select class="select">
+																		<option>Self Pickup</option>
+																		<option>Delivery</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label class="form-label">No of Passengers</label>
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+														</div>
+														<div class="row gx-3">
+															<div class="col-xl-6">
+																<div class="row gx-3">
+																	<div class="col-md-7">
+																		<div class="mb-3">
+																			<label class="form-label">Start Date <span class="text-danger"> *</span> </label>
+																			<div class="input-icon-end position-relative">
+																				<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+																				<span class="input-icon-addon">
+																					<i class="ti ti-calendar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-5">
+																		<div class="mb-3">
+																			<label class="form-label">Time <span class="text-danger"> *</span> </label>
+																			<div class="input-icon-end position-relative flex-fill">
+																				<input type="text" class="form-control timepicker" placeholder="">
+																				<span class="input-icon-addon">
+																					<i class="ti ti-clock"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+															<div class="col-xl-6">
+																<div class="row gx-3">
+																	<div class="col-md-7">
+																		<div class="mb-3">
+																			<label class="form-label">End Date <span class="text-danger"> *</span> </label>
+																			<div class="input-icon-end position-relative">
+																				<input type="text" class="form-control datetimepicker" placeholder="dd/mm/yyyy">
+																				<span class="input-icon-addon">
+																					<i class="ti ti-calendar"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-md-5">
+																		<div class="mb-3">
+																			<label class="form-label">Time <span class="text-danger"> *</span> </label>
+																			<div class="input-icon-end position-relative">
+																				<input type="text" class="form-control timepicker" placeholder="">
+																				<span class="input-icon-addon">
+																					<i class="ti ti-clock"></i>
+																				</span>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="row gx-3">
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label class="form-label">Pickup Location <span class="text-danger">*</span></label>
+																	<select class="select">
+																		<option>Select</option>
+																		<option>Los Angles</option>
+																		<option>New York City</option>
+																		<option>Houston</option>
+																		<option>Munich</option>
+																		<option>Montreal</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label class="form-label">Return Location <span class="text-danger">*</span></label>
+																	<select class="select">
+																		<option>Select</option>
+																		<option>Los Angles</option>
+																		<option>New York City</option>
+																		<option>Houston</option>
+																		<option>Munich</option>
+																		<option>Montreal</option>
+																	</select>
+																</div>
+															</div>
+															<div class="col-lg-4">
+																<div class="mb-3">
+																	<label class="form-label">Security Deposit </label>
+																	<input type="text" class="form-control">
+																</div>
+															</div>
+														</div>
+														<label class="d-flex align-items-center">
+															<input class="form-check-input m-0 me-2" type="checkbox">Return Same Location
+														</label>
+													</div>
+													<div class="row align-items-center">
+														<div class="col-lg-4">
+															<div class="mb-3">
+																<h5 class="mb-1">Select Vehicle</h5>
+																<p>Select Vehicle for your rental</p>
+															</div>
+														</div>
+														<div class="col-lg-8">
+															<div class="d-flex align-items-center justify-content-end flex-wrap row-gap-3 mb-3">
+																<div class="dropdown me-2">
+																	<a href="#filtercollapse2" class="filtercollapse coloumn d-inline-flex align-items-center" data-bs-toggle="collapse" role="button" aria-expanded="true" aria-controls="filtercollapse2">
+																		<i class="ti ti-filter me-1"></i> Filter <span class="badge badge-xs rounded-pill bg-danger ms-2">0</span>
+																	</a>
+																</div>
+																<div class="top-search me-2">
+																	<div class="top-search-group">
+																		<span class="input-icon">
+																			<i class="ti ti-search"></i>
+																		</span>
+																		<input type="text" class="form-control" placeholder="Search">
+																	</div>
+																</div>
+																<div>
+																	<a href="javascript:void(0);" class="btn btn-dark d-inline-flex align-items-center">
+																		<i class="ti ti-plus me-1"></i>Add New
+																	</a>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="collapse" id="filtercollapse2">
+														<div class="filterbox mb-3 px-3">
+															<div class="row align-items-center">
+																<div class="col-lg-10">
+																	<div class=" d-flex align-items-center flex-wrap row-gap-3">
+																		<div class="dropdown me-2">
+																			<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+																				Select Brand
+																			</a>
+																			<ul class="dropdown-menu dropdown-menu-lg p-2">
+																				<li>
+																					<div class="top-search m-2">
+																						<div class="top-search-group">
+																							<span class="input-icon">
+																								<i class="ti ti-search"></i>
+																							</span>
+																							<input type="text" class="form-control" placeholder="Search">
+																						</div>
+																					</div>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Toyota
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Honda
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Ford
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Chevrolet
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">BMW
+																					</label>
+																				</li>
+																			</ul>
+																		</div>
+																		<div class="dropdown me-2">
+																			<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+																				Select Type
+																			</a>
+																			<ul class="dropdown-menu dropdown-menu-lg p-2">
+																				<li>
+																					<div class="top-search m-2">
+																						<div class="top-search-group">
+																							<span class="input-icon">
+																								<i class="ti ti-search"></i>
+																							</span>
+																							<input type="text" class="form-control" placeholder="Search">
+																						</div>
+																					</div>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Economy
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Compact
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Sedan
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">SUV
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Luxury
+																					</label>
+																				</li>
+																			</ul>
+																		</div>
+																		<div class="dropdown me-2">
+																			<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+																				<i class="ti ti-badge me-1"></i>Select Model
+																			</a>
+																			<ul class="dropdown-menu dropdown-menu-lg p-2">
+																				<li>
+																					<div class="top-search m-2">
+																						<div class="top-search-group">
+																							<span class="input-icon">
+																								<i class="ti ti-search"></i>
+																							</span>
+																							<input type="text" class="form-control" placeholder="Search">
+																						</div>
+																					</div>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Urban Cruiser
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Fortuner
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">V8
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Q3
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Huracan
+																					</label>
+																				</li>
+																			</ul>
+																		</div>
+																		<div class="dropdown">
+																			<a href="javascript:void(0);" class="dropdown-toggle btn btn-white d-inline-flex align-items-center" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+																				<i class="ti ti-badge me-1"></i>Select Color
+																			</a>
+																			<ul class="dropdown-menu dropdown-menu-lg p-2">
+																				<li>
+																					<div class="top-search m-2">
+																						<div class="top-search-group">
+																							<span class="input-icon">
+																								<i class="ti ti-search"></i>
+																							</span>
+																							<input type="text" class="form-control" placeholder="Search">
+																						</div>
+																					</div>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">White
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Black
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Silver
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Gray
+																					</label>
+																				</li>
+																				<li>
+																					<label class="dropdown-item d-flex align-items-center rounded-1">
+																						<input class="form-check-input m-0 me-2" type="checkbox">Blue
+																					</label>
+																				</li>
+																			</ul>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-lg-2">
+																	<div class="d-flex align-items-center justify-content-end">
+																		<a href="javascript:void(0);" class="me-3 text-purple links">Apply</a>
+																		<a href="javascript:void(0);" class="text-danger links">Clear</a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="car-select">
+														<div class="card">
+															<div class="card-body">
+																<div class="row gy-3">
+																	<div class="col-lg-4">
+																		<div class="d-flex align-items-center">
+																			<div class="form-check form-check-md me-3">
+																				<input class="form-check-input" type="checkbox">
+																			</div>
+																			<span class="avatar flex-shrink-0 me-2">
+																				<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/car/car-01.jpg" alt="">
+																			</span>
+																			<div>
+																				<p class="mb-0">Sedan</p>
+																				<h6 class="fs-14">Ford Endeavour</h6>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-5">
+																		<div class="row gy-3">
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Color</p>
+																					<h6 class="fs-14 d-inline-flex align-items-center"><i class="ti ti-square-filled text-warning me-1"></i>Yellow</h6>
+																				</div>
+																			</div>
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Year</p>
+																					<h6 class="fs-14">2003</h6>
+																				</div>
+																			</div>
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Price</p>
+																					<h6 class="fs-14">$800<span class="text-gray-5">/day</span></h6>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-3">
+																		<div class="float-md-end">
+																			<span class="badge bg-orange-transparent d-inline-flex align-items-center badge-sm mb-1">
+																				<i class="ti ti-point-filled me-1"></i>Requested
+																			</span>
+																			<h6 class="fs-14">2881 Jarvis Street</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="card">
+															<div class="card-body">
+																<div class="row gy-3">
+																	<div class="col-lg-4">
+																		<div class="d-flex align-items-center">
+																			<div class="form-check form-check-md me-3">
+																				<input class="form-check-input" type="checkbox">
+																			</div>
+																			<span class="avatar flex-shrink-0 me-2">
+																				<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/car/car-02.jpg" alt="">
+																			</span>
+																			<div>
+																				<p class="mb-1">Sports</p>
+																				<h6 class="fs-14">Ferrari 458 MM</h6>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-5">
+																		<div class="row gy-3">
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Color</p>
+																					<h6 class="fs-14 d-inline-flex align-items-center"><i class="ti ti-square-filled text-danger me-1"></i>Red</h6>
+																				</div>
+																			</div>
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Year</p>
+																					<h6 class="fs-14">2003</h6>
+																				</div>
+																			</div>
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Price</p>
+																					<h6 class="fs-14">$120<span class="text-gray-5">/day</span></h6>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-3">
+																		<div class="float-md-end">
+																			<span class="badge bg-pink-transparent d-inline-flex align-items-center badge-sm mb-1">
+																				<i class="ti ti-point-filled me-1"></i>Reserved
+																			</span>
+																			<h6 class="fs-14">2881 Jarvis Street</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="card">
+															<div class="card-body">
+																<div class="row gy-3">
+																	<div class="col-lg-4">
+																		<div class="d-flex align-items-center">
+																			<div class="form-check form-check-md me-3">
+																				<input class="form-check-input" type="checkbox">
+																			</div>
+																			<span class="avatar flex-shrink-0 me-2">
+																				<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/car/car-03.jpg" alt="">
+																			</span>
+																			<div>
+																				<p class="mb-0">Sedan</p>
+																				<h6 class="fs-14">Acura Sport </h6>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-5">
+																		<div class="row gy-3">
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Color</p>
+																					<h6 class="fs-14 d-inline-flex align-items-center"><i class="ti ti-square-filled text-info me-1"></i>Blue</h6>
+																				</div>
+																			</div>
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Year</p>
+																					<h6 class="fs-14">2003</h6>
+																				</div>
+																			</div>
+																			<div class="col-md-4">
+																				<div>
+																					<p class="mb-1">Price</p>
+																					<h6 class="fs-14">$60<span class="text-gray-5">/day</span></h6>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div class="col-lg-3">
+																		<div class="float-md-end">
+																			<span class="badge bg-success-transparent d-inline-flex align-items-center badge-sm mb-1">
+																				<i class="ti ti-point-filled me-1"></i>Available
+																			</span>
+																			<h6 class="fs-14">2881 Jarvis Street</h6>
+																		</div>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<div class="d-flex align-items-center justify-content-end">
+													<div>
+														<button class="btn btn-light me-2" type="button"><i class="ti ti-chevron-left me-1"></i>Cancel</button>
+													</div> 
+													<div>
+														<button class="btn btn-primary wizard-next-btn" type="button">Add Customer <i class="ti ti-chevron-right ms-1"></i></button>
+													</div>  
+												</div> 
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<div class="row">
+								<div class="col-lg-12">
+									<form action="https://dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html">
+										<div>
+											<div class="modal-body pb-0">
+												<div class="reservation-wizard mb-4">
+													<ul class="d-flex align-items-center flex-wrap row-gap-2">
+														<li class="d-flex align-items-center activated me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-calendar"></i></span>
+															<span class="active-check me-2"><i class="ti ti-check"></i></span>
+															<h6>Car & Dates Info</h6>
+														</li>
+														<li class="d-flex align-items-center active me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-user-check"></i></span>
+															<h6>Customer</h6>
+														</li>
+														<li class="d-flex align-items-center me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-float-center"></i></span>
+															<h6>Extra Services</h6>
+														</li>
+														<li class="d-flex align-items-center me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-file-invoice"></i></span>
+															<h6>Billing Details</h6>
+														</li>
+													</ul>
+												</div>
+												<div class="card card-bg">
+													<div class="card-body">
+														<h4 class="d-flex align-items-center"><i class="ti ti-user-check me-2 text-secondary fs-24"></i>Customer</h4>
+													</div>
+												</div>
+												<div class="border-bottom mb-3">
+													<div class="mb-3">
+														<h6 class="mb-1">Select Customer </h6>
+														<p>Add Information of Customer</p>
+													</div>
+													<div class="mb-3">
+														<label class="form-label">Customer <span class="text-danger">*</span></label>
+														<div class="d-flex align-items-center">
+															<div class="flex-fill ">
+																<select class="select">
+																	<option>Select</option>
+																	<option>Andrew Simons</option>
+																	<option>David Steiger</option>
+																	<option>Darin Mabry</option>
+																	<option>Mark Neiman</option>
+																</select>
+															</div>
+															<div class="ms-4">
+																<a href="javascript:void(0);" class="btn btn-dark d-inline-flex align-items-center">
+																	<i class="ti ti-plus me-1"></i>Add New
+																</a>
+															</div>
+														</div>
+													</div>
+													<div class="card bg-light">
+														<div class="card-body">
+															<div class="row align-items-center gy-3">
+																<div class="col-md-11">
+																	<div class="row gx-2 gy-3">
+																		<div class="col-md-4">
+																			<div class="d-flex align-items-center">
+																				<span class="avatar avatar-rounded flex-shrink-0 me-2">
+																					<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/customer/customer-03.jpg" alt="">
+																				</span>
+																				<div>
+																					<h6 class="fs-14 mb-1">Andrew Simons</h6>
+																					<span class="badge bg-info-transparent">15 Bookings</span>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-md-4">
+																			<div>
+																				<h6 class="fs-14 mb-1">Phone</h6>
+																				<p>+1 58514 45546</p>
+																			</div>
+																		</div>
+																		<div class="col-md-4">
+																			<div>
+																				<h6 class="fs-14 mb-1">Email</h6>
+																				<p><a href="https://dreamsrent.dreamstechnologies.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="70111e140215074344301508111d001c155e131f1d">[email&#160;protected]</a></p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-1">
+																	<div class="d-flex align-items-center justify-content-end">
+																		<a href="javascript:void(0);" class="me-2"><i class="ti ti-eye"></i></a>
+																		<a href="javascript:void(0);"><i class="ti ti-trash"></i></a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="mb-3">
+														<h6 class="mb-1">Select Driver </h6>
+														<p>Add Information of Driver</p>
+													</div>
+													<div class="mb-3">
+														<label class="form-label">Driver <span class="text-danger">*</span></label>
+														<div class="d-flex align-items-center">
+															<div class="flex-fill ">
+																<select class="select">
+																	<option>Select</option>
+																	<option>Reuben Keen</option>
+																	<option>William Jones</option>
+																	<option>Leonard Jandreau</option>
+																	<option>Adam Bolden</option>
+																</select>
+															</div>
+															<div class="ms-4">
+																<a href="javascript:void(0);" class="btn btn-dark d-inline-flex align-items-center">
+																	<i class="ti ti-plus me-1"></i>Add New
+																</a>
+															</div>
+														</div>
+													</div>
+													<div class="d-flex align-items-center justify-content-end mb-3">
+														<a href="javascript:void(0);" class="text-purple text-decoration-underline fw-medium" data-bs-toggle="modal" data-bs-target="#edit_price">Edit Price</a>
+													</div>
+													<div class="card bg-light">
+														<div class="card-body">
+															<div class="row align-items-center gy-3">
+																<div class="col-md-11">
+																	<div class="row gx-2 gy-3">
+																		<div class="col-md-5">
+																			<div class="d-flex align-items-center">
+																				<div class="form-check form-check-md me-3">
+																					<input class="form-check-input" type="checkbox">
+																				</div>
+																				<span class="avatar avatar-rounded flex-shrink-0 me-2">
+																					<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/customer/customer-01.jpg" alt="">
+																				</span>
+																				<div>
+																					<h6 class="fs-14 mb-1">Reuben Keen</h6>
+																					<span class="badge bg-violet-transparent">50 Rides</span>
+																				</div>
+																			</div>
+																		</div>
+																		<div class="col-md-4">
+																			<div>
+																				<h6 class="fs-14 mb-1">Phone</h6>
+																				<p>+1 58514 45546</p>
+																			</div>
+																		</div>
+																		<div class="col-md-3">
+																			<div>
+																				<h6 class="fs-14 mb-1">Price</h6>
+																				<p>$18 </p>
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-md-1">
+																	<div class="d-flex align-items-center justify-content-end">
+																		<a href="javascript:void(0);" class="me-2"><i class="ti ti-eye"></i></a>
+																		<a href="javascript:void(0);"><i class="ti ti-trash"></i></a>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<div class="d-flex align-items-center justify-content-end">
+													<div class="field-btns">
+														<button class="btn btn-light wizard-prev-btn me-2" type="button"><i class="ti ti-chevron-left me-1"></i>Back</button>
+													</div> 
+													<div class="field-btns">
+														<button class="btn btn-primary wizard-next-btn" type="button">Add Extra Services<i class="ti ti-chevron-right ms-1"></i></button>
+													</div>  
+												</div> 
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<div class="row">
+								<div class="col-lg-12">
+									<form action="https://dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html">
+										<div>
+											<div class="modal-body pb-0">
+												<div class="reservation-wizard mb-4">
+													<ul class="d-flex align-items-center flex-wrap row-gap-2">
+														<li class="d-flex align-items-center activated me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-calendar"></i></span>
+															<span class="active-check me-2"><i class="ti ti-check"></i></span>
+															<h6>Car & Dates Info</h6>
+														</li>
+														<li class="d-flex align-items-center activated  me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-user-check"></i></span>
+															<span class="active-check me-2"><i class="ti ti-check"></i></span>
+															<h6>Customer</h6>
+														</li>
+														<li class="d-flex align-items-center active me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-float-center"></i></span>
+															<h6>Extra Services</h6>
+														</li>
+														<li class="d-flex align-items-center me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-file-invoice"></i></span>
+															<h6>Billing Details</h6>
+														</li>
+													</ul>
+												</div>
+												<div class="card card-bg">
+													<div class="card-body">
+														<h4 class="d-flex align-items-center"><i class="ti ti-float-center me-2 text-secondary fs-24"></i>Extra Service</h4>
+													</div>
+												</div>
+												<div class="border-bottom mb-3">
+													<div class="mb-3">
+														<h6 class="mb-1">Select Extra Services</h6>
+														<p>Add extra services for your rental</p>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<div class="custom-checkbox active">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-1" checked>
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-1">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Navigation</span>
+																	<span class="d-block">Using GPS while travel</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-2">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-2">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Wi-Fi Hotspot</span>
+																	<span class="d-block">Constant portable internet</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-3">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-3">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Fuel Pre-Purchase</span>
+																	<span class="d-block">Full tank, return hassle-free</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">One Time</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-4">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-4">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Satellite Radio</span>
+																	<span class="d-block"> Unlimited premium music</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-5">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-5">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">USB Charger</span>
+																	<span class="d-block">Fast charging for devices</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-6">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-6">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Toll Pass</span>
+																	<span class="d-block">Skip toll booth lines</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">One Time</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-7">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-7">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Dash Cam</span>
+																	<span class="d-block">Records trips extra security</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-8">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-8">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Express Check-in/out</span>
+																	<span class="d-block">Fast pickup & return process</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox active">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-9" checked>
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-9">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Child Safety Seats</span>
+																	<span class="d-block">Secure infant/toddler car seat</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div class="col-md-6">
+														<div class="custom-checkbox">
+															<div class="form-check form-check-md">
+																<input class="form-check-input" type="checkbox" id="custom-check-10">
+															</div>
+															<div class="d-flex align-items-center justify-content-between">
+																<label class="form-check-label ms-2 ps-4" for="custom-check-10">
+																	<span class="fw-semibold text-gray-9 d-block mb-1">Roadside Assistance</span>
+																	<span class="d-block">24/7 emergency car support</span>
+																</label>
+																<div class="text-end">
+																	<p class="mb-1">Per Day</p>
+																	<h6>$10</h6>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<div class="d-flex align-items-center justify-content-end">
+													<div class="field-btns">
+														<button class="btn btn-light wizard-prev-btn me-2" type="button"><i class="ti ti-chevron-left me-1"></i>Back</button>
+													</div> 
+													<div class="field-btns">
+														<button class="btn btn-primary wizard-next-btn" type="button">Add Extra Services<i class="ti ti-chevron-right ms-1"></i></button>
+													</div>  
+												</div> 
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</fieldset>
+						<fieldset>
+							<div class="row">
+								<div class="col-lg-12">
+									<form action="https://dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html">
+										<div>
+											<div class="modal-body pb-0">
+												<div class="reservation-wizard mb-4">
+													<ul class="d-flex align-items-center flex-wrap row-gap-2">
+														<li class="d-flex align-items-center activated me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-calendar"></i></span>
+															<span class="active-check me-2"><i class="ti ti-check"></i></span>
+															<h6>Car & Dates Info</h6>
+														</li>
+														<li class="d-flex align-items-center activated  me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-user-check"></i></span>
+															<span class="active-check me-2"><i class="ti ti-check"></i></span>
+															<h6>Customer</h6>
+														</li>
+														<li class="d-flex align-items-center activated me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-float-center"></i></span>
+															<span class="active-check me-2"><i class="ti ti-check"></i></span>
+															<h6>Extra Services</h6>
+														</li>
+														<li class="d-flex align-items-center active me-2">
+															<span class="me-2 wizard-icon"><i class="ti ti-file-invoice"></i></span>
+															<h6>Billing Details</h6>
+														</li>
+													</ul>
+												</div>
+												<div class="card card-bg">
+													<div class="card-body">
+														<h4 class="d-flex align-items-center"><i class="ti ti-file-invoice me-2 text-secondary fs-24"></i>Billing Details</h4>
+													</div>
+												</div>
+												<div class="border-bottom mb-3">
+													<div class="mb-3">
+														<h6 class="mb-1">Rent & Service Billing</h6>
+														<p>Add extra services for your rental</p>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="mb-3">
+																<div class="d-flex align-items-center justify-content-between">
+																	<label class="form-label">Base Kilometers (Per Day)</label>
+																	<label class="d-flex align-items-center">
+																		<input class="form-check-input m-0 me-2" type="checkbox">Unlimited
+																	</label>
+																</div>
+																<input type="text" class="form-control">
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="mb-3">
+																<label class="form-label">Kilometers Extra Price </label>
+																<input type="text" class="form-control">
+															</div>
+														</div>
+													</div>
+												</div>
+												<div>
+													<div class="d-flex align-items-center justify-content-between mb-3">
+														<div>
+															<h6 class="mb-1">Insurance</h6>
+															<p>Add Insurance of Your Ride</p>
+														</div>
+														<div class="form-check form-check-md form-switch">
+															<input class="form-check-input" type="checkbox" role="switch" id="switch-sm">
+															<label class="form-check-label mt-0" for="switch-sm">Enable</label>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<div class="custom-checkbox active">
+																<div class="form-check form-check-md">
+																	<input class="form-check-input" type="checkbox" id="custom-check-11" checked>
+																</div>
+																<div class="d-flex align-items-center justify-content-between">
+																	<label class="form-check-label ms-2 ps-4" for="custom-check-11">
+																		<span class="fw-semibold text-gray-9 d-block mb-1">Full Premium Insurance</span>
+																		<span class="d-block text-info">+4 Benefits<i class="ti ti-info-circle-filled text-gray-5 ms-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="No additional charges for emergency roadside services"></i></span>
+																	</label>
+																	<div class="text-end">
+																		<p class="mb-1">Onetime Ride</p>
+																		<h6>$200</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<div class="custom-checkbox">
+																<div class="form-check form-check-md">
+																	<input class="form-check-input" type="checkbox" id="custom-check-12">
+																</div>
+																<div class="d-flex align-items-center justify-content-between">
+																	<label class="form-check-label ms-2 ps-4" for="custom-check-12">
+																		<span class="fw-semibold text-gray-9 d-block mb-1">Satellite Radio</span>
+																		<span class="d-block text-info">+6 Benefits<i class="ti ti-info-circle-filled text-gray-5 ms-1" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Quick assistance for unexpected breakdowns"></i></span>
+																	</label>
+																	<div class="text-end">
+																		<p class="mb-1">Onetime Ride</p>
+																		<h6>$250</h6>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="modal-footer">
+												<div class="d-flex align-items-center justify-content-end">
+													<div class="field-btns">
+														<button class="btn btn-light wizard-prev-btn me-2" type="button"><i class="ti ti-chevron-left me-1"></i>Back</button>
+													</div> 
+													<div class="field-btns">
+														<button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#reservation_completed">Finish & Save<i class="ti ti-chevron-right ms-1"></i></button>
+													</div>  
+												</div> 
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Event -->
+
+		<!-- Completed -->
+		<div class="modal fade" id="reservation_completed">
+			<div class="modal-dialog modal-dialog-centered modal-sm">
+				<div class="modal-content">
+					<div class="modal-body text-center">
+						<form action="https://dreamsrent.dreamstechnologies.com/html/template/admin/reservation-details.html">
+							<span class="avatar avatar-lg bg-transparent-success rounded-circle text-success mb-3">
+								<i class="ti ti-check fs-26"></i>
+							</span>
+							<h4 class="mb-1">Created Successful</h4>
+							<p class="mb-3">Reservation created for the <span class="text-gray-9">“Ford Fiesta” </span> on <span class="text-gray-9">“24 Feb 2025”</span></p>
+							<div class="d-flex justify-content-center">
+								<button type="submit" class="btn btn-primary w-100">View Details</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Completed -->
+
+		<!-- Event -->
+		<div class="modal fade" id="event_modal">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="d-inline-flex align-items-center">Booking Details<a href="javascript:void(0);" class="ms-2"><i class="ti ti-edit"></i></a></h4>
+						<button type="button" class="btn-close custom-btn-close" data-bs-dismiss="modal" aria-label="Close">
+							<i class="ti ti-x"></i>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="border-bottom mb-3">
+							<div class="border rounded p-3 bg-light mb-3">
+								<div class="row">
+									<div class="col-6">
+										<div class="d-flex align-items-center">
+											<span class="avatar flex-shrink-0 me-2">
+												<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/car/car-01.jpg" alt="">
+											</span>
+											<div>
+												<h6 class="fs-14 mb-1">Ford Endeavour</h6>
+												<p>Sedan</p>
+											</div>
+										</div>
+									</div>
+									<div class="col-3">
+										<div>
+											<h6 class="fs-14 mb-1">Price</h6>
+											<p class="fs-14 text-gray-9">$60<span class="text-gray-5 fw-normal">/day</span></p>
+										</div>
+									</div>
+									<div class="col-3">
+										<div>
+											<h6 class="fs-14 mb-1">Status</h6>
+											<span class="badge badge-soft-success d-inline-flex align-items-center badge-sm">
+												<i class="ti ti-point-filled me-1"></i>Completed
+											</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="border-bottom mb-3">
+							<div class="d-flex align-items-center justify-content-between mb-3">
+								<h6 class="fw-medium fs-14">Start Date</h6>
+								<p>10 Feb 2025, 12:00 PM</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-3">
+								<h6 class="fw-medium fs-14">End Date</h6>
+								<p>11 Feb 2025, 01:00 PM</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-3">
+								<h6 class="fw-medium fs-14">Rental Period</h6>
+								<p>2 Days</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-3">
+								<h6 class="fw-medium fs-14">Driving Type</h6>
+								<p>Self</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-3">
+								<h6 class="fw-medium fs-14">Pickup Location</h6>
+								<p>2nd Avenue, Lasvegas</p>
+							</div>
+							<div class="d-flex align-items-center justify-content-between mb-3">
+								<h6 class="fw-medium fs-14">Return Location</h6>
+								<p>4th Street, Newyork</p>
+							</div>
+						</div>
+						<div class="border-bottom mb-3">
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="mb-3">
+									<h6 class="d-inline-flex align-items-center fs-14 fw-medium ">Customer</h6>
+								</div>
+								<div class="d-flex align-items-center mb-3">
+									<span class="avatar avatar-rounded flex-shrink-0 me-2">
+										<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/customer/customer-02.jpg" alt="">
+									</span>
+									<div>
+										<h6 class="fs-14 fw-medium mb-1">Andrew Simons</h6>
+										<p>+1 56598 98956</p>
+									</div>
+								</div>
+							</div>
+							<div class="d-flex align-items-center justify-content-between">
+								<div class="mb-3">
+									<h6 class="d-inline-flex align-items-center fs-14 fw-medium ">Driver</h6>
+								</div>
+								<div class="d-flex align-items-center mb-3">
+									<span class="avatar avatar-rounded flex-shrink-0 me-2">
+										<img src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/img/customer/customer-01.jpg" alt="">
+									</span>
+									<div>
+										<h6 class="fs-14 fw-medium mb-1">Reuben Keen</h6>
+										<p>+1 56598 98956</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex align-items-center justify-content-between">
+							<h6>Total Price</h6>
+							<h6>$120</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- /Event -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	
+
+	<!-- jQuery -->
+	<script data-cfasync="false" src="https://dreamsrent.dreamstechnologies.com/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/jquery-3.7.1.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Bootstrap Core JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/bootstrap.bundle.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Feather Icon JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/feather.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Slimscroll JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/jquery.slimscroll.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Fullcalendar JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/fullcalendar/index.global.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/fullcalendar/calendar-data.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Daterangepikcer JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/moment.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/daterangepicker/daterangepicker.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/bootstrap-datetimepicker.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Select2 JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/plugins/select2/js/select2.min.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+	<!-- Custom JS -->
+	<script src="https://dreamsrent.dreamstechnologies.com/html/template/admin/assets/js/script.js" type="a531e3ae8c78c233dcdfe764-text/javascript"></script>
+
+<script src="https://dreamsrent.dreamstechnologies.com/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="a531e3ae8c78c233dcdfe764-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"96faa437dd306262","version":"2025.8.0","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"token":"3ca157e612a14eccbb30cf6db6691c29","b":1}' crossorigin="anonymous"></script>
+</body>
+
+
+<!-- Mirrored from dreamsrent.dreamstechnologies.com/html/template/admin/calendar.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 15 Aug 2025 18:18:55 GMT -->
+</html>

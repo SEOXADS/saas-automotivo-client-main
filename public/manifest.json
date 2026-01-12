@@ -1,0 +1,165 @@
+{
+  "name": "Portal de Veículos - Omega Veículos",
+  "short_name": "Omega Veículos",
+  "description": "Portal completo de veículos usados e seminovos. Encontre o carro ideal com as melhores condições de pagamento e financiamento.",
+  "start_url": "/portal",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "scope": "/portal",
+  "lang": "pt-BR",
+  "categories": ["automotive", "shopping", "business"],
+  "icons": [
+    {
+      "src": "/portal/assets/img/logo/logo-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/portal/assets/img/logo/logo-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/portal/assets/img/logo/logo-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/portal/assets/img/logo/logo-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/portal/assets/img/logo/logo-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/portal/assets/img/logo/logo-48x48.png",
+      "sizes": "48x48",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/portal/assets/img/screenshots/desktop-home.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Página inicial do portal de veículos"
+    },
+    {
+      "src": "/portal/assets/img/screenshots/mobile-home.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Página inicial mobile"
+    },
+    {
+      "src": "/portal/assets/img/screenshots/desktop-vehicles.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Lista de veículos"
+    },
+    {
+      "src": "/portal/assets/img/screenshots/mobile-vehicles.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Lista de veículos mobile"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Buscar Veículos",
+      "short_name": "Buscar",
+      "description": "Buscar veículos por marca, modelo e ano",
+      "url": "/portal/vehicles",
+      "icons": [
+        {
+          "src": "/portal/assets/img/icons/search-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contato",
+      "short_name": "Contato",
+      "description": "Entre em contato conosco",
+      "url": "/portal/contato",
+      "icons": [
+        {
+          "src": "/portal/assets/img/icons/contact-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Sobre Nós",
+      "short_name": "Sobre",
+      "description": "Conheça nossa empresa",
+      "url": "/portal/sobre",
+      "icons": [
+        {
+          "src": "/portal/assets/img/icons/about-96x96.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [
+    {
+      "platform": "web",
+      "url": "https://omegaveiculos.com.br/portal"
+    }
+  ],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "handle_links": "preferred",
+  "protocol_handlers": [
+    {
+      "protocol": "web+omegaveiculos",
+      "url": "/portal/vehicles?q=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": "/portal/upload",
+      "accept": {
+        "image/*": [".jpg", ".jpeg", ".png", ".webp"]
+      }
+    }
+  ],
+  "share_target": {
+    "action": "/portal/share",
+    "method": "POST",
+    "enctype": "multipart/form-data",
+    "params": {
+      "title": "title",
+      "text": "text",
+      "url": "url",
+      "files": [
+        {
+          "name": "image",
+          "accept": ["image/*"]
+        }
+      ]
+    }
+  },
+  "dir": "ltr",
+  "iarc_rating_id": "e84b072d-71b3-4d3e-86ae-31a8ce4e53b7"
+}

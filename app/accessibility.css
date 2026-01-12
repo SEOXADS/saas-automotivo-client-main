@@ -1,0 +1,327 @@
+/* Estilos de Acessibilidade */
+
+/* Remover sublinhado dos links por padrão */
+a {
+  text-decoration: none !important;
+}
+
+/* Mostrar sublinhado apenas quando selecionado/focado */
+a:focus,
+a:active,
+a:visited:focus,
+a:visited:active {
+  text-decoration: underline !important;
+}
+
+/* Para links com classe específica que precisam de sublinhado */
+a.underline {
+  text-decoration: underline !important;
+}
+
+/* Animação da seta piscante no mobile */
+@keyframes pulse-arrow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-arrow {
+  animation: pulse-arrow 2s ease-in-out infinite;
+}
+
+/* Tamanhos de fonte */
+.font-small {
+  font-size: 0.875rem; /* 14px */
+}
+
+.font-small h1 { font-size: 1.5rem; }
+.font-small h2 { font-size: 1.25rem; }
+.font-small h3 { font-size: 1.125rem; }
+.font-small h4 { font-size: 1rem; }
+.font-small h5 { font-size: 0.875rem; }
+.font-small h6 { font-size: 0.75rem; }
+
+.font-normal {
+  font-size: 1rem; /* 16px - padrão */
+}
+
+.font-large {
+  font-size: 1.125rem; /* 18px */
+}
+
+.font-large h1 { font-size: 2.25rem; }
+.font-large h2 { font-size: 1.875rem; }
+.font-large h3 { font-size: 1.5rem; }
+.font-large h4 { font-size: 1.25rem; }
+.font-large h5 { font-size: 1.125rem; }
+.font-large h6 { font-size: 1rem; }
+
+.font-extra-large {
+  font-size: 1.25rem; /* 20px */
+}
+
+.font-extra-large h1 { font-size: 2.5rem; }
+.font-extra-large h2 { font-size: 2rem; }
+.font-extra-large h3 { font-size: 1.75rem; }
+.font-extra-large h4 { font-size: 1.5rem; }
+.font-extra-large h5 { font-size: 1.25rem; }
+.font-extra-large h6 { font-size: 1.125rem; }
+
+/* Alto contraste */
+.high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #ffffff;
+  --text-primary: #ffffff;
+  --text-secondary: #000000;
+  --border-primary: #ffffff;
+  --accent-primary: #ffff00;
+}
+
+.high-contrast body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.high-contrast .bg-white {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border: 2px solid var(--border-primary) !important;
+}
+
+.high-contrast .bg-gray-50,
+.high-contrast .bg-gray-100 {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+  border: 1px solid var(--border-primary) !important;
+}
+
+.high-contrast .text-gray-600,
+.high-contrast .text-gray-700,
+.high-contrast .text-gray-800,
+.high-contrast .text-gray-900 {
+  color: var(--text-secondary) !important;
+}
+
+.high-contrast .text-orange-500,
+.high-contrast .text-orange-600 {
+  color: var(--accent-primary) !important;
+}
+
+.high-contrast .border-gray-200,
+.high-contrast .border-gray-300 {
+  border-color: var(--border-primary) !important;
+}
+
+.high-contrast button,
+.high-contrast .btn {
+  border: 2px solid var(--border-primary) !important;
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+}
+
+.high-contrast button:hover,
+.high-contrast .btn:hover {
+  background-color: var(--accent-primary) !important;
+  color: var(--text-secondary) !important;
+}
+
+/* Modo escuro */
+.dark-mode {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --bg-tertiary: #404040;
+  --text-primary: #ffffff;
+  --text-secondary: #e5e5e5;
+  --text-muted: #a0a0a0;
+  --border-primary: #404040;
+  --accent-primary: #3b82f6;
+}
+
+.dark-mode body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .bg-white {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .bg-gray-50 {
+  background-color: var(--bg-tertiary) !important;
+}
+
+.dark-mode .bg-gray-100 {
+  background-color: var(--bg-secondary) !important;
+}
+
+.dark-mode .text-gray-600 {
+  color: var(--text-muted) !important;
+}
+
+.dark-mode .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+.dark-mode .text-gray-800,
+.dark-mode .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+.dark-mode .border-gray-200 {
+  border-color: var(--border-primary) !important;
+}
+
+.dark-mode .border-gray-300 {
+  border-color: var(--border-primary) !important;
+}
+
+.dark-mode .shadow-sm,
+.dark-mode .shadow-lg {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Reduzir animações */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+.reduce-motion .animate-spin {
+  animation: none !important;
+}
+
+.reduce-motion .animate-pulse {
+  animation: none !important;
+}
+
+.reduce-motion .animate-bounce {
+  animation: none !important;
+}
+
+/* Modo leitor de tela */
+.screen-reader-mode {
+  /* Melhorar contraste para leitores de tela */
+  --text-primary: #000000;
+  --text-secondary: #333333;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+}
+
+.screen-reader-mode body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+}
+
+.screen-reader-mode .bg-white {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}
+
+.screen-reader-mode .text-gray-600,
+.screen-reader-mode .text-gray-700 {
+  color: var(--text-secondary) !important;
+}
+
+/* Melhorar foco para navegação por teclado */
+*:focus {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+}
+
+.high-contrast *:focus {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 2px !important;
+}
+
+/* Melhorar contraste de links */
+a {
+  text-decoration: underline;
+}
+
+.high-contrast a {
+  text-decoration: underline;
+  color: #ffff00 !important;
+}
+
+/* Melhorar contraste de botões */
+button:focus,
+.btn:focus {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+}
+
+.high-contrast button:focus,
+.high-contrast .btn:focus {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 2px !important;
+}
+
+/* Melhorar contraste de inputs */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+  border-color: #3b82f6 !important;
+}
+
+.high-contrast input:focus,
+.high-contrast textarea:focus,
+.high-contrast select:focus {
+  outline: 3px solid #ffff00 !important;
+  outline-offset: 2px !important;
+  border-color: #ffff00 !important;
+}
+
+/* Responsividade para acessibilidade */
+@media (max-width: 768px) {
+  .font-extra-large {
+    font-size: 1.125rem;
+  }
+
+  .font-extra-large h1 { font-size: 2rem; }
+  .font-extra-large h2 { font-size: 1.75rem; }
+  .font-extra-large h3 { font-size: 1.5rem; }
+}
+
+/* Melhorar contraste de imagens em modo escuro */
+.dark-mode img {
+  opacity: 0.9;
+}
+
+.high-contrast img {
+  filter: contrast(1.2) brightness(1.1);
+}
+
+/* Melhorar contraste de tabelas */
+.high-contrast table {
+  border: 2px solid var(--border-primary) !important;
+}
+
+.high-contrast th,
+.high-contrast td {
+  border: 1px solid var(--border-primary) !important;
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-secondary) !important;
+}
+
+.dark-mode table {
+  border: 1px solid var(--border-primary) !important;
+}
+
+.dark-mode th,
+.dark-mode td {
+  border: 1px solid var(--border-primary) !important;
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-primary) !important;
+}

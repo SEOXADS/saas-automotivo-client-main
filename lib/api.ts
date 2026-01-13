@@ -32,7 +32,7 @@ const api: AxiosInstance = axios.create({
 })
 
 // Interceptor para adicionar token de autenticação
-api.interceptors.request.use(
+/*api.interceptors.request.use(
   (config) => {
     const token = getAuthToken()
     console.log('🔐 Interceptor - Token encontrado:', token ? `${token.substring(0, 20)}...` : 'null')
@@ -62,7 +62,7 @@ api.interceptors.request.use(
   (error) => {
     return Promise.reject(error)
   }
-)
+)*/
 
 // Interceptor para tratamento de respostas
 api.interceptors.response.use(

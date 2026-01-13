@@ -89,30 +89,37 @@ export const apiLogin = async (
   expires_in: number
   user: unknown
 }> => {
+  console.log("STARTED")
   console.log('🔐 apiLogin: Fazendo login com subdomain explícito:', subdomain)
   console.log('HEREEEEEE:', email, password, subdomain, process.env.NEXT_PUBLIC_API_URL)
+  
+  // Make sure we include /api in the URL
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.omegaveiculos.com.br'
+  // Ensure API_URL ends with /api
+  const baseUrl = API_URL.endsWith('/api') ? API_URL : `${API_URL}/api`
+  
+  console.log('🔐 apiLogin - URL final:', `${baseUrl}/tenant/login`)
 
   const response = await axios.post(
-    `${process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'}/tenant/login`,
+    `${baseUrl}/tenant/login`,
     { 
       email, 
       password,
-      tenant_subdomain: subdomain  // ✅ Include in body as backup
+      tenant_subdomain: subdomain
     },
     {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'X-Tenant': subdomain,  // ✅ Explicitly set the header
+        'X-Tenant': subdomain,
       },
       timeout: 30000
     }
   )
   
-  console.log('✅ apiLogin: Resposta recebida:', response.status)
+  console.log('✅ apiLogin: Resposta recebida:', response.status, response.data)
   return response.data
 }
-
 
 
 

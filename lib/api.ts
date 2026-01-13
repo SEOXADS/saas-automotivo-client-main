@@ -90,7 +90,8 @@ export const apiLogin = async (
   user: unknown
 }> => {
   console.log('🔐 apiLogin: Fazendo login com subdomain explícito:', subdomain)
-  
+  console.log('HEREEEEEE:', email, password, subdomain, process.env.NEXT_PUBLIC_API_URL)
+
   const response = await axios.post(
     `${process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'}/tenant/login`,
     { 

@@ -2709,12 +2709,6 @@
     -webkit-user-select: all;
     user-select: all;
   }
-  .\[program\:nginx\] {
-    program: nginx;
-  }
-  .\[program\:php-fpm\] {
-    program: php-fpm;
-  }
   .backface-hidden {
     backface-visibility: hidden;
   }

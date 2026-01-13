@@ -65,7 +65,7 @@ const api: AxiosInstance = axios.create({
 )*/
 
 // Interceptor para tratamento de respostas
-api.interceptors.response.use(
+/*api.interceptors.response.use(
   (response) => {
     return response
   },
@@ -76,7 +76,7 @@ api.interceptors.response.use(
     }
       return Promise.reject(error)
     }
-)
+)*/
 
 // ✅ DEDICATED LOGIN FUNCTION - Bypasses interceptor, explicitly sets X-Tenant header
 export const apiLogin = async (
@@ -92,7 +92,9 @@ export const apiLogin = async (
   console.log("STARTED")
   console.log('🔐 apiLogin: Fazendo login com subdomain explícito:', subdomain)
   console.log('HEREEEEEE:', email, password, subdomain, process.env.NEXT_PUBLIC_API_URL)
-  
+  console.log("🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥 NEW API LOGIN VERSION 3 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥")
+  console.log('🔐 apiLogin: Fazendo login com subdomain explícito:', subdomain)
+
   // Make sure we include /api in the URL
   const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://api.omegaveiculos.com.br'
   // Ensure API_URL ends with /api

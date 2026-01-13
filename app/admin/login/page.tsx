@@ -28,7 +28,7 @@ export default function LoginPage() {
     setIsLoading(true)
 
     try {
-      console.log('🔐 Login: Iniciando processo de login...')
+      console.log('🔐 Login: Iniciando processo de login CHANGE TEST...')
       console.log('🔐 Login: Dados:', { email, subdomain })
 
       // Enviar dados diretamente para o backend - ele verifica tudo

@@ -1,44 +1,35 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  serverExternalPackages: ['cheerio'],
-  // Configuração para servir o portal na raiz
-  basePath: '',
-  assetPrefix: '',
-  images: {
-    domains: [
-      'production.autoforce.com',
-      'saas-automotivo-client.vercel.app',
-      '*.webcarros.app.br'
-    ],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-      {
-        protocol: 'http',
-        hostname: '**',
-      },
-    ],
+// next.config.js
+module.exports = {
+  typescript: { ignoreBuildErrors: true },
+  eslint: { ignoreDuringBuilds: true },
+  output: "standalone",
+  
+  // 🔥 ADD THESE LINES:
+  generateBuildId: () => {
+    // Use timestamp to ensure unique build ID
+    return `build-${Date.now()}`
   },
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  output: 'standalone',
-  poweredByHeader: false,
-  // Configuração para servir assets estáticos
-  async rewrites() {
+  
+  async headers() {
     return [
-      // Servir assets do portal na raiz
       {
-        source: '/portal/assets/:path*',
-        destination: '/portal/assets/:path*',
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+        ],
+      },
+      {
+        source: '/',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'no-store, no-cache, must-revalidate',
+          },
+        ],
       },
     ]
-  },
+  }
 }
-
-module.exports = nextConfig

@@ -1,7 +1,0 @@
-{
-  "/page": "app/page.js",
-  "/comprar-carro/page": "app/comprar-carro/page.js",
-  "/admin/sitemap/configs/create/page": "app/admin/sitemap/configs/create/page.js",
-  "/admin/sitemap/configs/[id]/page": "app/admin/sitemap/configs/[id]/page.js",
-  "/admin/sitemap/configs/page": "app/admin/sitemap/configs/page.js"
-}

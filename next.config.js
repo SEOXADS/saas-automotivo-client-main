@@ -1,45 +1,32 @@
-// next.config.js
 module.exports = {
   typescript: { ignoreBuildErrors: true },
   eslint: { ignoreDuringBuilds: true },
   output: "standalone",
   
-  generateBuildId: () => {
-    return `build-${Date.now()}`
-  },
-
-  // ✅ ADD THIS for images from localhost:8000
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '8000',
+        protocol: 'https',
+        hostname: 'api.omegaveiculos.com.br',
+        pathname: '/api/public/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'www.api.omegaveiculos.com.br',
         pathname: '/api/public/images/**',
       },
     ],
   },
   
-  async headers() {
-    return [
-      {
-        source: '/_next/static/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=0, must-revalidate',
-          },
-        ],
-      },
-      {
-        source: '/',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, no-cache, must-revalidate',
-          },
-        ],
-      },
-    ]
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false
+      };
+    }
+    return config;
   }
-}
+};

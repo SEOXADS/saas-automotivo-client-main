@@ -4,10 +4,20 @@ module.exports = {
   eslint: { ignoreDuringBuilds: true },
   output: "standalone",
   
-  // 🔥 ADD THESE LINES:
   generateBuildId: () => {
-    // Use timestamp to ensure unique build ID
     return `build-${Date.now()}`
+  },
+
+  // ✅ ADD THIS for images from localhost:8000
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+        pathname: '/api/public/images/**',
+      },
+    ],
   },
   
   async headers() {

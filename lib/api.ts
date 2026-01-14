@@ -1,7 +1,6 @@
 import axios, { AxiosInstance } from 'axios'
 import { getAuthToken, getTenantSubdomain } from './auth'
 import Cookies from 'js-cookie'
-import { logToFile } from '@/utils/file-logger' // Adjust path as needed
 
 
 // Função para limpar tokens incorretos (sem definir token fixo)
@@ -34,8 +33,6 @@ const api: AxiosInstance = axios.create({
   }
 })
 
-logToFile('🌐 API Base URL configured:', api.defaults.baseURL)
-logToFile('🌐 ENV variable:', process.env.NEXT_PUBLIC_API_URL)
 console.log('🔍 API Configuration Debug:')
 console.log('🔍 process.env.NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL)
 console.log('🔍 api.defaults.baseURL:', api.defaults.baseURL)

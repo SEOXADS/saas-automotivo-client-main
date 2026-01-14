@@ -6,32 +6,38 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/page.css",
+      "static/chunks/app/page.js"
+    ],
+    "/comprar-carro/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/comprar-carro/page.css",
+      "static/chunks/app/comprar-carro/page.js"
+    ],
     "/admin/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/admin/layout.css",
       "static/chunks/app/admin/layout.js"
     ],
-    "/admin/settings/layout": [
+    "/admin/sitemap/configs/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/admin/settings/layout.js"
+      "static/chunks/app/admin/sitemap/configs/page.js"
     ],
-    "/admin/settings/configuration/page": [
+    "/admin/sitemap/configs/create/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/admin/settings/configuration/page.js"
+      "static/chunks/app/admin/sitemap/configs/create/page.js"
     ],
-    "/test-seo/page": [
+    "/admin/sitemap/configs/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/test-seo/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/page.css",
-      "static/chunks/app/page.js"
+      "static/chunks/app/admin/sitemap/configs/[id]/page.js"
     ]
   }
 }

@@ -768,3 +768,4 @@ export const canManage = () => {
   const { user } = useAuth.getState()
   return user && ['admin', 'manager'].includes(user.role)
 }
+

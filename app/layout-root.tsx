@@ -4,10 +4,10 @@ import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const metadata: Metadata = {
+/*export const metadata: Metadata = {
   title: 'Portal de Veículos',
   description: 'Portal especializado na compra e venda de veículos usados e seminovos.',
-}
+}*/
 
 export default function RootLayout({
   children,

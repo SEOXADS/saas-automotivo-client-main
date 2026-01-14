@@ -5,6 +5,8 @@ import { useState, useEffect, Suspense } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import PortalLayout from './portal/layout'
+import SEOWrapper from '@/components/SEOWrapper'
+
 
 import {
   getPortalVehicles,
@@ -1656,17 +1658,23 @@ function PortalHomePageContent() {
 
 export default function PortalHomePage() {
   return (
-    <PortalLayout>
-      <Suspense fallback={
-        <div className="min-h-screen bg-black flex items-center justify-center">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500 mx-auto"></div>
-            <p className="mt-4 text-white">Carregando portal...</p>
+    <SEOWrapper
+      tenantId={1} // Your tenant ID
+      defaultTitle="Portal de Veículos - Compre e Venda Carros"
+      defaultDescription="Portal especializado na compra e venda de veículos usados e seminovos."
+    >
+      <PortalLayout>
+        <Suspense fallback={
+          <div className="min-h-screen bg-black flex items-center justify-center">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500 mx-auto"></div>
+              <p className="mt-4 text-white">Carregando portal...</p>
+            </div>
           </div>
-        </div>
-      }>
-        <PortalHomePageContent />
-      </Suspense>
-    </PortalLayout>
+        }>
+          <PortalHomePageContent />
+        </Suspense>
+      </PortalLayout>
+    </SEOWrapper>
   )
 }

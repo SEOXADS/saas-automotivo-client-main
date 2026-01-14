@@ -17,18 +17,54 @@ import {
   Settings,
   MapPin,
   Share2,
-  Save
+  Save,
+  Globe,
+  Plus,
+  Trash2,
+  Edit
 } from 'lucide-react'
 import {
   getTenantConfiguration,
   updateTenantProfile,
   updateTenantTheme,
   updateTenantSeo,
-  updateTenantPortalSettings
+  updateTenantPortalSettings,
+  getAllCustomSEO,   
+  updateCustomSEO,       
+  deleteCustomSEO,       
+  CustomSEOEntry         
 } from '@/lib/api'
 import { TenantConfiguration } from '@/types'
 
-// Componente de seletor de cores
+const newSEOTemplate: CustomSEOEntry = {
+  id: 0,
+  tenant_id: 0,
+  page_url: '',
+  page_title: '',
+  subtitle: '',
+  meta_description: '',
+  meta_keywords: '',
+  meta_author: '',
+  meta_robots: 'index, follow',
+  og_title: '',
+  og_description: '',
+  og_image_url: '',
+  og_site_name: '',
+  og_type: 'website',
+  og_locale: 'pt_BR',
+  twitter_card: 'summary',
+  twitter_title: '',
+  twitter_description: '',
+  twitter_image_url: '',
+  twitter_site: '',
+  twitter_creator: '',
+  canonical_url: '',
+  structured_data: {},
+  created_at: new Date().toISOString(),
+  updated_at: new Date().toISOString()
+};
+
+// Componente de seletor de cores (keep as is)
 const ColorPicker = ({
   label,
   value,
@@ -72,6 +108,10 @@ export default function ConfigurationPage() {
   const [saving, setSaving] = useState(false)
   const [activeTab, setActiveTab] = useState('profile')
 
+  const [customSeoList, setCustomSeoList] = useState<CustomSEOEntry[]>([])
+  const [editingSeo, setEditingSeo] = useState<CustomSEOEntry | null>(null)
+  const [seoLoading, setSeoLoading] = useState(false)
+
   // Carregar configurações iniciais
   useEffect(() => {
     console.log('🚀 useEffect - Iniciando carregamento de configurações...')
@@ -79,6 +119,138 @@ export default function ConfigurationPage() {
   }, [])
 
   // Debug: Log das configurações quando mudarem
+    useEffect(() => {
+    if (config?.profile?.id) {
+      loadCustomSEO();
+    }
+  }, [config?.profile?.id])
+
+  const loadCustomSEO = async () => {
+    try {
+      setSeoLoading(true);
+      const tenantId = config?.profile?.id;
+      if (!tenantId) {
+        console.error('Tenant ID não encontrado');
+        return;
+      }
+      
+      const response = await getAllCustomSEO(tenantId);
+      if (response.success && response.data) {
+        // ✅ FIX: Add type assertion with array validation
+        const seoData = Array.isArray(response.data) 
+          ? (response.data as CustomSEOEntry[]) 
+          : [];
+        setCustomSeoList(seoData);
+        console.log('✅ Custom SEO carregado:', seoData);
+      } else {
+        console.error('Erro ao carregar custom SEO:', response.error);
+        setCustomSeoList([]); // ✅ Reset to empty array on error
+      }
+    } catch (error) {
+      console.error('Error loading custom SEO:', error);
+      setCustomSeoList([]); // ✅ Reset to empty array on exception
+    } finally {
+      setSeoLoading(false);
+    }
+  };
+
+  const saveCustomSEO = async (seoData: CustomSEOEntry) => {
+    try {
+      showLoading('Salvando configuração SEO...');
+      
+      const tenantId = config?.profile?.id;
+      if (!tenantId) {
+        throw new Error('Tenant ID não encontrado');
+      }
+
+      // ✅ Build data matching the imported CustomSEOEntry type
+      const dataToSave: Partial<CustomSEOEntry> = {
+        tenant_id: tenantId,
+        page_url: seoData.page_url?.trim() || '',
+        page_title: seoData.page_title?.trim() || '',
+        
+        // Use undefined instead of null OR keep null (both work now)
+        subtitle: seoData.subtitle?.trim() || undefined,
+        meta_description: seoData.meta_description?.trim() || undefined,
+        meta_keywords: seoData.meta_keywords?.trim() || undefined,
+        meta_author: seoData.meta_author?.trim() || undefined,
+        meta_robots: seoData.meta_robots || 'index, follow',
+        
+        og_title: seoData.og_title?.trim() || undefined,
+        og_description: seoData.og_description?.trim() || undefined,
+        og_image_url: seoData.og_image_url?.trim() || undefined,
+        og_site_name: seoData.og_site_name?.trim() || undefined,
+        og_type: seoData.og_type || 'website',
+        og_locale: seoData.og_locale || 'pt_BR',
+        
+        twitter_card: seoData.twitter_card || 'summary',
+        twitter_title: seoData.twitter_title?.trim() || undefined,
+        twitter_description: seoData.twitter_description?.trim() || undefined,
+        twitter_image_url: seoData.twitter_image_url?.trim() || undefined,
+        twitter_site: seoData.twitter_site?.trim() || undefined,
+        twitter_creator: seoData.twitter_creator?.trim() || undefined,
+        
+        canonical_url: seoData.canonical_url?.trim() || undefined,
+        structured_data: Object.keys(seoData.structured_data || {}).length > 0 
+          ? seoData.structured_data 
+          : undefined,
+      };
+
+      if (seoData.id && seoData.id > 0) {
+        dataToSave.id = seoData.id;
+      }
+
+      console.log('📤 Dados a serem enviados:', JSON.stringify(dataToSave, null, 2));
+      
+      const response = await updateCustomSEO(dataToSave);
+      
+      closeAlert();
+      
+      if (response.success) {
+        await showSuccess('Configuração SEO salva com sucesso!', '✅ Salvo');
+        setEditingSeo(null);
+        loadCustomSEO();
+      } else {
+        const errorMsg = response.errors 
+          ? `Erros de validação: ${JSON.stringify(response.errors)}`
+          : (response.error || 'Erro ao salvar');
+        throw new Error(errorMsg);
+      }
+    } catch (error: any) {
+      console.error('Erro ao salvar custom SEO:', error);
+      closeAlert();
+      await showError(error.message || 'Erro ao salvar configuração SEO', '❌ Erro');
+    }
+  };
+
+
+
+  const handleDeleteCustomSEO = async (id: number) => {
+    try {
+      if (!confirm('Tem certeza que deseja excluir esta configuração SEO?')) {
+        return;
+      }
+      
+      showLoading('Excluindo configuração...');
+      
+      const response = await deleteCustomSEO(id);
+      
+      closeAlert();
+      
+      if (response.success) {
+        await showSuccess('Configuração excluída com sucesso!', '✅ Excluído');
+        loadCustomSEO();
+      } else {
+        throw new Error(response.error || 'Erro ao excluir');
+      }
+    } catch (error: any) {
+      console.error('Erro ao excluir custom SEO:', error);
+      closeAlert();
+      await showError(error.message || 'Erro ao excluir configuração SEO', '❌ Erro');
+    }
+  };
+
+  
   useEffect(() => {
     console.log('🔄 useEffect - config mudou:', config)
     if (config) {
@@ -739,24 +911,28 @@ export default function ConfigurationPage() {
       </div>
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="profile" className="flex items-center gap-2">
-            <Building2 className="h-4 w-4" />
-            Empresa
-          </TabsTrigger>
-          <TabsTrigger value="theme" className="flex items-center gap-2">
-            <Palette className="h-4 w-4" />
-            Tema
-          </TabsTrigger>
-          <TabsTrigger value="seo" className="flex items-center gap-2">
-            <Search className="h-4 w-4" />
-            SEO
-          </TabsTrigger>
-          <TabsTrigger value="portal" className="flex items-center gap-2">
-            <Settings className="h-4 w-4" />
-            Portal
-          </TabsTrigger>
-        </TabsList>
+        <TabsList className="grid w-full grid-cols-5"> {/* Change from 4 to 5 */}
+        <TabsTrigger value="profile" className="flex items-center gap-2">
+          <Building2 className="h-4 w-4" />
+          Empresa
+        </TabsTrigger>
+        <TabsTrigger value="theme" className="flex items-center gap-2">
+          <Palette className="h-4 w-4" />
+          Tema
+        </TabsTrigger>
+        <TabsTrigger value="seo" className="flex items-center gap-2">
+          <Search className="h-4 w-4" />
+          SEO Geral
+        </TabsTrigger>
+        <TabsTrigger value="custom-seo" className="flex items-center gap-2">
+          <Globe className="h-4 w-4" /> {/* Use Globe icon instead of Settings */}
+          SEO Personalizado
+        </TabsTrigger>
+        <TabsTrigger value="portal" className="flex items-center gap-2">
+          <Settings className="h-4 w-4" />
+          Portal
+        </TabsTrigger>
+      </TabsList>
 
         {/* Aba: Perfil da Empresa */}
         <TabsContent value="profile" className="space-y-6">
@@ -1831,6 +2007,266 @@ export default function ConfigurationPage() {
             </CardContent>
           </Card>
         </TabsContent>
+        
+        {/* NEW: Custom SEO Tab */}
+        <TabsContent value="custom-seo" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Globe className="h-5 w-5" />
+                SEO Personalizado por Página
+              </CardTitle>
+              <CardDescription>
+                Configure SEO específico para cada página do seu portal
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              {/* List of existing custom SEO entries */}
+              <div className="space-y-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="text-lg font-semibold">Configurações por Página</h3>
+                  <Button
+                    variant="outline"
+                    onClick={() => setEditingSeo({
+                      ...newSEOTemplate,
+                      tenant_id: config?.profile?.id || 0
+                    })}
+                    className="flex items-center gap-2"
+                    disabled={!config?.profile?.id}
+                  >
+                    <Plus className="h-4 w-4" />
+                    Nova Configuração
+                  </Button>
+                </div>
+
+                {seoLoading ? (
+                  <div className="text-center py-4">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                    <p className="mt-2 text-gray-600">Carregando configurações SEO...</p>
+                  </div>
+                ) : customSeoList.length === 0 ? (
+                  <div className="text-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
+                    <Globe className="h-12 w-12 text-gray-400 mx-auto mb-3" />
+                    <p className="text-gray-500">Nenhuma configuração SEO personalizada encontrada</p>
+                    <p className="text-sm text-gray-400 mt-1">Clique em "Nova Configuração" para começar</p>
+                  </div>
+                ) : (
+                  <div className="space-y-3">
+                    {customSeoList.map((seo) => (
+                      <div key={seo.id} className="flex justify-between items-center p-4 border rounded-lg hover:bg-gray-50">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-semibold">{seo.page_title || 'Sem título'}</h4>
+                            <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">
+                              {seo.page_url}
+                            </span>
+                          </div>
+                          {seo.meta_description && (
+                            <p className="text-sm text-gray-600 mt-1 line-clamp-1">
+                              {seo.meta_description}
+                            </p>
+                          )}
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => setEditingSeo(seo)}
+                            className="flex items-center gap-1"
+                          >
+                            <Edit className="h-3 w-3" />
+                            Editar
+                          </Button>
+                          <Button
+                            variant="danger"
+                            size="sm"
+                            onClick={() => handleDeleteCustomSEO(seo.id)}
+                            className="flex items-center gap-1"
+                          >
+                            <Trash2 className="h-3 w-3" />
+                            Excluir
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Edit/Add Form */}
+              {editingSeo && (
+                <Card className="p-6 border-2 border-blue-200 mt-6">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-semibold">
+                      {editingSeo.id ? 'Editar Configuração SEO' : 'Nova Configuração SEO'}
+                    </h3>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={() => setEditingSeo(null)}
+                    >
+                      Fechar
+                    </Button>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="page_url">URL da Página *</Label>
+                        <Input
+                          id="page_url"
+                          value={editingSeo.page_url}
+                          onChange={(e) => setEditingSeo({...editingSeo, page_url: e.target.value})}
+                          placeholder="/veiculos/novos"
+                          required
+                        />
+                        <p className="text-xs text-gray-500 mt-1">Ex: /veiculos, /contato, /sobre</p>
+                      </div>
+                      <div>
+                        <Label htmlFor="page_title">Título da Página *</Label>
+                        <Input
+                          id="page_title"
+                          value={editingSeo.page_title}
+                          onChange={(e) => setEditingSeo({...editingSeo, page_title: e.target.value})}
+                          placeholder="Título otimizado para SEO"
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="subtitle">Subtítulo</Label>
+                        <Input
+                          id="subtitle"
+                          value={editingSeo.subtitle || ''}
+                          onChange={(e) => setEditingSeo({...editingSeo, subtitle: e.target.value})}
+                          placeholder="Subtítulo descritivo"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="canonical_url">URL Canônica</Label>
+                        <Input
+                          id="canonical_url"
+                          value={editingSeo.canonical_url || ''}
+                          onChange={(e) => setEditingSeo({...editingSeo, canonical_url: e.target.value})}
+                          placeholder="https://seusite.com/url-canonica"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <Label htmlFor="meta_description">Meta Description *</Label>
+                      <Textarea
+                        id="meta_description"
+                        value={editingSeo.meta_description || ''}
+                        onChange={(e) => setEditingSeo({...editingSeo, meta_description: e.target.value})}
+                        placeholder="Descrição otimizada para motores de busca (150-160 caracteres)"
+                        rows={2}
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="og_title">Título Open Graph</Label>
+                        <Input
+                          id="og_title"
+                          value={editingSeo.og_title || ''}
+                          onChange={(e) => setEditingSeo({...editingSeo, og_title: e.target.value})}
+                          placeholder="Título para redes sociais"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="og_description">Descrição Open Graph</Label>
+                        <Textarea
+                          id="og_description"
+                          value={editingSeo.og_description || ''}
+                          onChange={(e) => setEditingSeo({...editingSeo, og_description: e.target.value})}
+                          placeholder="Descrição para redes sociais"
+                          rows={2}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <Label htmlFor="twitter_title">Título Twitter</Label>
+                        <Input
+                          id="twitter_title"
+                          value={editingSeo.twitter_title || ''}
+                          onChange={(e) => setEditingSeo({...editingSeo, twitter_title: e.target.value})}
+                          placeholder="Título para Twitter"
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="twitter_description">Descrição Twitter</Label>
+                        <Textarea
+                          id="twitter_description"
+                          value={editingSeo.twitter_description || ''}
+                          onChange={(e) => setEditingSeo({...editingSeo, twitter_description: e.target.value})}
+                          placeholder="Descrição para Twitter"
+                          rows={2}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Image Upload for Social Media */}
+                    <div>
+                      <Label htmlFor="social_image">Imagem para Redes Sociais</Label>
+                      <ModernImageUpload
+                        label=""
+                        value={editingSeo.og_image_url || ''}
+                        onChange={(url) => setEditingSeo({...editingSeo, og_image_url: url})}
+                        imageType="banner" // Changed from "social" to "banner" since that's likely an accepted type
+                        maxSize={5}
+                        description="Imagem otimizada para compartilhamento (1200x630px recomendado)"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="meta_keywords">Palavras-chave (separadas por vírgula)</Label>
+                      <Input
+                        id="meta_keywords"
+                        value={editingSeo.meta_keywords || ''}
+                        onChange={(e) => setEditingSeo({...editingSeo, meta_keywords: e.target.value})}
+                        placeholder="carro seminovo, veículo usado, concessionária"
+                      />
+                    </div>
+
+                    <div>
+                      <Label htmlFor="robots">Diretivas Robots</Label>
+                      <select
+                        id="robots"
+                        value={editingSeo.meta_robots || 'index, follow'}
+                        onChange={(e) => setEditingSeo({...editingSeo, meta_robots: e.target.value})}
+                        className="w-full p-2 border rounded"
+                      >
+                        <option value="index, follow">Indexar e seguir links</option>
+                        <option value="noindex, follow">Não indexar, seguir links</option>
+                        <option value="index, nofollow">Indexar, não seguir links</option>
+                        <option value="noindex, nofollow">Não indexar, não seguir links</option>
+                      </select>
+                    </div>
+
+                    <div className="flex justify-end gap-3 pt-4">
+                      <Button
+                        variant="outline"
+                        onClick={() => setEditingSeo(null)}
+                      >
+                        Cancelar
+                      </Button>
+                      <Button
+                        onClick={() => saveCustomSEO(editingSeo)}
+                      >
+                        {editingSeo.id ? 'Atualizar' : 'Salvar'}
+                      </Button>
+                    </div>
+                  </div>
+                </Card>
+              )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        
+        
       </Tabs>
 
       {/* Botões de Ação */}

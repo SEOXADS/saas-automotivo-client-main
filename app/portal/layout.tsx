@@ -8,6 +8,7 @@ import { getPortalTenantInfo, type PortalTenant } from '@/lib/portal-api'
 import { applyPortalColors } from './colors.config'
 import { loadBasicPlugins, initializeSlickCarousel, initializeFancybox, checkPluginsLoaded } from './plugins-simple.config'
 import AccessibilityButton from '../../components/ui/AccessibilityButton'
+import SEOWrapper from '@/components/SEOWrapper';
 
 // Importar CSS do portal
 import './portal.css'
@@ -140,14 +141,19 @@ export default function PortalLayout({
     )
   }
   return (
-    <>
-      <Head>
-        <link rel="preconnect" href="https://www.api.webcarros.app.br" />
-        <link rel="preconnect" href="https://production.autoforce.com" />
-        <link rel="preconnect" href="https://loja.webcarros.app.br" />
-        <link rel="stylesheet" href="/portal/assets/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="/portal/assets/css/style.css" />
-        <style dangerouslySetInnerHTML={{
+    <SEOWrapper 
+      tenantId={tenant?.id || 1} 
+      defaultTitle={tenant?.profile?.company_name || tenant?.name || 'Portal de Veículos'}
+      defaultDescription={tenant?.profile?.company_description || 'Portal especializado na compra e venda de veículos usados e seminovos.'}
+    >
+      <>
+        <Head>
+          <link rel="preconnect" href="https://www.api.webcarros.app.br" />
+          <link rel="preconnect" href="https://production.autoforce.com" />
+          <link rel="preconnect" href="https://loja.webcarros.app.br" />
+          <link rel="stylesheet" href="/portal/assets/css/bootstrap.min.css" />
+          <link rel="stylesheet" href="/portal/assets/css/style.css" />
+          <style dangerouslySetInnerHTML={{
           __html: `
             /* CSS crítico inline para melhorar LCP */
             .min-h-screen { min-height: 100vh; }
@@ -454,5 +460,7 @@ export default function PortalLayout({
       <AccessibilityButton />
       </div>
     </>
+  </SEOWrapper>
+
   )
 }

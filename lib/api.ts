@@ -1,5 +1,8 @@
 import axios, { AxiosInstance } from 'axios'
 import { getAuthToken, getTenantSubdomain } from './auth'
+import Cookies from 'js-cookie'
+import { logToFile } from '@/utils/file-logger' // Adjust path as needed
+
 
 // Função para limpar tokens incorretos (sem definir token fixo)
 export const clearIncorrectTokens = () => {
@@ -23,7 +26,7 @@ export const clearIncorrectTokens = () => {
 
 // Configuração base da API
 const api: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api',
+  baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api',
   timeout: 30000,
   headers: {
     'Content-Type': 'application/json',
@@ -31,52 +34,75 @@ const api: AxiosInstance = axios.create({
   }
 })
 
+logToFile('🌐 API Base URL configured:', api.defaults.baseURL)
+logToFile('🌐 ENV variable:', process.env.NEXT_PUBLIC_API_URL)
+console.log('🔍 API Configuration Debug:')
+console.log('🔍 process.env.NEXT_PUBLIC_API_URL:', process.env.NEXT_PUBLIC_API_URL)
+console.log('🔍 api.defaults.baseURL:', api.defaults.baseURL)
+console.log('🔍 typeof window:', typeof window)
+console.log('🔍 Current location:', typeof window !== 'undefined' ? window.location.href : 'server')
+
+
 // Interceptor para adicionar token de autenticação
-/*api.interceptors.request.use(
+api.interceptors.request.use(
   (config) => {
+    console.log('🔍 Request Debug:', {
+      originalUrl: config.url,
+      baseURL: config.baseURL,
+      fullUrl: `${config.baseURL}${config.url}`,
+      method: config.method,
+      headers: config.headers
+    })
+
     const token = getAuthToken()
     console.log('🔐 Interceptor - Token encontrado:', token ? `${token.substring(0, 20)}...` : 'null')
 
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
       console.log('🔐 Interceptor - Header Authorization adicionado')
+    } else {
+      console.warn('⚠️ Interceptor - Nenhum token encontrado!')
     }
 
     const subdomain = getTenantSubdomain()
     console.log('🔐 Interceptor - Subdomain encontrado:', subdomain)
 
-//    if (subdomain) {
-//     config.headers['X-Tenant-Subdomain'] = subdomain
-//      console.log('🔐 Interceptor - Header X-Tenant-Subdomain adicionado')
-//    }
+    if (subdomain) {
+      config.headers['X-Tenant'] = subdomain
+      console.log('🔐 Interceptor - Header X-Tenant adicionado:', subdomain)
+    }
 
-	if (subdomain) {
-	  config.headers['X-Tenant'] = subdomain  // ✅ Change from X-Tenant-Subdomain to X-Tenant
-	  console.log('🔐 Interceptor - Header X-Tenant adicionado:', subdomain)
-	}
-
-
-    console.log('🔐 Interceptor - Headers finais:', config.headers)
+    console.log('🔐 Interceptor - Headers finais:', {
+      Authorization: config.headers.Authorization ? 'Bearer ***' : 'missing',
+      'X-Tenant': config.headers['X-Tenant'] || 'missing'
+    })
+    
     return config
   },
   (error) => {
+    console.error('❌ Interceptor - Erro na requisição:', error)
     return Promise.reject(error)
   }
-)*/
+)
 
 // Interceptor para tratamento de respostas
-/*api.interceptors.response.use(
+api.interceptors.response.use(
   (response) => {
     return response
   },
   (error) => {
     if (error.response?.status === 401) {
-      console.log('🔐 Token expirado ou inválido, ativando modo demo')
-      localStorage.setItem('demo_token_123', 'demo_mode_activated')
+      console.error('🔐 Token expirado ou inválido - Status 401')
+      console.error('🔍 URL da requisição:', error.config?.url)
+      console.error('🔍 Headers enviados:', error.config?.headers)
+      
+      // Optional: Redirect to login or refresh token
+      // window.location.href = '/login'
     }
-      return Promise.reject(error)
-    }
-)*/
+    return Promise.reject(error)
+  }
+)
+
 
 // ✅ DEDICATED LOGIN FUNCTION - Bypasses interceptor, explicitly sets X-Tenant header
 export const apiLogin = async (
@@ -1159,6 +1185,7 @@ export const updateTenantPortal = async (portal: {
       enable_newsletter: false,
       // Exibição
       vehicles_per_page: portal.display.vehicles_per_page,
+      max_comparison_items: portal.display.max_comparison_items || 3,
       show_price: portal.display.show_prices,
       show_mileage: portal.display.show_mileage,
       show_year: false,
@@ -1579,5 +1606,259 @@ export const getFipeVersions = async (vehicleType: 'cars' | 'motorcycles' | 'tru
   } catch (error) {
     console.error('Erro ao buscar versões da FIPE:', error)
     throw error
+  }
+}
+
+// In api.ts - Update the interface (remove any duplicates)
+export interface CustomSEOEntry {
+  id: number;
+  tenant_id: number;
+  page_url: string;
+  page_title: string;
+  subtitle?: string | null;              // ✅ Allow null
+  meta_description?: string | null;
+  meta_keywords?: string | null;
+  meta_author?: string | null;
+  meta_robots?: string | null;
+  og_title?: string | null;
+  og_description?: string | null;
+  og_image_url?: string | null;
+  og_site_name?: string | null;
+  og_type?: string | null;
+  og_locale?: string | null;
+  twitter_card?: string | null;
+  twitter_title?: string | null;
+  twitter_description?: string | null;
+  twitter_image_url?: string | null;
+  twitter_site?: string | null;
+  twitter_creator?: string | null;
+  canonical_url?: string | null;
+  structured_data?: Record<string, any> | null;
+  created_at: string;
+  updated_at: string;
+}
+
+
+/**
+ * Get all custom SEO entries for a tenant
+ * GET /api/custom-seo?tenant_id=X
+ */
+export const getAllCustomSEO = async (tenantId: number): Promise<ApiResponse> => {
+  try {
+    console.log('🔍 Buscando configurações SEO personalizadas para tenant:', tenantId)
+    
+    const response = await api.get(`/custom-seo?tenant_id=${tenantId}`)
+    
+    console.log('✅ Custom SEO carregado:', response.data)
+    
+    return {
+      success: true,
+      data: response.data?.data || response.data || [],
+      message: 'Configurações SEO carregadas com sucesso'
+    }
+  } catch (error) {
+    console.error('❌ Erro ao carregar custom SEO:', error)
+    
+    if (axios.isAxiosError(error)) {
+      // If 404, return empty array (endpoint might not exist yet)
+      if (error.response?.status === 404) {
+        console.log('⚠️ Endpoint custom-seo não encontrado, retornando array vazio')
+        return {
+          success: true,
+          data: [],
+          message: 'Nenhuma configuração SEO personalizada encontrada'
+        }
+      }
+    }
+    
+    return {
+      success: false,
+      error: 'Erro ao carregar configurações SEO',
+      data: []
+    }
+  }
+}
+
+/**
+ * Get custom SEO by URL
+ * GET /api/custom-seo/by-url?tenant_id=X&url=Y
+ */
+// In api.ts - Update getCustomSEOByUrl function
+
+/*export const getCustomSEOByUrl = async (tenantId: number, url: string): Promise<ApiResponse> => {
+  try {
+    console.log('🔍 Buscando SEO personalizado para URL:', url)
+    
+    // ✅ FORCE absolute URL for this specific call
+    const baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
+    const fullUrl = `${baseURL}/custom-seo/get-by-url?tenant_id=${tenantId}&url=${encodeURIComponent(url)}`
+    
+    console.log('📡 Making request to:', fullUrl)
+    
+    // Use fetch instead of axios for this specific call to bypass any interceptor issues
+    const response = await fetch(fullUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+    })
+    
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+    
+    const data = await response.json()
+    
+    console.log('✅ Custom SEO por URL carregado:', data)
+    
+    return {
+      success: true,
+      data: data?.data || data || null,
+      message: 'SEO personalizado encontrado'
+    }
+  } catch (error) {
+    console.error('❌ Erro ao buscar custom SEO por URL:', error)
+    
+    return {
+      success: true, // Return success with null to not break the app
+      data: null,
+      message: 'SEO personalizado não encontrado'
+    }
+  }
+}*/
+
+export const getCustomSEOByUrl = async (tenantId: number, url: string): Promise<ApiResponse> => {
+  try {
+    console.log('🔍 Buscando SEO personalizado para URL:', url)
+    
+    // ✅ Use the configured api instance (already has baseURL)
+    const response = await api.get(`/custom-seo/get-by-url`, {
+      params: {
+        tenant_id: tenantId,
+        url: url
+      }
+    })
+    
+    console.log('✅ Custom SEO por URL carregado:', response.data)
+    
+    return {
+      success: true,
+      data: response.data?.data || response.data || null,
+      message: 'SEO personalizado encontrado'
+    }
+  } catch (error) {
+    console.error('❌ Erro ao buscar custom SEO por URL:', error)
+    
+    if (axios.isAxiosError(error)) {
+      // If 404, return null (no custom SEO for this URL)
+      if (error.response?.status === 404) {
+        return {
+          success: true,
+          data: null,
+          message: 'Nenhum SEO personalizado para esta URL'
+        }
+      }
+    }
+    
+    return {
+      success: true, // Return success with null to not break the app
+      data: null,
+      message: 'SEO personalizado não encontrado'
+    }
+  }
+}
+
+
+/**
+ * Create or Update custom SEO
+ * POST /api/custom-seo (create) or PUT /api/custom-seo/{id} (update)
+ */
+export const updateCustomSEO = async (data: Partial<CustomSEOEntry>): Promise<ApiResponse> => {
+  try {
+    console.log('💾 Salvando configuração SEO personalizada:', data)
+    
+    let response
+    
+    if (data.id && data.id > 0) {
+      console.log('📝 Atualizando SEO existente, ID:', data.id)
+      response = await api.put(`/custom-seo/${data.id}`, data)
+    } else {
+      console.log('➕ Criando novo SEO personalizado')
+      // ✅ Remove id from payload when creating new entry
+      const { id, ...createData } = data
+      response = await api.post('/custom-seo', createData)
+    }
+    
+    console.log('✅ SEO personalizado salvo:', response.data)
+    
+    return {
+      success: true,
+      data: response.data?.data || response.data,
+      message: 'Configuração SEO salva com sucesso'
+    }
+  } catch (error) {
+    console.error('❌ Erro ao salvar custom SEO:', error)
+    
+    if (axios.isAxiosError(error)) {
+      const status = error.response?.status
+      const message = error.response?.data?.message || 'Erro ao salvar configuração SEO'
+      const errors = error.response?.data?.errors
+      
+      // ✅ Log detailed error info for debugging
+      console.error('❌ Status:', status)
+      console.error('❌ Message:', message)
+      console.error('❌ Validation Errors:', errors)
+      console.error('❌ Response Data:', error.response?.data)
+      
+      return {
+        success: false,
+        error: message,
+        errors: errors,
+        _source: status === 400 ? 'validation_error' : 'api_error'
+      }
+    }
+    
+    return {
+      success: false,
+      error: 'Erro de conexão ao salvar configuração SEO'
+    }
+  }
+}
+
+
+/**
+ * Delete custom SEO
+ * DELETE /api/custom-seo/{id}
+ */
+export const deleteCustomSEO = async (id: number): Promise<ApiResponse> => {
+  try {
+    console.log('🗑️ Excluindo configuração SEO, ID:', id)
+    
+    await api.delete(`/custom-seo/${id}`)
+    
+    console.log('✅ SEO personalizado excluído')
+    
+    return {
+      success: true,
+      message: 'Configuração SEO excluída com sucesso'
+    }
+  } catch (error) {
+    console.error('❌ Erro ao excluir custom SEO:', error)
+    
+    if (axios.isAxiosError(error)) {
+      const message = error.response?.data?.message || 'Erro ao excluir configuração SEO'
+      
+      return {
+        success: false,
+        error: message
+      }
+    }
+    
+    return {
+      success: false,
+      error: 'Erro de conexão ao excluir configuração SEO'
+    }
   }
 }

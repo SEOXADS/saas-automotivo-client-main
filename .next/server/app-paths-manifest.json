@@ -1,3 +1,5 @@
 {
-  "/admin/login/page": "app/admin/login/page.js"
+  "/page": "app/page.js",
+  "/test-seo/page": "app/test-seo/page.js",
+  "/admin/settings/configuration/page": "app/admin/settings/configuration/page.js"
 }

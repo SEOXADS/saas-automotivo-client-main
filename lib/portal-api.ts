@@ -1,5 +1,8 @@
 // API específica para o portal público
 import { vehicleBrands } from './vehicle-brands-data'
+import {      
+  CustomSEOEntry         
+} from '@/lib/api'
 
 export interface PortalVehicle {
   id: number
@@ -1305,5 +1308,35 @@ export const applyTenantPortalSettings = (tenant: PortalTenant): void => {
     console.log('✅ Configurações do portal aplicadas com sucesso')
   } catch (error) {
     console.error('❌ Erro ao aplicar configurações do portal:', error)
+  }
+}
+
+export const getCustomSeoByUrl = async (
+  tenantId: number, 
+  pageUrl: string
+): Promise<{ success: boolean; data: CustomSEOEntry | null }> => {
+  try {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.omegaveiculos.com.br/api'
+    
+    // ✅ Changed 'by-url' to 'get-by-url' to match Laravel route
+    const response = await fetch(
+      `${apiUrl}/custom-seo/get-by-url?tenant_id=${tenantId}&url=${encodeURIComponent(pageUrl)}`,
+      {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    
+    if (!response.ok) {
+      console.warn('Custom SEO API returned:', response.status)
+      return { success: false, data: null }
+    }
+    
+    return await response.json()
+  } catch (error) {
+    console.error('❌ Error fetching custom SEO:', error)
+    return { success: false, data: null }
   }
 }

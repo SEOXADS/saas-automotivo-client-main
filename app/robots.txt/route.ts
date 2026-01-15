@@ -56,6 +56,8 @@ export async function GET(request: NextRequest) {
 function getTenantSubdomain(request: NextRequest): string | null {
   const host = request.headers.get('host') || ''
   const parts = host.split('.')
+  console.log("HOST", host);
+  console.log("Parts", parts);
   
   if (parts.length >= 4) {
     const subdomain = parts[0]
@@ -69,6 +71,7 @@ function getTenantSubdomain(request: NextRequest): string | null {
     return envSubdomain
   }
   
+    console.log("envSubdomain", envSubdomain);
   if (host.includes('localhost')) {
     return process.env.DEV_TENANT_SUBDOMAIN || 'omegaveiculos'
   }

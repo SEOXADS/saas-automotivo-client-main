@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export async function GET(request: NextRequest) {
   try {
-    // Get tenant subdomain from various sources
     const subdomain = getTenantSubdomain(request)
     
     if (!subdomain) {
@@ -10,30 +9,41 @@ export async function GET(request: NextRequest) {
       return getDefaultRobotsTxt()
     }
 
-    // Fetch from backend
-    const backendUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api'
-    const response = await fetch(
-      `${backendUrl}/robots/serve?tenant=${subdomain}`,
-      {
-        headers: {
-          'Accept': 'text/plain',
-        },
-        next: { revalidate: 3600 } // Cache for 1 hour
-      }
-    )
+    const baseUrl = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api')
+      .replace('localhost', '127.0.0.1')
+    
+    const apiUrl = baseUrl.endsWith('/') 
+      ? `${baseUrl}tenant/robots-txt/preview`
+      : `${baseUrl}/tenant/robots-txt/preview`
+    
+    console.log("FETCHING URL:", apiUrl)
+    
+    const response = await fetch(apiUrl, {
+      headers: {
+        'Accept': 'application/json',  // FIX 3: Expect JSON response
+        'X-Tenant-Subdomain': subdomain,  // Pass tenant info via header
+      },
+      cache: 'no-store',  // Disable cache for debugging (change later)
+    })
+
+    console.log("Response status:", response.status)
 
     if (response.ok) {
-      const content = await response.text()
-      return new NextResponse(content, {
-        status: 200,
-        headers: {
-          'Content-Type': 'text/plain; charset=utf-8',
-          'Cache-Control': 'public, max-age=3600, s-maxage=3600',
-        },
-      })
+      const data = await response.json()
+      
+      if (data.success && data.content) {
+        console.log("Got content from backend:", data.content.substring(0, 50) + "...")
+        
+        return new NextResponse(data.content, {
+          status: 200,
+          headers: {
+            'Content-Type': 'text/plain; charset=utf-8',
+            'Cache-Control': 'public, max-age=3600, s-maxage=3600',
+          },
+        })
+      }
     }
 
-    // If backend returns error, use default
     console.warn(`Backend returned ${response.status} for robots.txt`)
     return getDefaultRobotsTxt()
 
@@ -43,15 +53,10 @@ export async function GET(request: NextRequest) {
   }
 }
 
-/**
- * Extract tenant subdomain from request
- */
 function getTenantSubdomain(request: NextRequest): string | null {
-  // 1. Try from hostname (e.g., omegaveiculos.webcarros.app.br)
   const host = request.headers.get('host') || ''
   const parts = host.split('.')
   
-  // For subdomains like omegaveiculos.webcarros.app.br
   if (parts.length >= 4) {
     const subdomain = parts[0]
     if (subdomain !== 'www' && subdomain !== 'api' && subdomain !== 'admin') {
@@ -59,28 +64,18 @@ function getTenantSubdomain(request: NextRequest): string | null {
     }
   }
   
-  // 2. Try from custom domain lookup
-  // If you have custom domains like omegaveiculos.com.br
-  // You'd need to add logic here or call your backend to resolve it
-  
-  // 3. Try from environment variable (for single-tenant deployments)
   const envSubdomain = process.env.TENANT_SUBDOMAIN
   if (envSubdomain) {
     return envSubdomain
   }
   
-  // 4. For development: check for a specific tenant
   if (host.includes('localhost')) {
-    // You can hardcode for dev or use env var
     return process.env.DEV_TENANT_SUBDOMAIN || 'omegaveiculos'
   }
 
   return null
 }
 
-/**
- * Default robots.txt fallback
- */
 function getDefaultRobotsTxt(): NextResponse {
   const defaultContent = `User-agent: *
 Allow: /

@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
   }
 }
 
-function getTenantSubdomain(request: NextRequest): string | null {
+/*function getTenantSubdomain(request: NextRequest): string | null {
   const host = request.headers.get('host') || ''
   const parts = host.split('.')
   console.log("HOST", host);
@@ -78,6 +78,62 @@ function getTenantSubdomain(request: NextRequest): string | null {
 
   return null
 }
+*/
+
+function getTenantSubdomain(request: NextRequest): string | null {
+  // 1. Check X-Forwarded-Host first (for reverse proxy/Docker scenarios)
+  const forwardedHost = request.headers.get('x-forwarded-host');
+  const host = forwardedHost || request.headers.get('host') || '';
+  
+  console.log("X-Forwarded-Host:", forwardedHost);
+  console.log("HOST:", host);
+  
+  // 2. Remove port if present
+  const hostWithoutPort = host.split(':')[0];
+  const parts = hostWithoutPort.split('.');
+  
+  console.log("Parts:", parts);
+  
+  // 3. For .com.br domains: subdomain.domain.com.br = 4 parts
+  //    For .com domains: subdomain.domain.com = 3 parts
+  //    Adjust threshold based on your TLD
+  const minPartsForSubdomain = hostWithoutPort.endsWith('.com.br') ? 4 : 3;
+  
+  if (parts.length >= minPartsForSubdomain) {
+    const subdomain = parts[0].toLowerCase();
+    
+    // Skip reserved subdomains
+    const reserved = ['www', 'api', 'admin', 'app', 'omegaveiculos'];
+    
+    if (!reserved.includes(subdomain)) {
+      console.log("Detected subdomain:", subdomain);
+      return subdomain;
+    }
+  }
+  
+  // 4. Fallback: Check custom header (useful if set by nginx/traefik)
+  const tenantHeader = request.headers.get('x-tenant-subdomain');
+  if (tenantHeader) {
+    console.log("Using X-Tenant-Subdomain header:", tenantHeader);
+    return tenantHeader;
+  }
+  
+  // 5. Fallback: Environment variable
+  const envSubdomain = process.env.TENANT_SUBDOMAIN;
+  if (envSubdomain) {
+    console.log("Using TENANT_SUBDOMAIN env:", envSubdomain);
+    return envSubdomain;
+  }
+  
+  // 6. Localhost fallback for development
+  if (host.includes('localhost')) {
+    return process.env.DEV_TENANT_SUBDOMAIN || 'omegaveiculos';
+  }
+
+  console.log("No subdomain found");
+  return null;
+}
+
 
 function getDefaultRobotsTxt(): NextResponse {
   const defaultContent = `User-agent: *

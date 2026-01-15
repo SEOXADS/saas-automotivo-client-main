@@ -96,6 +96,7 @@ export const sitemapApiHelpers = {
     }
   },
 
+  
   /**
    * Atualiza configuração de robots.txt do tenant
    */
@@ -206,6 +207,44 @@ export const sitemapApiHelpers = {
       return { success: false, message: 'Erro ao gerar robots.txt' }
     }
   },
+
+// Add these to sitemapApiHelpers object
+
+/**
+ * Save raw robots.txt content
+ */
+async saveRobotsTxtContent(content: string): Promise<{ success: boolean; message?: string }> {
+  try {
+    console.log('📝 Salvando robots.txt...')
+    
+    const response = await adminApi.post(
+      `${ADMIN_API_CONFIG.ENDPOINTS.TENANT_ROBOTS_TXT}/save`,
+      { content } as Record<string, unknown>
+    ) as { success?: boolean; message?: string; data?: { success: boolean; message?: string } }
+    
+    console.log('✅ Resposta:', response)
+    
+    // Handle different response formats
+    if (response.data) {
+      return {
+        success: response.data.success ?? true,
+        message: response.data.message ?? 'Robots.txt salvo com sucesso'
+      }
+    }
+    
+    return {
+      success: response.success ?? true,
+      message: response.message ?? 'Robots.txt salvo com sucesso'
+    }
+  } catch (error) {
+    console.error('❌ Erro ao salvar robots.txt:', error)
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Erro ao salvar robots.txt'
+    }
+  }
+},
+
 
   // ===== ESTATÍSTICAS =====
 

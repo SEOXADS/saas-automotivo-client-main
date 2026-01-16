@@ -105,7 +105,7 @@ export const useSEOMetaTags = (metaTags: SEOMetaTags, tenant?: PortalTenant | nu
         faviconLink.setAttribute('rel', 'icon')
         document.head.appendChild(faviconLink)
       }
-      faviconLink.setAttribute('href', metaTags.favicon || tenant?.profile?.favicon_url || '/favicon.ico')
+      faviconLink.setAttribute('href', tenant?.profile?.favicon_url || '/favicon2.ico')
     }
 
     // Apple Touch Icon

@@ -1,7 +1,7 @@
 // components/SEOWrapper.tsx
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { usePathname } from 'next/navigation'
 import { getCustomSeoByUrl } from '@/lib/portal-api'
 
@@ -34,17 +34,88 @@ interface SEOWrapperProps {
   defaultTitle: string;
   defaultDescription: string;
   children: React.ReactNode;
+  faviconUrl?: string | null;
 }
 
 export default function SEOWrapper({ 
   tenantId, 
   defaultTitle, 
   defaultDescription, 
+  faviconUrl,
   children 
 }: SEOWrapperProps) {
   const [customSEO, setCustomSEO] = useState<CustomSEOData | null>(null);
   const [loading, setLoading] = useState(true);
   const pathname = usePathname();
+  const faviconSetRef = useRef(false);  // ✅ Now properly imported
+
+  // ✅ FAVICON EFFECT - Runs after other components
+  useEffect(() => {
+    if (!faviconUrl || faviconSetRef.current) return;
+
+    // Delay to ensure this runs AFTER all other components
+    const timeoutId = setTimeout(() => {
+      console.log('🎯 SEOWrapper: Setting favicon...');
+      
+      // Remove ALL existing favicons
+      document.querySelectorAll(
+        'link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"], link[rel*="icon"]'
+      ).forEach(el => {
+        console.log('🗑️ Removing favicon:', el.getAttribute('href')?.substring(0, 50));
+        el.remove();
+      });
+
+      // Create favicon from base64
+      if (faviconUrl.startsWith('data:image/')) {
+        const match = faviconUrl.match(/^data:(image\/[^;]+);base64,(.*)$/);
+        
+        if (match) {
+          const [, mimeType, base64Data] = match;
+          
+          try {
+            // Convert to Blob for better Safari compatibility
+            const byteCharacters = atob(base64Data);
+            const byteArray = new Uint8Array(byteCharacters.length);
+            for (let i = 0; i < byteCharacters.length; i++) {
+              byteArray[i] = byteCharacters.charCodeAt(i);
+            }
+            const blob = new Blob([byteArray], { type: mimeType });
+            const blobUrl = URL.createObjectURL(blob);
+
+            // Create main favicon
+            const link = document.createElement('link');
+            link.rel = 'icon';
+            link.type = mimeType;
+            link.href = blobUrl;
+            document.head.appendChild(link);
+
+            // Create shortcut icon for older browsers
+            const shortcutLink = document.createElement('link');
+            shortcutLink.rel = 'shortcut icon';
+            shortcutLink.type = mimeType;
+            shortcutLink.href = blobUrl;
+            document.head.appendChild(shortcutLink);
+
+            faviconSetRef.current = true;
+            console.log('✅ SEOWrapper: Favicon set successfully!');
+          } catch (error) {
+            console.error('❌ SEOWrapper: Error setting favicon:', error);
+          }
+        }
+      } else {
+        // Regular URL favicon
+        const link = document.createElement('link');
+        link.rel = 'icon';
+        link.href = faviconUrl;
+        document.head.appendChild(link);
+        
+        faviconSetRef.current = true;
+        console.log('✅ SEOWrapper: Favicon set (URL)!');
+      }
+    }, 300);  // 300ms delay to run after other effects
+
+    return () => clearTimeout(timeoutId);
+  }, [faviconUrl]);
 
   useEffect(() => {
     const fetchCustomSEO = async () => {
@@ -64,11 +135,9 @@ export default function SEOWrapper({
         
         if (result.success && result.data) {
           setCustomSEO(result.data);
-          // Mark that custom SEO was applied
           document.documentElement.setAttribute('data-custom-seo-applied', 'true');
           console.log('✅ Custom SEO loaded for:', pathname, result.data);
         } else {
-          // Remove the flag if no custom SEO
           document.documentElement.removeAttribute('data-custom-seo-applied');
           setCustomSEO(null);
         }
@@ -85,11 +154,10 @@ export default function SEOWrapper({
     }
   }, [tenantId, pathname]);
 
-  // ✅ CRITICAL: Update meta tags when SEO data changes
+  // ✅ META TAGS UPDATE EFFECT
   useEffect(() => {
     if (!customSEO && !defaultTitle && !defaultDescription) return;
 
-    // ✅ Use || '' to handle null values safely
     const title = customSEO?.page_title || defaultTitle;
     const description = customSEO?.meta_description || defaultDescription;
     const keywords = customSEO?.meta_keywords || '';
@@ -115,10 +183,8 @@ export default function SEOWrapper({
 
     console.log('🔄 Updating meta tags with:', { title, description });
 
-    // Update document title
     document.title = title;
 
-    // Helper function to update or create meta tag
     const updateMetaTag = (name: string, content: string, attribute: string = 'name') => {
       if (!content) return;
       
@@ -180,7 +246,6 @@ export default function SEOWrapper({
     console.log('✅ Meta tags updated!');
   }, [customSEO, defaultTitle, defaultDescription]);
 
-  // Optional: Show loading state
   if (loading) {
     console.log('⏳ SEOWrapper loading...');
   }

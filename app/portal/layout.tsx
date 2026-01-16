@@ -24,6 +24,89 @@ export default function PortalLayout({
   const [loading, setLoading] = useState(true)
   const [googleAnalyticsId, setGoogleAnalyticsId] = useState<string | null>(null)
 
+  const setDynamicFavicon = (faviconUrl: string | null | undefined) => {
+    if (!faviconUrl) {
+      console.log('⚠️ No favicon URL provided')
+      return
+    }
+
+    console.log('🎯 Setting dynamic favicon...')
+
+    // Remove ALL existing favicon links
+    const existingFavicons = document.querySelectorAll(
+      'link[rel="icon"], link[rel="shortcut icon"], link[rel="apple-touch-icon"], link[rel*="icon"]'
+    )
+    console.log(`🗑️ Removing ${existingFavicons.length} existing favicon(s)`)
+    existingFavicons.forEach(favicon => favicon.remove())
+
+    // Function to create favicon link
+    const createFaviconLink = (href: string, mimeType: string) => {
+      const link = document.createElement('link')
+      link.rel = 'icon'
+      link.type = mimeType
+      link.href = href
+      document.head.insertBefore(link, document.head.firstChild)
+
+      // Also add shortcut icon for older browsers
+      const shortcutLink = document.createElement('link')
+      shortcutLink.rel = 'shortcut icon'
+      shortcutLink.type = mimeType
+      shortcutLink.href = href
+      document.head.insertBefore(shortcutLink, document.head.firstChild)
+
+      // Apple touch icon
+      const appleIcon = document.createElement('link')
+      appleIcon.rel = 'apple-touch-icon'
+      appleIcon.href = href
+      document.head.appendChild(appleIcon)
+    }
+
+    // Check if it's a base64 data URL
+    if (faviconUrl.startsWith('data:image/')) {
+      // Extract mime type and base64 data
+      const match = faviconUrl.match(/^data:(image\/[^;]+);base64,(.*)$/)
+      
+      if (match) {
+        const mimeType = match[1]
+        const base64Data = match[2]
+        
+        // Convert base64 to Blob (works better in Safari)
+        try {
+          const byteCharacters = atob(base64Data)
+          const byteNumbers = new Array(byteCharacters.length)
+          for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i)
+          }
+          const byteArray = new Uint8Array(byteNumbers)
+          const blob = new Blob([byteArray], { type: mimeType })
+          const blobUrl = URL.createObjectURL(blob)
+          
+          createFaviconLink(blobUrl, mimeType)
+          console.log('✅ Dynamic favicon set (Blob URL for Safari compatibility)!')
+        } catch (error) {
+          console.error('❌ Error converting base64 to blob:', error)
+          // Fallback to base64 URL
+          createFaviconLink(faviconUrl, mimeType)
+        }
+      } else {
+        createFaviconLink(faviconUrl, 'image/x-icon')
+      }
+    } else {
+      // Regular URL
+      let mimeType = 'image/x-icon'
+      if (faviconUrl.endsWith('.png')) mimeType = 'image/png'
+      else if (faviconUrl.endsWith('.svg')) mimeType = 'image/svg+xml'
+      
+      createFaviconLink(faviconUrl, mimeType)
+      console.log('✅ Dynamic favicon set!')
+    }
+
+    console.log('📎 Favicon URL (first 100 chars):', faviconUrl.substring(0, 100) + '...')
+  }
+
+
+
+
   useEffect(() => {
     // Aplicar cores padrão do portal
     applyPortalColors()
@@ -51,7 +134,7 @@ export default function PortalLayout({
         console.log("STARTED loadTenantInfo ")
         setLoading(true)
         const tenantData = await getPortalTenantInfo('omegaveiculos')
-        console.log("tenantData Integrations", tenantData.portal_settings?.integrations?.google_analytics?.id)
+        console.log("tenantData", tenantData)
         setTenant(tenantData)
         const googleAnalytics = tenantData?.portal_settings?.integrations?.google_analytics
         let gaId: string | null = null
@@ -166,6 +249,8 @@ export default function PortalLayout({
       tenantId={tenant?.id || 1} 
       defaultTitle={tenant?.profile?.company_name || tenant?.name || 'Portal de Veículos'}
       defaultDescription={tenant?.profile?.company_description || 'Portal especializado na compra e venda de veículos usados e seminovos.'}
+      faviconUrl={tenant?.profile?.favicon_url}
+
     >
       <>
         <GoogleAnalytics measurementId={googleAnalyticsId} />

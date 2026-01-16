@@ -3,29 +3,30 @@
 
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
-import { getCustomSEOByUrl } from '@/lib/api'
+import { getCustomSeoByUrl } from '@/lib/portal-api'
 
+// ✅ FIX: Allow null values to match CustomSEOEntry type
 interface CustomSEOData {
-  page_title?: string;
-  subtitle?: string;
-  meta_description?: string;
-  meta_keywords?: string;
-  meta_author?: string;
-  meta_robots?: string;
-  og_title?: string;
-  og_description?: string;
-  og_image_url?: string;
-  og_site_name?: string;
-  og_type?: string;
-  og_locale?: string;
-  twitter_card?: string;
-  twitter_title?: string;
-  twitter_description?: string;
-  twitter_image_url?: string;
-  twitter_site?: string;
-  twitter_creator?: string;
-  canonical_url?: string;
-  structured_data?: Record<string, any>;
+  page_title?: string | null;
+  subtitle?: string | null;
+  meta_description?: string | null;
+  meta_keywords?: string | null;
+  meta_author?: string | null;
+  meta_robots?: string | null;
+  og_title?: string | null;
+  og_description?: string | null;
+  og_image_url?: string | null;
+  og_site_name?: string | null;
+  og_type?: string | null;
+  og_locale?: string | null;
+  twitter_card?: string | null;
+  twitter_title?: string | null;
+  twitter_description?: string | null;
+  twitter_image_url?: string | null;
+  twitter_site?: string | null;
+  twitter_creator?: string | null;
+  canonical_url?: string | null;
+  structured_data?: Record<string, any> | null;
 }
 
 interface SEOWrapperProps {
@@ -50,8 +51,9 @@ export default function SEOWrapper({
       try {
         setLoading(true);
         
-        // Use your API client function
-        const result = await getCustomSEOByUrl(tenantId, pathname);
+        console.log('🔍 SEOWrapper: Loading SEO for tenant:', tenantId, 'path:', pathname);
+        
+        const result = await getCustomSeoByUrl(tenantId, pathname || '/');
         
         console.log('🔍 SEOWrapper API result:', {
           success: result.success,
@@ -61,6 +63,7 @@ export default function SEOWrapper({
         });
         
         if (result.success && result.data) {
+          // ✅ Now this works because types are compatible
           setCustomSEO(result.data);
           console.log('✅ Custom SEO loaded for:', pathname, result.data);
         } else {
@@ -84,6 +87,7 @@ export default function SEOWrapper({
   useEffect(() => {
     if (!customSEO && !defaultTitle && !defaultDescription) return;
 
+    // ✅ Use || '' to handle null values safely
     const title = customSEO?.page_title || defaultTitle;
     const description = customSEO?.meta_description || defaultDescription;
     const keywords = customSEO?.meta_keywords || '';

@@ -63,12 +63,14 @@ export default function SEOWrapper({
         });
         
         if (result.success && result.data) {
-          // ✅ Now this works because types are compatible
           setCustomSEO(result.data);
+          // Mark that custom SEO was applied
+          document.documentElement.setAttribute('data-custom-seo-applied', 'true');
           console.log('✅ Custom SEO loaded for:', pathname, result.data);
         } else {
+          // Remove the flag if no custom SEO
+          document.documentElement.removeAttribute('data-custom-seo-applied');
           setCustomSEO(null);
-          console.log('ℹ️ No custom SEO for:', pathname, '(using defaults)');
         }
       } catch (error) {
         console.error('❌ Error fetching custom SEO:', error);

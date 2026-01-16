@@ -116,8 +116,8 @@ function PortalHomePageContent() {
   } | null>(null)
 
   // Aplicar meta tags SEO completas com dados reais da API
-  const metaTags = generateHomePageMetaTags(tenant, vehicleStats || undefined)
-  useSEOMetaTags(metaTags, tenant)
+  //const metaTags = generateHomePageMetaTags(tenant, vehicleStats || undefined)
+  //useSEOMetaTags(metaTags, tenant)
 
   // Função para carregar modelos quando uma marca é selecionada
   const loadModelsForBrand = async (brandName: string) => {

@@ -468,8 +468,8 @@ function VehiclesPageContent() {
   }, [currentPage, showPerPage, debouncedSearch, filters, isMounted])
 
   // Aplicar meta tags SEO completas com dados reais da API
-  const metaTags = generateVehiclesPageMetaTags(tenant, vehicles, totalVehicles)
-  useSEOMetaTags(metaTags, tenant)
+  //const metaTags = generateVehiclesPageMetaTags(tenant, vehicles, totalVehicles)
+  //useSEOMetaTags(metaTags, tenant)
 
   // Controlar montagem do componente
   useEffect(() => {

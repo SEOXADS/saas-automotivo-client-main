@@ -5,15 +5,22 @@ module.exports = {
   
   images: {
     remotePatterns: [
+      // Production API
       {
         protocol: 'https',
         hostname: 'api.omegaveiculos.com.br',
-        pathname: '/api/public/images/**',
+        pathname: '/**',
       },
       {
         protocol: 'https',
         hostname: 'www.api.omegaveiculos.com.br',
-        pathname: '/api/public/images/**',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+        pathname: '/storage/**', 
       },
       {
         protocol: 'http',

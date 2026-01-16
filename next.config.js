@@ -15,6 +15,12 @@ module.exports = {
         hostname: 'www.api.omegaveiculos.com.br',
         pathname: '/api/public/images/**',
       },
+      {
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '8000',
+        pathname: '/api/public/images/**',
+      },
     ],
   },
   

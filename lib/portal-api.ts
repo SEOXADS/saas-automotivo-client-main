@@ -140,7 +140,16 @@ export interface PortalTenant {
     display?: {
       show_featured_vehicles?: boolean
     }
+    integrations?: {
+      google_analytics?: { 
+        id?: string
+        enabled?: boolean
+      }
+      facebook_pixel_id?: string
+      whatsapp_number?: string
+    }
   }
+  
   configuration?: {
     theme?: {
       colors?: { [key: string]: string }
@@ -178,6 +187,7 @@ export interface PortalTenant {
     }
   }
 }
+
 
 export interface PortalSearchParams {
   id?: number
@@ -236,7 +246,7 @@ export const getPortalTenantInfo = async (subdomain: string): Promise<PortalTena
       throw new Error('getPortalTenantInfo só pode ser executado no cliente')
     }
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api'
     const response = await fetch(`${apiUrl}/portal/tenant-info`, {
       headers: {
         'X-Tenant-Subdomain': subdomain,
@@ -292,7 +302,7 @@ export const getPortalVehicles = async (
       throw new Error('getPortalVehicles só pode ser executado no cliente')
     }
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api'
     const url = `${apiUrl}/portal/vehicles?${queryParams.toString()}`
     console.log('🌐 URL da API:', url)
     console.log('📋 Query params:', queryParams.toString())
@@ -333,7 +343,7 @@ export const getPortalVehicle = async (subdomain: string, vehicleId: number): Pr
       throw new Error('getPortalVehicle só pode ser executado no cliente')
     }
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api'
     const response = await fetch(`${apiUrl}/portal/vehicles/${vehicleId}`, {
       headers: {
         'X-Tenant-Subdomain': subdomain,
@@ -813,7 +823,7 @@ export const getPortalVehicleBySlug = async (subdomain: string, slug: string, ve
       throw new Error('getPortalVehicleBySlug só pode ser executado no cliente')
     }
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api'
     const response = await fetch(`${apiUrl}/portal/vehicles/${vehicleId}`, {
       headers: {
         'X-Tenant-Subdomain': subdomain,

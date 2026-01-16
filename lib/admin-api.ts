@@ -5,7 +5,7 @@
 
 export const ADMIN_API_CONFIG = {
   // URL base da API
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api',
+  BASE_URL: process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api',
 
   // Headers padrão
   DEFAULT_HEADERS: {

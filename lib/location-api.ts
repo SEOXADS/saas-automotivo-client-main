@@ -423,6 +423,7 @@ export const locationApiHelpers =
    */
   async createTenantCity(data: TenantCityFormData): Promise<City | null> {
     try {
+      console.log("BASE URK", process.env.NEXT_PUBLIC_API_URL)
       return await adminApi.post(ADMIN_API_CONFIG.ENDPOINTS.TENANT_CITIES, data as unknown as Record<string, unknown>)
     } catch (error) {
       console.error('Erro ao criar cidade do tenant:', error)

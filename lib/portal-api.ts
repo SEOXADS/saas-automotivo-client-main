@@ -1318,25 +1318,31 @@ export const getCustomSeoByUrl = async (
   try {
     const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://api.omegaveiculos.com.br/api'
     
-    // ✅ Changed 'by-url' to 'get-by-url' to match Laravel route
-    const response = await fetch(
-      `${apiUrl}/custom-seo/get-by-url?tenant_id=${tenantId}&url=${encodeURIComponent(pageUrl)}`,
-      {
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        }
+    // ✅ FIX: Changed 'by-url' to 'get-by-url' to match Laravel route
+    const url = `${apiUrl}/custom-seo/get-by-url?tenant_id=${tenantId}&url=${encodeURIComponent(pageUrl)}`
+    
+    console.log('🔍 Fetching custom SEO from:', url) // Add debug log
+    
+    const response = await fetch(url, {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
       }
-    )
+    })
+    
+    console.log('📥 Custom SEO response status:', response.status) // Add debug log
     
     if (!response.ok) {
       console.warn('Custom SEO API returned:', response.status)
       return { success: false, data: null }
     }
     
-    return await response.json()
+    const result = await response.json()
+    console.log('✅ Custom SEO por URL carregado:', result) // Existing log
+    return result
   } catch (error) {
     console.error('❌ Error fetching custom SEO:', error)
     return { success: false, data: null }
   }
 }
+

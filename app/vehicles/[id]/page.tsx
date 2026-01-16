@@ -372,7 +372,7 @@ function VehicleDetailsContent() {
       setIsLoadingRelated(true)
 
       // Usar a mesma API externa que o resto do sistema
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api'
 
       // Se temos uma marca atual, filtrar por marca usando o mesmo filtro do portal
       let url = `${apiUrl}/portal/vehicles?per_page=20`

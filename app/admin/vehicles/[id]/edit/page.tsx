@@ -790,7 +790,7 @@ export default function EditVehiclePage() {
       // Atualizar veículo diretamente na API Laravel
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/vehicles/${vehicleId}`
       console.log('🔄 Enviando requisição diretamente para API Laravel:', apiUrl)
-      console.log('📚 Documentação da API: https://www.api.webcarros.app.br/api/documentation#/Veículos/170b50ff07739fd3e9a2f910611ea552')
+      console.log('📚 Documentação da API: https://www.api.omegaveiculos.com.br/api/documentation#/Veículos/170b50ff07739fd3e9a2f910611ea552')
       console.log('🔍 Token:', token ? 'Presente' : 'Ausente')
       console.log('🔍 Tenant:', user?.tenant?.subdomain || 'demo')
       console.log('🔍 API URL completa:', apiUrl)

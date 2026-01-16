@@ -145,7 +145,8 @@ export default function CreateCitiesPage() {
     setSelectedCities(new Set())
   }
 
-  const handleSubmit = async (e?: React.FormEvent) => {
+  const handleSubmit = async (e?: React.FormEvent) => 
+  {
     if (e) e.preventDefault()
 
     if (selectedCities.size === 0) {
@@ -156,6 +157,7 @@ export default function CreateCitiesPage() {
     setIsLoading(true)
 
     try {
+      console.log('📤 Cities to add:', Array.from(selectedCities))
       const promises = Array.from(selectedCities).map(cityId => {
         return locationApiHelpers.createTenantCity({
           city_id: cityId,
@@ -163,8 +165,12 @@ export default function CreateCitiesPage() {
         })
       })
 
+      console.log("PROMISES", promises);
+
       const results = await Promise.all(promises)
+      console.log("results", results);
       const successCount = results.filter(result => result !== null).length
+      console.log("successCount", successCount);
 
       if (successCount > 0) {
         alert(`${successCount} cidade(s) adicionada(s) ao seu tenant com sucesso!`)

@@ -7,6 +7,7 @@ import Head from 'next/head'
 import { getPortalTenantInfo, type PortalTenant } from '@/lib/portal-api'
 import { applyPortalColors } from './portal/colors.config'
 import { loadBasicPlugins, initializeSlickCarousel, initializeFancybox, checkPluginsLoaded } from './portal/plugins-simple.config'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 // Importar CSS do portal
 import './portal/portal.css'
@@ -18,6 +19,7 @@ export default function PortalLayout({
 }) {
   const [tenant, setTenant] = useState<PortalTenant | null>(null)
   const [loading, setLoading] = useState(true)
+  const [googleAnalyticsId, setGoogleAnalyticsId] = useState<string | null>(null)
 
   useEffect(() => {
     // Aplicar cores padrão do portal
@@ -46,6 +48,20 @@ export default function PortalLayout({
         setLoading(true)
         const tenantData = await getPortalTenantInfo('omegaveiculos')
         setTenant(tenantData)
+        const gaId = tenantData?.configuration?.portal_settings?.integrations?.google_analytics_id 
+                  || tenantData?.portal_settings?.integrations?.google_analytics_id
+                  || null
+        
+        if (gaId) {
+          console.log('✅ Google Analytics ID found:', gaId)
+          setGoogleAnalyticsId(gaId)
+        } else {
+          console.log('⚠️ No Google Analytics ID configured')
+        }
+        
+        console.log('✅ Tenant carregado:', tenantData)
+
+
         console.log('✅ Tenant carregado:', tenantData)
       } catch (error) {
         console.warn('⚠️ Erro ao carregar tenant:', error)
@@ -140,6 +156,7 @@ export default function PortalLayout({
 
   return (
     <>
+      <GoogleAnalytics measurementId={googleAnalyticsId} />
       <Head>
         <link rel="preconnect" href="https://www.api.webcarros.app.br" />
         <link rel="preconnect" href="https://production.autoforce.com" />

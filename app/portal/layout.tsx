@@ -9,6 +9,7 @@ import { applyPortalColors } from './colors.config'
 import { loadBasicPlugins, initializeSlickCarousel, initializeFancybox, checkPluginsLoaded } from './plugins-simple.config'
 import AccessibilityButton from '../../components/ui/AccessibilityButton'
 import SEOWrapper from '@/components/SEOWrapper';
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 
 // Importar CSS do portal
 import './portal.css'
@@ -21,6 +22,7 @@ export default function PortalLayout({
 }) {
   const [tenant, setTenant] = useState<PortalTenant | null>(null)
   const [loading, setLoading] = useState(true)
+  const [googleAnalyticsId, setGoogleAnalyticsId] = useState<string | null>(null)
 
   useEffect(() => {
     // Aplicar cores padrão do portal
@@ -46,9 +48,28 @@ export default function PortalLayout({
     // Carregar informações do tenant
     const loadTenantInfo = async () => {
       try {
+        console.log("STARTED loadTenantInfo ")
         setLoading(true)
         const tenantData = await getPortalTenantInfo('omegaveiculos')
+        console.log("tenantData Integrations", tenantData.portal_settings?.integrations?.google_analytics?.id)
         setTenant(tenantData)
+        const googleAnalytics = tenantData?.portal_settings?.integrations?.google_analytics
+        let gaId: string | null = null
+        if (googleAnalytics && typeof googleAnalytics === 'object' && 'id' in googleAnalytics) {
+          gaId = googleAnalytics.id || null
+        } 
+        // Check if it's already a string
+        else if (typeof googleAnalytics === 'string') {
+          gaId = googleAnalytics
+        }
+
+        if (gaId) {
+          console.log('✅ Google Analytics ID found:', gaId)
+          setGoogleAnalyticsId(gaId)
+        } else {
+          console.log("NO GAID")
+        }
+
         console.log('✅ Tenant carregado:', tenantData)
       } catch (error) {
         console.warn('⚠️ Erro ao carregar tenant:', error)
@@ -147,6 +168,7 @@ export default function PortalLayout({
       defaultDescription={tenant?.profile?.company_description || 'Portal especializado na compra e venda de veículos usados e seminovos.'}
     >
       <>
+        <GoogleAnalytics measurementId={googleAnalyticsId} />
         <Head>
           <link rel="preconnect" href="https://www.api.webcarros.app.br" />
           <link rel="preconnect" href="https://production.autoforce.com" />

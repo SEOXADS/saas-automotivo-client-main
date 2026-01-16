@@ -39,7 +39,7 @@ function SobrePageContent() {
         console.log('🔍 Carregando dados do tenant da API...')
 
         // Buscar dados reais do tenant da API
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.webcarros.app.br/api'
+        const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://www.api.omegaveiculos.com.br/api'
         const response = await fetch(`${apiUrl}/portal/tenant-info`, {
           headers: {
             'X-Tenant-Subdomain': 'omegaveiculos',

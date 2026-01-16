@@ -1320,7 +1320,7 @@ export const getCustomSeoByUrl = async (
     
     // ✅ FIX: Changed 'by-url' to 'get-by-url' to match Laravel route
     const url = `${apiUrl}/custom-seo/get-by-url?tenant_id=${tenantId}&url=${encodeURIComponent(pageUrl)}`
-    
+                
     console.log('🔍 Fetching custom SEO from:', url) // Add debug log
     
     const response = await fetch(url, {

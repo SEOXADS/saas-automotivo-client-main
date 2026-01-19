@@ -60,6 +60,7 @@ export interface TenantProfile {
   logo_url?: string
   favicon_url?: string
   banner_url?: string
+  about_image_url?: string;
 
   created_at: string
   updated_at: string

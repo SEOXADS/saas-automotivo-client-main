@@ -344,6 +344,7 @@ export default function ConfigurationPage() {
             logo_url: apiData.profile?.logo_url || apiData.logo_url || '',
             favicon_url: apiData.profile?.favicon_url || apiData.favicon_url || '',
             banner_url: apiData.profile?.banner_url || apiData.banner_url || '',
+            about_image_url: apiData.profile?.about_image_url || apiData.about_image_url || '',  
             created_at: apiData.profile?.created_at || new Date().toISOString(),
             updated_at: apiData.profile?.updated_at || new Date().toISOString()
           },
@@ -1276,7 +1277,15 @@ export default function ConfigurationPage() {
                     description="Imagem de destaque para a página inicial do portal"
                     className="md:col-span-2"
                   />
-                </div>
+                <ModernImageUpload
+                  label="Imagem da Página Sobre"
+                  value={config.profile.about_image_url || ''}
+                  onChange={(url) => updateConfig('profile', { about_image_url: url })}
+                  imageType="banner"
+                  maxSize={5}
+                  description="Imagem da loja/empresa exibida na página 'Sobre Nós' (recomendado: 800x600px)"
+                />
+              </div>
               </div>
             </CardContent>
           </Card>

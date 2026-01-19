@@ -18,6 +18,7 @@ function SobrePageContent() {
       banner_url?: string | null;
       logo_url?: string | null;
       favicon_url?: string | null;
+      about_image_url?: string | null;
     };
     social_media?: {
       facebook?: string;
@@ -53,6 +54,7 @@ function SobrePageContent() {
 
         const data = await response.json()
         console.log('✅ Dados do tenant carregados da API:', data)
+        console.log('🖼️ about_image_url:', data.data?.profile?.about_image_url)  // ← ADD DEBUG LOG
 
         if (data.success && data.data) {
           const tenantData = data.data
@@ -65,7 +67,8 @@ function SobrePageContent() {
               company_description: tenantData.profile?.company_description,
               address: tenantData.profile?.address,
               company_phone: tenantData.profile?.company_phone,
-              logo_url: tenantData.profile?.logo_url
+              logo_url: tenantData.profile?.logo_url,
+              about_image_url: tenantData.profile?.about_image_url  // ← ADD THIS
             }
           })
         }
@@ -81,7 +84,8 @@ function SobrePageContent() {
             company_description: 'São mais de 30 anos de história e tradição que a tornam a maior loja de seminovos da região.',
             address: 'R. Comendador Oetterer, 1483, LOJA, Vila Carvalho, Sorocaba, SP, 18060-070',
             company_phone: '(15) 3034-0800',
-            logo_url: undefined
+            logo_url: undefined,
+            about_image_url: undefined  // ← ADD THIS
           }
         }
         setTenant(fallbackTenant)
@@ -212,13 +216,21 @@ function SobrePageContent() {
               as melhores condições e o melhor atendimento do mercado.
             </p>
           </div>
-          <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center">
-            <div className="text-center">
-              <svg className="w-24 h-24 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-              </svg>
-              <p className="text-gray-500">Imagem da nossa loja</p>
-            </div>
+          <div className="bg-gray-200 rounded-lg h-96 flex items-center justify-center overflow-hidden">
+            {tenant?.profile?.about_image_url ? (
+              <img
+                src={tenant.profile.about_image_url}
+                alt={`Loja ${tenant?.profile?.company_name || 'Ômega Veículos'}`}
+                className="w-full h-full object-cover rounded-lg"
+              />
+            ) : (
+              <div className="text-center">
+                <svg className="w-24 h-24 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                <p className="text-gray-500">Imagem da nossa loja</p>
+              </div>
+            )}
           </div>
         </div>
 

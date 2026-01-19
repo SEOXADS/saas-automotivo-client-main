@@ -294,8 +294,8 @@ export default function PortalLayout({
                   e.currentTarget.style.backgroundColor = 'var(--button-primary-background)'
                 }}
               >
-                <span className="hidden sm:inline">Comprar Veículo</span>
-                <span className="sm:hidden">Comprar</span>
+                <span className="hidden sm:inline">Comprar Veículo2</span>
+                <span className="sm:hidden">Comprar2</span>
               </Link>
 
               {/* <Link

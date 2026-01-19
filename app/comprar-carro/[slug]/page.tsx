@@ -1685,29 +1685,29 @@ function VehicleDetailsContent() {
                       color: 'bg-blue-600 hover:bg-blue-700',
                       label: 'Compartilhar no Facebook',
                       title: 'Compartilhar no Facebook',
-                      url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`
+                      url: `https://www.facebook.com/omegaveiculoscomendadoroetterer`
                     },
                     {
                       icon: 'fab fa-instagram fa-2x',
                       color: 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600',
                       label: 'Compartilhar no Instagram',
                       title: 'Compartilhar no Instagram',
-                      url: `https://www.instagram.com/omegaveiculos`
+                      url: `https://www.instagram.com/omegaveiculoscomendador/`
                     },
                     {
                       icon: 'fab fa-whatsapp fa-2x',
                       color: 'bg-green-500 hover:bg-green-600',
                       label: 'Compartilhar no WhatsApp',
                       title: 'Compartilhar no WhatsApp',
-                      url: `https://wa.me/?text=${encodeURIComponent(`Confira este veículo: ${vehicle?.title || 'Veículo'} - ${window.location.href}`)}`
+                      url: `https://wa.me/551530340800?text=Ol%C3%A1!%20Gostaria%20de%20receber%20uma%20cota%C3%A7%C3%A3o%20para%20este%20ve%C3%ADculo.%20Podem%20me%20enviar%20mais%20detalhes%3F`
                     },
-                    {
+                    /*{
                       icon: 'fab fa-twitter fa-2x',
                       color: 'bg-blue-400 hover:bg-blue-500',
                       label: 'Compartilhar no Twitter',
                       title: 'Compartilhar no Twitter',
                       url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Confira este veículo: ${vehicle?.title || 'Veículo'}`)}&url=${encodeURIComponent(window.location.href)}`
-                    }
+                    }*/
                   ].map((social, index) => (
                     <a
                       key={index}

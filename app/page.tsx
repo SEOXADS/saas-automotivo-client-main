@@ -304,69 +304,23 @@ function PortalHomePageContent() {
 
       {/* Hero Section - Portal Style */}
       <section className="relative bg-black text-white py-8 flex items-center">
-        {/* Background com silhuetas de edifícios */}
-        <div className="absolute inset-0 opacity-80 hover:opacity-100 transition-opacity duration-300 bg-opacity-80" style={{ backgroundImage: `url(/portal/assets/img/bg/about-testimonial.jpg) `, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundBlendMode: 'overlay' }}></div>
-        <div className="absolute bottom-0 left-0 right-0 h-34 bg-gradient-to-t from-gray-500 to-transparent"></div>
+         {/* Background */}
+          <div
+            className="absolute inset-0 opacity-80 hover:opacity-100 transition-opacity duration-300 bg-opacity-80"
+            style={{
+              backgroundImage: `url("https://scontent.fcpq14-1.fna.fbcdn.net/v/t39.30808-6/417777709_709197508018657_5286267701310385679_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=vp3GgjTlvsAQ7kNvwGNUJDp&_nc_oc=Adl9KykR4oLBiUDhHdBsRsQjXs1JslM0zUo0bdmhD-foS-S2Plf2tJQAzZ0T1uIoSctXP9JSJE3tmNi9aLA5TYtD&_nc_zt=23&_nc_ht=scontent.fcpq14-1.fna&_nc_gid=zz9GpZKoOHbrR-jrCsAcMg&oh=00_Afos5Tz-O4jXHQVpCpwJG7rG3je2w0mQkDZdXXAtPTlLdQ&oe=69743669")`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundBlendMode: "overlay"
+            }}
+          ></div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-20 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Conteúdo da esquerda */}
-            <div className="align-justify text-justify">
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 text-justify">
-               Compre Carros <span className="text-orange-500 mt-2 mb-2 text-justify">Novos e Seminovos na Omega Veículos</span>
-              </h1>
+          {/* Empty content block keeping the same size */}
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-20 w-full">
+            <div className="h-110"></div>
+          </div>
 
-              <p className="text-xl md:text-2xl mb-8 text-white  align-justify text-justify">
-              Compra de Carros Novos e Seminovos, com os melhores preços e condições de pagamento. Carros de todas as marcas e modelos, revisados, baixa quilometragem, de procedência só aqui na Omega Veículos.
-              </p>
-
-              {/* Estatísticas */}
-
-
-              {/* Botões de ação */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                      <Link
-                  href="/comprar-carro"
-                  className="bg-orange-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors inline-flex items-center"
-                >
-                  Comprar Carro
-                  <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                      </Link>
-                      <Link
-                  href="/vender-carro"
-                  className="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-700 transition-colors inline-flex items-center"
-                >
-                  <svg className="mr-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                  </svg>
-                  Vender Carro
-                      </Link>
-                    </div>
-                  </div>
-
-            {/* Imagem da direita */}
-            <div className="relative backdrop-blur-sm">
-              <div className="relative">
-                <div className="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  Disponível para Compra
-                </div>
-                <div className="absolute bottom-4 left-4 bg-blue-600 text-white px-4 py-2 rounded-full">
-                  <p className="text-xs">A partir de</p>
-                  <h6 className="text-lg font-bold">R$ 65.000</h6>
-              </div>
-                <div className="w-full h-80 transition-all duration-300  rounded-lg flex items-center justify-center ">
-                  <img
-                    src="/portal/assets/img/cars/car-15.png"
-                    alt="Carro para compra"
-                    className="w-full h-full object-contain"
-                  />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
         {/* Formulário de busca - Portal Style - Desktop */}
         <div className="absolute bottom-0 left-0 right-0 hidden md:block">
@@ -516,7 +470,7 @@ function PortalHomePageContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              ✨ Porque comprar carros econômicos com a gente? ✨
+              ✨Porque comprar carros econômicos com a gente? ✨
               </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Sabe o que está procurando? Navegue pela nossa extensa seleção de carros econômicos
@@ -968,7 +922,7 @@ function PortalHomePageContent() {
                   <h2 className="text-4xl font-bold mb-4" style={{
                     color: 'var(--text-color, #111827)'
                   }}>
-                    Comprar Comprar Carros em 3 Passos
+                    Comprar Carros em 3 Passos
                   </h2>
                   <div className="w-4 h-4 rounded-full ml-2" style={{
                     backgroundColor: 'var(--accent-color, #F59E0B)'

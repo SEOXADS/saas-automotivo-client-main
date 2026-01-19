@@ -1607,8 +1607,13 @@ function VehicleDetailsContent() {
               <div className="bg-white rounded-lg shadow-sm p-6">
                 {/* <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Detalhes do Proprietário</h3> */}
                 <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center">
-                    <i className="fas fa-user text-gray-600"></i>
+                  <div className="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center">
+                    <img
+                      src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7QAAAFjCAMAAAA6vbciAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAK1UExURf///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTEhYTElxWWIV+gKiio9DMzsvHyOrn55ONjtzY2YB6fG1nafXy8rq1to+IiumIa+iDZ+V2Wd0+K9gYGdkmH+BTOu+rk3t1d+yaf91CLtoyJeJjSNnV1p6Ymufk5eZ7XaKcnds2JsfDxNopIONoTEM+P+mNcN5GMbKtrk9JSsS/wPX082pjZeyeg/Px8eFaQNgWGNbS1NgZGt5KM+RsT9s4J+udgtcTF/K6pNcOFd1ALNgWGOZ/YuFgRdcSF9o1JtgWGNcVGOJmSt0/LNxCLtw6KdkoH9ggHNgWGNcVGNcVGNgeHMG8vdkkHtkmH95HMuNrTuiGatouItcOFeBXPdcQFuJkSNgiHdYOFd5GMeqUeNcTF9cVGPPHtdcYGbawsd1GMdw+K9YOFdYOFdcXGeJoTNYOFdYOFeuaf9YOFdcOFdcOFdYOFd1EMNgdG9YOFdkpINYOFd9TOtcOFdcYGdo1JtcOFdcSF9swI99PN/G6pONoS99QONkjHdcTF9geHOZ5W+JnS9kjHdgZGtcTF9xCLtYOFdcVGNs1JtkjHeBaP9orIeJiR9cRF9w6KdgbGtw+K9YQFt9UO9kmH+FeQtgYGdYQFtw8KtcXGeqVetcSF9cYGeFaP9caGtgbGtcXGdkmH9giHeNpTd5KM+qQdKymp/f19QAAAOuWeuiIa+qWegAAABYTEisnKEE8PSAdHU1ISfv5+TYxMvfi2PTJuPru6dcOFfbVyPK8qPG2oPbXyvji2fCvl++tle+ulu+vl+qSdtYOFfPJuPTLuvXVyO2li+ykivTMvPG5o////wYB8SIAAADIdFJOUwAwQBDgsGBw8NCQUCDAgKBAgKDA8OCQYCBQEHDQMLD24OLg5O7k6Oju9uLr6ODk4Pbu4vbw7uTo4uvt8Ovo6+jw6PTw6Ov16/X39/fr9e336+3t9+719ub2+fDs8Pn4+/P29fX3+vn6+e/29fX6+ezs7fb78+jx+Orv9Pbn6PDw7fXo6+Tu7/Tu4ujo4PD24vXp5+/i6d317+rs6/b57+vx8eTu5Ozy8vL28PL14Pjz8fb57fDs9/fm9/fr9/Tn9fD43PRM5ejlegfW9QAAAAFiS0dEAIgFHUgAAAAJcEhZcwAALiMAAC4jAXilP3YAAAAHdElNRQfqARARETB+ljaQAAAAAW9yTlQBz6J3mgAARHRJREFUeNrtffeDHEd23k7uST27ABZpkZkAJpBc4AiSIEgKJI+ZAG2csxx1zpYc6CD6bN2...
+                      "
+                      alt="Owner"
+                      className="w-full h-full object-cover"
+                    />
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900">Omega Veículos</h4>

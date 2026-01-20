@@ -300,16 +300,16 @@ function PortalHomePageContent() {
   }
 
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen">
         {/* Hero Section - Portal Style */}
-        <section className="relative bg-black text-white flex flex-col">
+        <section className="relative bg-gray-50 text-white md:h-[70vh] flex flex-col">
           {/* Background Image Container - 60% width, auto height */}
-          <div className="relative w-full flex justify-center bg-black">
-            <div className="w-[60%]">
+          <div className="relative bg-gray-50 w-full flex justify-center">
+            <div className="relative w-full md:h-[70vh] overflow-hidden">
               <img
                 src="https://scontent.fcpq14-1.fna.fbcdn.net/v/t39.30808-6/417777709_709197508018657_5286267701310385679_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=vp3GgjTlvsAQ7kNvwGNUJDp&_nc_oc=Adl9KykR4oLBiUDhHdBsRsQjXs1JslM0zUo0bdmhD-foS-S2Plf2tJQAzZ0T1uIoSctXP9JSJE3tmNi9aLA5TYtD&_nc_zt=23&_nc_ht=scontent.fcpq14-1.fna&_nc_gid=zz9GpZKoOHbrR-jrCsAcMg&oh=00_Afos5Tz-O4jXHQVpCpwJG7rG3je2w0mQkDZdXXAtPTlLdQ&oe=69743669"
                 alt="Hero Banner - ÔMEGA Veículos"
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-cover"
               />
             </div>
           </div>
@@ -461,6 +461,7 @@ function PortalHomePageContent() {
       </section>
 
       {/* Categorias em Destaque */}
+    {false && (
       <section className="py-20 pb-8 pt-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -631,9 +632,10 @@ function PortalHomePageContent() {
                     </div>
                   </div>
       </section>
+    )}
 
       {/* Veículos em Destaque - Portal Style (MOVIDO PARA AQUI) */}
-      <section className="py-8 bg-gray-50">
+      <section className="py-0 sm:py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center mb-4">
@@ -1285,67 +1287,66 @@ function PortalHomePageContent() {
             <div className="w-full h-px bg-gray-200"></div>
                     </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-6 gap-8">
-            {/* Coluna 1 */}
-            <div className="space-y-3">
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Coupe</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Conversiveis</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Hatchback</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros utilitários</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Minivan</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Caminhonete</div>
-                    </div>
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-6 gap-x-20 gap-y-6">
 
-            {/* Coluna 2 */}
-            <div className="space-y-3">
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros esportivos</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros SUV</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Wagon</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Crossover</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros elétricos</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Jeep</div>
-                    </div>
+              {/* Coluna 1 */}
+              <div className="space-y-4">
+                <div>&gt; Carros Coupe</div>
+                <div>&gt; Carros Conversíveis</div>
+                <div>&gt; Carros Hatchback</div>
+                <div>&gt; Carros Utilitários</div>
+                <div>&gt; Carros Minivan</div>
+              </div>
 
-            {/* Coluna 3 */}
-            <div className="space-y-3">
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros segmento C1</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros compacto</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Hatchback</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros de luxo</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros MPV</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Van</div>
-                    </div>
+              {/* Coluna 2 */}
+              <div className="space-y-4">
+                <div>&gt; Carros Caminhonete</div>
+                <div>&gt; Carros Esportivos</div>
+                <div>&gt; Carros SUV</div>
+                <div>&gt; Carros Wagon</div>
+                <div>&gt; Carros Crossover</div>
+              </div>
 
-            {/* Coluna 4 - Marcas */}
-            <div className="space-y-3">
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Suzuki</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Hyundai</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da BYD</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Chevrolet</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Volkswagen</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Renault</div>
-                    </div>
+              {/* Coluna 3 */}
+              <div className="space-y-4">
+                <div>&gt; Carros Elétricos</div>
+                <div>&gt; Carros Compacto</div>
+                <div>&gt; Carros Segmento C1</div>
+                <div>&gt; Carros de Luxo</div>
+                <div>&gt; Carros MPV</div>
+              </div>
 
-            {/* Coluna 5 - Marcas */}
-            <div className="space-y-3">
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Toyota</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Nissan</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Fiat</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Kia</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Ford</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros da Jeep</div>
-                    </div>
+              {/* Coluna 4 */}
+              <div className="space-y-4">
+                <div>&gt; Carros Van</div>
+                <div>&gt; Carros da Suzuki</div>
+                <div>&gt; Carros da Hyundai</div>
+                <div>&gt; Carros da BYD</div>
+                <div>&gt; Carros da Chevrolet</div>
+              </div>
 
-            {/* Coluna 6 */}
-            <div className="space-y-3">
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Coupe</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Conversiveis</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Hatchback</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros esportivos</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Minivan</div>
-              <div className="text-gray-700 hover:text-orange-500 cursor-pointer transition-colors">&gt; Carros Caminhonete</div>
-                  </div>
-                </div>
+              {/* Coluna 5 */}
+              <div className="space-y-4">
+                <div>&gt; Carros da Volkswagen</div>
+                <div>&gt; Carros da Renault</div>
+                <div>&gt; Carros da Toyota</div>
+                <div>&gt; Carros da Nissan</div>
+              </div>
+
+              {/* Coluna 6 */}
+              <div className="space-y-4">
+                <div>&gt; Carros da Kia</div>
+                <div>&gt; Carros da Ford</div>
+                <div>&gt; Carros da Jeep</div>
+                <div>&gt; Carros Sedan</div>
+                <div>&gt; Carros Pickup</div>
+                                <div>&gt; Carros da Fiat</div>
+              </div>
+
+            </div>
+          </div>
+
 
           {/* Botão Scroll to Top */}
           <div className="fixed bottom-6 right-6">

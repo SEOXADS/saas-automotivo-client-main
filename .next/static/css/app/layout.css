@@ -998,6 +998,9 @@
   .h-px {
     height: 1px;
   }
+  .h-screen {
+    height: 100vh;
+  }
   .max-h-0 {
     max-height: calc(var(--spacing) * 0);
   }
@@ -1126,6 +1129,9 @@
   }
   .w-100 {
     width: calc(var(--spacing) * 100);
+  }
+  .w-\[60\%\] {
+    width: 60%;
   }
   .w-auto {
     width: auto;
@@ -2225,6 +2231,9 @@
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
   }
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
+  }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
   }
@@ -2449,6 +2458,9 @@
   }
   .text-orange-900 {
     color: var(--color-orange-900);
+  }
+  .text-pink-600 {
+    color: var(--color-pink-600);
   }
   .text-primary-600 {
     color: #2563eb;

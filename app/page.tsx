@@ -301,25 +301,20 @@ function PortalHomePageContent() {
 
   return (
     <div className="min-h-screen bg-black">
-
-      {/* Hero Section - Portal Style */}
-      <section className="relative bg-black text-white py-8 flex items-center">
-         {/* Background */}
-          <div
-            className="absolute inset-0 opacity-80 hover:opacity-100 transition-opacity duration-300 bg-opacity-80"
-            style={{
-              backgroundImage: `url("https://scontent.fcpq14-1.fna.fbcdn.net/v/t39.30808-6/417777709_709197508018657_5286267701310385679_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=vp3GgjTlvsAQ7kNvwGNUJDp&_nc_oc=Adl9KykR4oLBiUDhHdBsRsQjXs1JslM0zUo0bdmhD-foS-S2Plf2tJQAzZ0T1uIoSctXP9JSJE3tmNi9aLA5TYtD&_nc_zt=23&_nc_ht=scontent.fcpq14-1.fna&_nc_gid=zz9GpZKoOHbrR-jrCsAcMg&oh=00_Afos5Tz-O4jXHQVpCpwJG7rG3je2w0mQkDZdXXAtPTlLdQ&oe=69743669")`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundBlendMode: "overlay"
-            }}
-          ></div>
-
-          {/* Empty content block keeping the same size */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-20 w-full">
-            <div className="h-110"></div>
+        {/* Hero Section - Portal Style */}
+        <section className="relative bg-black text-white flex flex-col">
+          {/* Background Image Container - 60% width, auto height */}
+          <div className="relative w-full flex justify-center bg-black">
+            <div className="w-[60%]">
+              <img
+                src="https://scontent.fcpq14-1.fna.fbcdn.net/v/t39.30808-6/417777709_709197508018657_5286267701310385679_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=vp3GgjTlvsAQ7kNvwGNUJDp&_nc_oc=Adl9KykR4oLBiUDhHdBsRsQjXs1JslM0zUo0bdmhD-foS-S2Plf2tJQAzZ0T1uIoSctXP9JSJE3tmNi9aLA5TYtD&_nc_zt=23&_nc_ht=scontent.fcpq14-1.fna&_nc_gid=zz9GpZKoOHbrR-jrCsAcMg&oh=00_Afos5Tz-O4jXHQVpCpwJG7rG3je2w0mQkDZdXXAtPTlLdQ&oe=69743669"
+                alt="Hero Banner - ÔMEGA Veículos"
+                className="w-full h-auto object-contain"
+              />
+            </div>
           </div>
+          {/* Empty content block keeping the same size */}
+          <div style={{ marginTop: "70px" }}></div>
 
 
         {/* Formulário de busca - Portal Style - Desktop */}

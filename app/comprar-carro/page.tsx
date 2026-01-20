@@ -89,7 +89,7 @@ function VehiclesPageContent() {
   const [vehicles, setVehicles] = useState<FlexibleVehicle[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-  const [showPerPage, setShowPerPage] = useState(10)
+  const [showPerPage, setShowPerPage] = useState(1000)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalVehicles, setTotalVehicles] = useState(0)
   const [totalPages, setTotalPages] = useState(0)

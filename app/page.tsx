@@ -221,7 +221,7 @@ function PortalHomePageContent() {
               image_url: (vehicle.main_image as unknown as { url: string; id: number }).url,
               is_primary: true
             }] : null,
-            city: null, // Não disponível na API
+            city: 'Sorocaba',
             price: vehicle.price ? parseFloat(vehicle.price.toString()) : null,
             year: vehicle.year,
             mileage: vehicle.mileage,

@@ -1,4 +1,4 @@
-// File: /Users/gabrielcarvalho/Cloud-Drive/seo-para/saas-automotivo-client-main2/app/layout.tsx
+// File: /home/ubuntu/saas-automotivo/saas-automotivo-client-main/app/layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

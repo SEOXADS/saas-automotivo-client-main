@@ -1,6 +1,4 @@
 {
-  "/comprar-carro/page": "app/comprar-carro/page.js",
   "/page": "app/page.js",
-  "/comprar-carro/[slug]/page": "app/comprar-carro/[slug]/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js"
+  "/comprar-carro/page": "app/comprar-carro/page.js"
 }

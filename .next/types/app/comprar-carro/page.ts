@@ -1,4 +1,4 @@
-// File: /Users/gabrielcarvalho/Cloud-Drive/seo-para/saas-automotivo-client-main2/app/comprar-carro/page.tsx
+// File: /home/ubuntu/saas-automotivo/saas-automotivo-client-main/app/comprar-carro/page.tsx
 import * as entry from '../../../../app/comprar-carro/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

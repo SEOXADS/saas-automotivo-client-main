@@ -902,6 +902,9 @@
   .table-cell {
     display: table-cell;
   }
+  .aspect-\[16\/7\] {
+    aspect-ratio: 16/7;
+  }
   .aspect-square {
     aspect-ratio: 1 / 1;
   }
@@ -989,6 +992,15 @@
   .h-120 {
     height: calc(var(--spacing) * 120);
   }
+  .h-\[50vh\] {
+    height: 50vh;
+  }
+  .h-\[60vh\] {
+    height: 60vh;
+  }
+  .h-\[70vh\] {
+    height: 70vh;
+  }
   .h-auto {
     height: auto;
   }
@@ -997,9 +1009,6 @@
   }
   .h-px {
     height: 1px;
-  }
-  .h-screen {
-    height: 100vh;
   }
   .max-h-0 {
     max-height: calc(var(--spacing) * 0);
@@ -1436,6 +1445,9 @@
       margin-block-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-y-reverse)));
     }
   }
+  .gap-x-20 {
+    column-gap: calc(var(--spacing) * 20);
+  }
   .space-x-1 {
     :where(& > :not(:last-child)) {
       --tw-space-x-reverse: 0;
@@ -1470,6 +1482,12 @@
       margin-inline-start: calc(calc(var(--spacing) * 8) * var(--tw-space-x-reverse));
       margin-inline-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-x-reverse)));
     }
+  }
+  .gap-y-4 {
+    row-gap: calc(var(--spacing) * 4);
+  }
+  .gap-y-6 {
+    row-gap: calc(var(--spacing) * 6);
   }
   .divide-y {
     :where(& > :not(:last-child)) {
@@ -2234,9 +2252,6 @@
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
   }
-  .pb-20 {
-    padding-bottom: calc(var(--spacing) * 20);
-  }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
   }
@@ -2461,9 +2476,6 @@
   }
   .text-orange-900 {
     color: var(--color-orange-900);
-  }
-  .text-pink-600 {
-    color: var(--color-pink-600);
   }
   .text-primary-600 {
     color: #2563eb;
@@ -3073,13 +3085,6 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-blue-50);
-      }
-    }
-  }
-  .hover\:bg-blue-500 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--color-blue-500);
       }
     }
   }
@@ -3808,6 +3813,11 @@
       padding-inline: calc(var(--spacing) * 10);
     }
   }
+  .sm\:py-20 {
+    @media (width >= 40rem) {
+      padding-block: calc(var(--spacing) * 20);
+    }
+  }
   .sm\:text-left {
     @media (width >= 40rem) {
       text-align: left;
@@ -3849,6 +3859,26 @@
   .md\:hidden {
     @media (width >= 48rem) {
       display: none;
+    }
+  }
+  .md\:h-\[60vh\] {
+    @media (width >= 48rem) {
+      height: 60vh;
+    }
+  }
+  .md\:h-\[70vh\] {
+    @media (width >= 48rem) {
+      height: 70vh;
+    }
+  }
+  .md\:h-\[75vh\] {
+    @media (width >= 48rem) {
+      height: 75vh;
+    }
+  }
+  .md\:h-\[80vh\] {
+    @media (width >= 48rem) {
+      height: 80vh;
     }
   }
   .md\:h-auto {

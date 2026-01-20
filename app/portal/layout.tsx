@@ -23,6 +23,21 @@ export default function PortalLayout({
   const [tenant, setTenant] = useState<PortalTenant | null>(null)
   const [loading, setLoading] = useState(true)
   const [googleAnalyticsId, setGoogleAnalyticsId] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 640px)') // mesmo breakpoint do sm
+    setIsMobile(media.matches)
+
+    const listener = () => setIsMobile(media.matches)
+    media.addEventListener('change', listener)
+
+    return () => media.removeEventListener('change', listener)
+  }, [])
+
+  const hrefCarro = isMobile
+    ? '/comprar-carro'
+    : 'https://wa.me/551530340800?text=Ol%C3%A1!%20Gostaria%20de%20receber%20uma%20cota%C3%A7%C3%A3o%20para%20este%20ve%C3%ADculo.%20Podem%20me%20enviar%20mais%20detalhes%3F'
 
   const setDynamicFavicon = (faviconUrl: string | null | undefined) => {
     if (!faviconUrl) {
@@ -378,7 +393,7 @@ export default function PortalLayout({
             {/* Botões de ação */}
             <div className="flex items-center space-x-4">
             <Link
-              href="https://wa.me/551530340800?text=Ol%C3%A1!%20Gostaria%20de%20receber%20uma%20cota%C3%A7%C3%A3o%20para%20este%20ve%C3%ADculo.%20Podem%20me%20enviar%20mais%20detalhes%3F"
+              href={hrefCarro}
               className="px-4 py-2 rounded-lg font-medium transition-colors duration-200"
               style={{
                 backgroundColor: 'var(--button-primary-background)',

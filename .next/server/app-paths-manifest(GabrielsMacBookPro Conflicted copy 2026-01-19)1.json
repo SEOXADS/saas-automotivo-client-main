@@ -1,0 +1,5 @@
+{
+  "/comprar-carro/page": "app/comprar-carro/page.js",
+  "/page": "app/page.js",
+  "/comprar-carro/[slug]/page": "app/comprar-carro/[slug]/page.js"
+}

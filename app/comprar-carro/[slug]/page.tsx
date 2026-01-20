@@ -1676,52 +1676,67 @@ function VehicleDetailsContent() {
               </div>
 
               {/* Compartilhar */}
-              <div className="bg-white rounded-lg shadow-sm p-6">
+              <div className="bg-white rounded-lg shadow-sm p-8">
                 <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-4">Compartilhar</h3>
                 <div className="flex space-x-4">
-                  {[
-                    {
-                      icon: 'fab fa-facebook-f fa-2x',
-                      color: 'bg-blue-600 hover:bg-blue-700',
-                      label: 'Compartilhar no Facebook',
-                      title: 'Compartilhar no Facebook',
-                      url: `https://www.facebook.com/omegaveiculoscomendadoroetterer`
-                    },
-                    {
-                      icon: 'fab fa-instagram fa-2x',
-                      color: 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600',
-                      label: 'Compartilhar no Instagram',
-                      title: 'Compartilhar no Instagram',
-                      url: `https://www.instagram.com/omegaveiculoscomendador/`
-                    },
-                    {
-                      icon: 'fab fa-whatsapp fa-2x',
-                      color: 'bg-green-500 hover:bg-green-600',
-                      label: 'Compartilhar no WhatsApp',
-                      title: 'Compartilhar no WhatsApp',
-                      url: `https://wa.me/551530340800?text=Ol%C3%A1!%20Gostaria%20de%20receber%20uma%20cota%C3%A7%C3%A3o%20para%20este%20ve%C3%ADculo.%20Podem%20me%20enviar%20mais%20detalhes%3F`
-                    },
-                    /*{
-                      icon: 'fab fa-twitter fa-2x',
-                      color: 'bg-blue-400 hover:bg-blue-500',
-                      label: 'Compartilhar no Twitter',
-                      title: 'Compartilhar no Twitter',
-                      url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(`Confira este veículo: ${vehicle?.title || 'Veículo'}`)}&url=${encodeURIComponent(window.location.href)}`
-                    }*/
-                  ].map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-16 h-16 ${social.color} text-white rounded-full flex items-center justify-center hover:opacity-80 transition-all duration-200 hover:scale-105`}
-                      aria-label={social.label}
-                      title={social.label}
-                    >
-                      <i className={social.icon}></i>
-                    </a>
-                  ))}
-                </div>
+                {[
+                  {
+                    icon: 'fab fa-facebook-f fa-lg',
+                    color: 'bg-blue-600 hover:bg-blue-700',
+                    label: 'Siga-nos no Facebook',
+                    title: 'Siga-nos no Facebook',
+                    url: 'https://www.facebook.com/omegaveiculoscomendadoroetterer'
+                  },
+                  {
+                    icon: 'fab fa-instagram fa-lg',
+                    color: 'bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600',
+                    label: 'Siga-nos no Instagram',
+                    title: 'Siga-nos no Instagram',
+                    url: 'https://www.instagram.com/omegaveiculoscomendador/'
+                  },
+                  {
+                    icon: 'fab fa-linkedin-in fa-lg',
+                    color: 'bg-blue-700 hover:bg-blue-800',
+                    label: 'Siga-nos no LinkedIn',
+                    title: 'Siga-nos no LinkedIn',
+                    url: 'https://www.linkedin.com/company/omega-veiculos-sorocaba'
+                  },
+                  {
+                    icon: 'fab fa-google fa-lg',
+                    color: 'bg-red-500 hover:bg-red-600',
+                    label: 'Avalie-nos no Google',
+                    title: 'Avalie-nos no Google',
+                    url: 'https://g.page/r/CShYdEQOlPsPEAE/review'
+                  },
+                  {
+                    icon: 'fab fa-youtube fa-lg',
+                    color: 'bg-red-600 hover:bg-red-700',
+                    label: 'Inscreva-se no YouTube',
+                    title: 'Inscreva-se no YouTube',
+                    url: 'https://www.youtube.com/@omegaveiculos'
+                  },
+                  {
+                    icon: 'fab fa-whatsapp fa-lg',
+                    color: 'bg-green-500 hover:bg-green-600',
+                    label: 'Entre em contato via WhatsApp',
+                    title: 'Entre em contato via WhatsApp',
+                    url: 'https://wa.me/551530340800?text=Ol%C3%A1!%20Gostaria%20de%20receber%20uma%20cota%C3%A7%C3%A3o%20para%20este%20ve%C3%ADculo.%20Podem%20me%20enviar%20mais%20detalhes%3F'
+                  }
+                ].map((social, index) => (
+                  <a
+                    key={index}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-16 h-16 ${social.color} text-white rounded-full flex items-center justify-center hover:opacity-80 transition-all duration-200 hover:scale-105`}
+                    aria-label={social.label}
+                    title={social.title}
+                  >
+                    <i className={social.icon}></i>
+                  </a>
+                ))}
+              </div>
+
 
                 {/* Redes sociais da empresa */}
                 {tenant?.profile && (

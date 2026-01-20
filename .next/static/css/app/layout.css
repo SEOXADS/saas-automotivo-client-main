@@ -1728,6 +1728,9 @@
   .bg-blue-600 {
     background-color: var(--color-blue-600);
   }
+  .bg-blue-700 {
+    background-color: var(--color-blue-700);
+  }
   .bg-danger-400 {
     background-color: #f87171;
   }
@@ -3091,6 +3094,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-blue-700);
+      }
+    }
+  }
+  .hover\:bg-blue-800 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-blue-800);
       }
     }
   }

@@ -12,12 +12,6 @@
       "static/css/app/comprar-carro/[slug]/page.css",
       "static/chunks/app/comprar-carro/[slug]/page.js"
     ],
-    "/comprar-carro/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/css/app/comprar-carro/page.css",
-      "static/chunks/app/comprar-carro/page.js"
-    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
@@ -34,6 +28,12 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/admin/dashboard/page.js"
+    ],
+    "/comprar-carro/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/comprar-carro/page.css",
+      "static/chunks/app/comprar-carro/page.js"
     ]
   }
 }

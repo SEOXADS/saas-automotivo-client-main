@@ -532,7 +532,7 @@ function VehicleDetailsContent() {
             title: vehicleData.title,
             main_image: vehicleData.main_image,
             images: images,
-            city: vehicleData.city || 'São Paulo, SP',
+            city: vehicleData.city || 'Sorocaba, SP',
             price: vehicleData.price ? parseFloat(vehicleData.price.toString()) / 100 : null,
             year: vehicleData.year,
             mileage: vehicleData.mileage,
@@ -595,7 +595,7 @@ function VehicleDetailsContent() {
               { id: 4, image_url: '/portal/assets/img/cars/slider-04.jpg', is_primary: false },
               { id: 5, image_url: '/portal/assets/img/cars/slider-05.jpg', is_primary: false }
             ],
-            city: 'São Paulo, SP',
+            city: 'Sorocaba, SP',
             price: null,
             year: null,
             mileage: null,
@@ -626,7 +626,7 @@ function VehicleDetailsContent() {
             { id: 4, image_url: '/portal/assets/img/cars/slider-04.jpg', is_primary: false },
             { id: 5, image_url: '/portal/assets/img/cars/slider-05.jpg', is_primary: false }
           ],
-          city: 'São Paulo, SP',
+          city: 'Sorocaba, SP',
           price: null,
           year: null,
           mileage: null,
@@ -848,7 +848,7 @@ function VehicleDetailsContent() {
             <div className="hidden sm:flex flex-wrap items-center gap-4 text-sm text-gray-600">
               <div className="flex items-center">
                 <i className="fas fa-map-marker-alt mr-1"></i>
-                <span>Localização: {typeof vehicle.city === 'string' ? vehicle.city : 'São Paulo, SP'}</span>
+                <span>Localização: {typeof vehicle.city === 'string' ? vehicle.city : 'Sorocaba, SP'}</span>
               </div>
               <div className="flex items-center" itemScope itemType="https://schema.org/QuantitativeValue">
                 <i className="fas fa-eye mr-1"></i>
@@ -1092,7 +1092,7 @@ function VehicleDetailsContent() {
                 <span itemProp="image">{tenant?.profile?.logo_url || 'https://loja.webcarros.app.br/logo.png'}</span>
                 <div itemProp="address" itemScope itemType="https://schema.org/PostalAddress">
                   <span itemProp="streetAddress">{tenant?.profile?.address || 'Rua das Flores, 123'}</span>
-                  <span itemProp="addressLocality">São Paulo</span>
+                  <span itemProp="addressLocality">Sorocaba</span>
                   <span itemProp="addressRegion">SP</span>
                   <span itemProp="postalCode">01234-567</span>
                   <span itemProp="addressCountry">BR</span>

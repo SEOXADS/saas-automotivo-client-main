@@ -94,6 +94,8 @@ function VehiclesPageContent() {
   const [totalVehicles, setTotalVehicles] = useState(0)
   const [totalPages, setTotalPages] = useState(0)
 
+  console.log("Vehivles", vehicles);
+
   // Estados para modais mobile
   const [showSearchModal, setShowSearchModal] = useState(false)
   const [showFilterModal, setShowFilterModal] = useState(false)
@@ -232,7 +234,7 @@ function VehiclesPageContent() {
           setFilterOptions(prev => ({
             ...prev,
             brands: defaultBrands,
-            cities: ['São Paulo', 'Rio de Janeiro', 'Belo Horizonte', 'Brasília', 'Salvador', 'Fortaleza', 'Manaus', 'Curitiba', 'Recife', 'Goiânia'],
+            cities: ['Sorocaba', 'Rio de Janeiro', 'Belo Horizonte', 'Brasília', 'Salvador', 'Fortaleza', 'Manaus', 'Curitiba', 'Recife', 'Goiânia'],
             vehicleTypes: ['Sedan', 'SUV', 'Hatchback', 'Pickup', 'Coupe', 'Convertible', 'Wagon', 'Van'],
             fuelTypes: ['flex', 'diesel', 'gasolina', 'eletrico', 'hibrido', 'gnv'],
             transmissions: ['automatica', 'cvt', 'manual', 'automatizada']
@@ -363,7 +365,7 @@ function VehiclesPageContent() {
               image_url: (vehicle.main_image as unknown as { url: string; id: number }).url,
               is_primary: true
             }] : null,
-          city: vehicle.city,
+          city: "Sorocaba",
             price: vehicle.price ? parseFloat(vehicle.price.toString()) : null,
             year: vehicle.year,
             mileage: vehicle.mileage,
@@ -406,7 +408,7 @@ function VehiclesPageContent() {
             title: 'Toyota Camry SE 350',
             main_image: '/portal/assets/img/cars/car-15.png',
             images: null,
-            city: 'São Paulo',
+            city: 'Sorocaba',
             price: 160000,
             year: 2018,
             mileage: 10000,
@@ -660,7 +662,7 @@ function VehiclesPageContent() {
                 <label className="block text-sm font-medium text-gray-700 mb-2">Localização</label>
                 <select className="w-full px-3 py-3 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500">
                   <option>Escolher Localização</option>
-                  <option>São Paulo</option>
+                  <option>Sorocaba</option>
                   <option>Rio de Janeiro</option>
                   <option>Belo Horizonte</option>
                   <option>Brasília</option>

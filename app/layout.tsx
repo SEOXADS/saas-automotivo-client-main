@@ -33,6 +33,9 @@ export default function RootLayout({
           }}
         />
         {/* End Google Tag Manager */}
+        {/* Bling */}
+        <meta name="msvalidate.01" content="8192ECEE74037BFDDDA7E2CC8E128300" />
+        {/* End Bling */}
 
         {/* Histats.com START */}
         <Script

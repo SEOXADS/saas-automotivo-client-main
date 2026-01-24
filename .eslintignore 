@@ -1,0 +1,5 @@
+app/portal/assets/**
+**/assets/js/**
+**/assets/plugins/**
+**/*.min.js
+**/vendor/**y

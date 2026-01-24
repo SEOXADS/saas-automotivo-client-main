@@ -307,7 +307,7 @@ function PortalHomePageContent() {
           <div className="relative bg-gray-50 w-full flex justify-center">
             <div className="relative w-full md:h-[70vh] overflow-hidden">
               <img
-                src="https://scontent.fcpq14-1.fna.fbcdn.net/v/t39.30808-6/417777709_709197508018657_5286267701310385679_n.png?_nc_cat=108&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=vp3GgjTlvsAQ7kNvwGNUJDp&_nc_oc=Adl9KykR4oLBiUDhHdBsRsQjXs1JslM0zUo0bdmhD-foS-S2Plf2tJQAzZ0T1uIoSctXP9JSJE3tmNi9aLA5TYtD&_nc_zt=23&_nc_ht=scontent.fcpq14-1.fna&_nc_gid=zz9GpZKoOHbrR-jrCsAcMg&oh=00_Afos5Tz-O4jXHQVpCpwJG7rG3je2w0mQkDZdXXAtPTlLdQ&oe=69743669"
+                src="https://api.omegaveiculos.com.br/storage/omega-hero-banner.png"
                 alt="Hero Banner - ÔMEGA Veículos"
                 className="w-full h-auto object-cover"
               />

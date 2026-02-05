@@ -165,7 +165,7 @@ function VehicleDetailsContent() {
     }
 
     // Se não há imagens suficientes, adicionar imagens padrão
-    if (validImages.length < 3) {
+    /*if (validImages.length < 3) {
       const fallbackImages = [
         '/portal/assets/img/cars/slider-01.jpg',
         '/portal/assets/img/cars/slider-02.jpg',
@@ -180,7 +180,7 @@ function VehicleDetailsContent() {
           validImages.push(fallbackImg)
         }
       })
-    }
+    }*/
 
     // Garantir que sempre retornamos pelo menos 3 imagens únicas
     const uniqueImages = [...new Set(validImages)]
@@ -191,14 +191,14 @@ function VehicleDetailsContent() {
     })
 
     // Se ainda não temos 3 imagens únicas, usar fallback padrão
-    if (uniqueImages.length < 3) {
+    /*if (uniqueImages.length < 3) {
       console.log('⚠️ Usando imagens de fallback padrão')
       return [
         '/portal/assets/img/cars/slider-01.jpg',
         '/portal/assets/img/cars/slider-02.jpg',
         '/portal/assets/img/cars/slider-03.jpg'
       ]
-    }
+    }*/
 
     console.log('✅ Retornando imagens únicas:', uniqueImages)
     return uniqueImages
@@ -510,7 +510,7 @@ function VehicleDetailsContent() {
           }
 
           // Se não há imagens suficientes, adicionar imagens padrão
-          if (images.length < 3) {
+          /*if (images.length < 3) {
             const fallbackImages = [
               { id: 1001, image_url: '/portal/assets/img/cars/slider-01.jpg', is_primary: false },
               { id: 1002, image_url: '/portal/assets/img/cars/slider-02.jpg', is_primary: false },
@@ -525,7 +525,7 @@ function VehicleDetailsContent() {
                 images.push(fallbackImg)
               }
             })
-          }
+          }*/
 
           const convertedVehicle: VehicleDetails = {
             id: vehicleData.id,
